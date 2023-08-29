@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataUserApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,8 @@ Route::get('/', function () {
 
 Route::get('/user', function () {
     return view('user/index');
+});
+
+Route::prefix('user')->group(function(){
+   Route::get('/login', [DataUserApiController::class, 'index']);
 });
