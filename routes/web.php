@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\DataUserApiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\IndexUserController;
+use App\Http\Controllers\ProjectAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin/index');
-});
-
-Route::get('/user', function () {
-    return view('user/index');
-});
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login_check', [LoginController::class, 'login']);
 
 Route::prefix('user')->group(function(){
-   Route::get('/login', [DataUserApiController::class, 'index']);
+   Route::get('/index', [IndexUserController::class, 'index']);
+});
+
+Route::prefix('admin')->group(function(){
+   Route::get('/index', [ProjectAdminController::class, 'index']);
 });

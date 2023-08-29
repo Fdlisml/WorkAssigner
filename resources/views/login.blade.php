@@ -33,56 +33,57 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="user/public/css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/login.css">
 
-   <title>Login Page</title>
+    <title>Login Page</title>
 </head>
 
 <body>
 
-   <div class="container">
+    <div class="container">
 
-      <div class="left">
-         <div class="wadah-img">
-            <img src="user/public/image/Two factor authentication-pana.png" alt="login">
-         </div>
-      </div>
-
-      <div class="right">
-         <div class="wadah">
-            <h3>Welcome back,</h3>
-            <h2>Sign In,</h2>
-
-            <div class="img-mobile">
-               <img src="user/public/image/Two factor authentication-pana.png" alt="login-mobile">
+        <div class="left">
+            <div class="wadah-img">
+                <img src="/image/Two factor authentication-pana.png" alt="login">
             </div>
+        </div>
 
-            <form method="post">
-               <label for="">Username</label><br>
-               <div class="boxx">
-                  <input class="user" type="text" name="username" placeholder="Enter Username" required>
-               </div>
-               <br>
-               <label for="">Password</label><br>
-               <div class="box">
-                  <input class="pw" type="password" id="fakePassword" name="password" placeholder="Enter Password" required>
-                  <ion-icon name="eye-outline" id="toggler"></ion-icon>
-               </div>
-               <br>
+        <div class="right">
+            <div class="wadah">
+                <h3>Welcome back,</h3>
+                <h2>Sign In,</h2>
 
-               <div class="btn">
-                  <input type="submit" name="login" value="Sign In,">
-               </div>
-            </form>
-         </div>
-      </div>
-   </div>
+                <div class="img-mobile">
+                    <img src="/image/Two factor authentication-pana.png" alt="login-mobile">
+                </div>
+                <form method="post" action="/login_check">
+                    @csrf
+                    <label for="">Username</label><br>
+                    <div class="boxx">
+                        <input class="user" type="text" name="username" placeholder="Enter Username" required>
+                    </div>
+                    <br>
+                    <label for="">Password</label><br>
+                    <div class="box">
+                        <input class="pw" type="password" id="fakePassword" name="password"
+                            placeholder="Enter Password" required>
+                        <ion-icon name="eye-outline" id="toggler"></ion-icon>
+                    </div>
+                    <br>
 
-   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-   <script src="user/public/js/login.js"></script>
+                    <div class="btn">
+                        <input type="submit" name="login" value="Sign In,">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

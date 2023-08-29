@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="assets/imgs/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
+                                    <img src="../assets/imgs/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
                                         alt="">
                                 </div>
                             </span>

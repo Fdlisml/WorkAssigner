@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\ProjectApi;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 
-class ProjectApiController extends Controller
+class ProjectAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('project.index',[
+        return view('admin.index',[
             'project' => ProjectApi::getDataFromAPI()
         ]);
     }
