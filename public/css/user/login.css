@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: poppins;
+    background-image: url(../image/bg1.svg);
+    backdrop-filter: blur(3px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .left {
+    background: rgba(255, 255, 255, 0.1);
+    /* backdrop-filter: blur(10px); */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    height: 477px;
+    display: flex;
+    align-items: center;
+}
+
+.left .wadah-img img {
+    max-width: 450px;
+}
+
+.container .right .img-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: none;
+}
+
+.container .right .img-mobile img {
+    max-width: 200px;
+}
+
+.right {
+    background-color: rgb(255, 255, 255);
+    height: 400px;
+    padding: 5%;
+    width: 350px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.wadah {
+    margin: 20px 0;
+}
+
+.wadah p {
+    font-size: .6rem;
+    color: #323232;
+}
+
+.wadah h4 {
+    font-size: 1.5rem;
+}
+
+form {
+    margin-top: 30px;
+    padding: 0 1%;
+    position: relative;
+}
+
+form label {
+    font-size: .9rem;
+}
+
+form input {
+    height: 30px;
+    width: 100%;
+    /* border-radius: 10px; */
+    outline: none;
+    border: 2px solid #d4d1d1;
+    padding: 0 5px;
+    background-color: transparent;
+    font-family: poppins;
+    font-weight: 600;
+}
+
+form input::placeholder {
+    font-weight: 600;
+    font-family: poppins;
+}
+
+.boxx {
+    padding: 10px 10px;
+    border: 2px solid #d4d1d1;
+    outline: 0;
+    font-size: 24px;
+    color: #555;
+    border-radius: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+}
+
+form input.user {
+    border: none;
+}
+
+.box {
+    padding: 10px;
+    border: 2px solid #d4d1d1;
+    outline: 0;
+    font-size: 24px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    height: 10px;
+}
+
+form input.pw {
+    border: none;
+    display: flex;
+    gap: .5rem;
+    /* width: 220px; */
+}
+
+.btn input {
+    margin-top: 50px;
+    height: 45px;
+    width: 100%;
+    background-color: #1ea2ff;
+    border: 2px solid #fff;
+    font-weight: 800;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn input:hover {
+    background-color: #45b0fc;
+}
+
+.btn input:active {
+    background-color: #2ba2f7b7;
+}
+
+/* responsive */
+
+@media (max-width: 884px) {
+    .container .left {
+        transition: .5s ease-in-out;
+        height: 460px;
+        ;
+    }
+
+    .left .wadah-img img {
+        transition: .5s ease-in-out;
+        max-width: 300px;
+    }
+
+    .right {
+        transition: .5s ease-in-out;
+        height: 400px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 525px) {
+    body {
+        background-image: none;
+        background-color: #0066ff;
+        backdrop-filter: none;
+        height: 100vh;
+    }
+
+    .container .left {
+        transition: .5s ease-in-out;
+        display: none;
+    }
+
+    .right {
+        border-radius: 20px;
+        /* height: 80vh; */
+        height: 530px;
+        /* height: 65%; */
+    }
+
+    .container .right .img-mobile {
+        display: flex;
+        width: 100%;
+    }
+
+    .container .right .img-mobile img {
+        width: 100%;
+    }
+
+    form {
+        margin-top: 0;
+    }
+
+    .btn input {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .right {
+        /* position: relative; */
+        /* height: 80vh; */
+        height: 500px;
+        /* height: 100%; */
+    }
+
+    .container .right .img-mobile {
+        display: flex;
+        width: 100%;
+    }
+
+}
