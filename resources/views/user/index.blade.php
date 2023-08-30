@@ -29,7 +29,7 @@
             </li>
 
             <li>
-               <a href="index.php">
+               <a href="index">
                   <span class="icon">
                      <ion-icon name="reader-outline"></ion-icon>
                   </span>
@@ -38,7 +38,7 @@
             </li>
 
             <li>
-               <a href="../user/hasil.php">
+               <a href="laporan">
                   <span class="icon">
                      <ion-icon name="checkmark-done-outline"></ion-icon>
                   </span>
@@ -75,7 +75,7 @@
                <div class="card1">
                   <div class="card-left">
                      <div class="container-text">
-                        <div class="say">Good Morning, <?php //$name ?></div>
+                        <div class="say">Good Morning, {{ session('name') }}</div>
                         <div class="desc">Selamat Mengerjakan Pekerjaannya. Semangat!</div>
                         <div id="txt"></div>
                         <div class="left2">

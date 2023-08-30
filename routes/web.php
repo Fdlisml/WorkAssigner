@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexUserController;
-use App\Http\Controllers\ProjectAdminController;
 use App\Http\Controllers\TugasAdminController;
+use App\Http\Controllers\LaporanUserController;
 use App\Http\Controllers\LaporanAdminController;
+use App\Http\Controllers\ProjectAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,12 @@ use App\Http\Controllers\LaporanAdminController;
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login_check', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::prefix('user')->group(function(){
    Route::get('/index', [IndexUserController::class, 'index']);
-   Route::get('/tugas', [IndexUserController::class, 'tugas']);
+   Route::get('/laporan', [LaporanUserController::class, 'index']);
+   Route::post('/laporan', [IndexUserController::class, 'laporan']);
 });
 
 Route::prefix('admin')->group(function(){

@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LaporanApi;
 use Illuminate\Http\Request;
 
-class LaporanApiController extends Controller
+class LaporanUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('user.hasil', [
+         'laporan' => LaporanApi::getDataFromAPI()
+        ]);
     }
 
     /**

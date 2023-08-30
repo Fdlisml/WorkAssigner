@@ -24,6 +24,7 @@ class LoginController extends Controller
          if ($user['username'] === $request->username && $user['password'] === $request->password) {
             session([
                'role' => $user['role'],
+               'name' => $user['name'],
                'id' => $user['id']
             ]);
             $page = ($user['role'] === "user") ? "/user/index" : "/admin/index";
@@ -36,7 +37,7 @@ class LoginController extends Controller
    public function logout(Request $request)
    {
       $request->session()->invalidate();
-      return redirect('/');
+      return redirect('/login');
    }
 
    /**
