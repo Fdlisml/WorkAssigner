@@ -1,16 +1,16 @@
 <?php
 
-session_start();
+// session_start();
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin')) {
-    header('Location: ../login.php');
-    exit();
-}
+// if (!isset($_SESSION['id_user']) || (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin')) {
+//     header('Location: ../login.php');
+//     exit();
+// }
 
-$id_user = $_SESSION['id_user'];
-$name = $_SESSION['name'];
+// $id_user = $_SESSION['id_user'];
+// $name = $_SESSION['name'];
 
-require_once '../api/laporan.php';
+// require_once '../api/laporan.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@ require_once '../api/laporan.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/laporan.css">
+    <link rel="stylesheet" href="../css/admin/laporan.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@ require_once '../api/laporan.php';
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="assets/imgs/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
+                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
                                         alt="">
                                 </div>
                             </span>
@@ -44,7 +44,7 @@ require_once '../api/laporan.php';
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="index">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -53,7 +53,7 @@ require_once '../api/laporan.php';
                 </li>
 
                 <li>
-                    <a href="laporan.php">
+                    <a href="laporan">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
@@ -62,7 +62,7 @@ require_once '../api/laporan.php';
                 </li>
 
                 <li>
-                    <a href="tugas.php">
+                    <a href="tugas">
                         <span class="icon">
                             <ion-icon name="reader-outline"></ion-icon>
                         </span>
@@ -113,17 +113,17 @@ require_once '../api/laporan.php';
                         </thead>
 
                         <tbody>
-                            <?php foreach ($data_laporan as $laporan) : ?>
+                            <?php// foreach ($data_laporan as $laporan) : ?>
                             <div class="wadah-table">
                                 <tr>
-                                    <td><?= $laporan['nama_laporan'] ?></td>
-                                    <td><?= $laporan['deskripsi'] ?></td>
-                                    <td><?= $laporan['tgl_laporan'] ?></td>
-                                    <td><?= $laporan['id_tugas'] ?></td>
-                                    <td><?= $laporan['id_user'] ?></td>
+                                    <td><?php// $laporan['nama_laporan'] ?></td>
+                                    <td><?php// $laporan['deskripsi'] ?></td>
+                                    <td><?php// $laporan['tgl_laporan'] ?></td>
+                                    <td><?php// $laporan['id_tugas'] ?></td>
+                                    <td><?php// $laporan['id_user'] ?></td>
                                 </tr>
                             </div>
-                            <?php endforeach ?>
+                            <?php// endforeach ?>
                         </tbody>
                     </table>
                 </div>

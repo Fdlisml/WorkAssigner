@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexUserController;
 use App\Http\Controllers\ProjectAdminController;
+use App\Http\Controllers\TugasAdminController;
+use App\Http\Controllers\LaporanAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,11 @@ Route::post('/login_check', [LoginController::class, 'login']);
 
 Route::prefix('user')->group(function(){
    Route::get('/index', [IndexUserController::class, 'index']);
+   Route::get('/tugas', [IndexUserController::class, 'tugas']);
 });
 
 Route::prefix('admin')->group(function(){
    Route::get('/index', [ProjectAdminController::class, 'index']);
+   Route::get('/tugas', [TugasAdminController::class, 'index']);
+   Route::get('/laporan', [LaporanAdminController::class, 'index']);
 });

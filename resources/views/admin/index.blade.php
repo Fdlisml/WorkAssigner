@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin/style.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="../assets/imgs/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
+                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
                                         alt="">
                                 </div>
                             </span>
@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="index">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -53,7 +53,7 @@
                 </li>
 
                 <li>
-                    <a href="laporan.php">
+                    <a href="laporan">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
@@ -62,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href="tugas.php">
+                    <a href="tugas">
                         <span class="icon">
                             <ion-icon name="reader-outline"></ion-icon>
                         </span>
