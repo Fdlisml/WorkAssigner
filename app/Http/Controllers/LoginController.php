@@ -12,9 +12,7 @@ class LoginController extends Controller
     */
    public function index()
    {
-      return view('login', [
-         'user' => UserApi::getDataFromAPI()
-      ]);
+      return view('login');
    }
 
    public function login(Request $request)
@@ -33,6 +31,12 @@ class LoginController extends Controller
          }
       }
       return back()->withInput()->withErrors(['login' => 'Invalid username or password.']);
+   }
+
+   public function logout(Request $request)
+   {
+      $request->session()->invalidate();
+      return redirect('/');
    }
 
    /**
