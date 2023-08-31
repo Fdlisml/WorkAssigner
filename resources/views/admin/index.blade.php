@@ -99,7 +99,8 @@
                         </div>
 
                         <div class="form">
-                            <form action="../api/project.php" method="post">
+                            <form action="project/store" method="post">
+                              @csrf
                                 <label for="nama_project">
                                     Nama Project
                                 </label>

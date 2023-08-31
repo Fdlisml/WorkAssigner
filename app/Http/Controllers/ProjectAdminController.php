@@ -12,7 +12,7 @@ class ProjectAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index',[
+        return view('admin.index', [
             'project' => ProjectApi::getDataFromAPI()
         ]);
     }
@@ -31,17 +31,17 @@ class ProjectAdminController extends Controller
     public function store(Request $request)
     {
         $data_project = $request->validate([
-            'nama_project' => ['required', 'numeric'],
+            'nama_project' => ['required'],
             'tugas' => ['required'],
             'deskripsi' => ['required'],
             'tgl_mulai' => ['required'],
             'tgl_selesai' => ['required']
         ]);
-    
+
         // Panggil metode postDataToAPI() dengan data yang divalidasi
         ProjectApi::postDataToAPI($data_project);
-    
-        return redirect('index')->with('success', 'Data project Berhasil di Tambah');
+
+        return redirect('/admin/index')->with('success', 'Data project Berhasil di Tambah');
     }
 
     /**
@@ -57,9 +57,7 @@ class ProjectAdminController extends Controller
      */
     public function edit(string $id, ProjectApi $project)
     {
-        return view('project.edit',[
-            'project' => $project
-        ]); 
+        //
     }
 
     /**
@@ -68,17 +66,17 @@ class ProjectAdminController extends Controller
     public function update(Request $request, $id)
     {
         $data_project = $request->validate([
-            'nama_project' => ['required', 'numeric'],
+            'nama_project' => ['required'],
             'tugas' => ['required'],
             'deskripsi' => ['required'],
             'tgl_mulai' => ['required'],
             'tgl_selesai' => ['required']
         ]);
-    
+
         // Panggil metode postDataToAPI() dengan data yang divalidasi
         ProjectApi::updateDataInAPI($id, $data_project);
-    
-        return redirect('index')->with('success', 'Data project Berhasil di Update');
+
+        return redirect('admin/index')->with('success', 'Data project Berhasil di Update');
     }
 
     /**
@@ -86,6 +84,5 @@ class ProjectAdminController extends Controller
      */
     public function destroy(ProjectApi $project)
     {
-        
     }
 }
