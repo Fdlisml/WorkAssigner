@@ -99,6 +99,24 @@ month.innerHTML = allMonths[today.getMonth()];
 year.innerHTML = today.getFullYear();
 // end tanggal
 
+//Selamat
+const say = document.getElementById('say');
+
+function getGreeting() {
+   var currentTime = new Date();
+   var currentHour = currentTime.getHours();
+
+   if (currentHour >= 0 && currentHour < 12) {
+      return "Good Morning";
+   } else if (currentHour >= 12 && currentHour < 18) {
+      return "Good Afternoon";
+   } else {
+      return "Good Evening";
+   }
+}
+var greeting = getGreeting();
+
+say.textContent = greeting;
 
 // range
 const rangeInput = document.querySelector(".range");

@@ -17,7 +17,7 @@ class ProjectApi extends Model
         $response = $client->get(self::API_ENDPOINT);
         $data = json_decode($response->getBody(), true);
 
-        return $data;
+        return $data['data_project'];
     }
 
     public static function postDataToAPI($postData)

@@ -113,17 +113,17 @@
                         </thead>
 
                         <tbody>
-                            <?php// foreach ($data_laporan as $laporan) : ?>
+                            @foreach ($laporan as $l)
                             <div class="wadah-table">
                                 <tr>
-                                    <td><?php// $laporan['nama_laporan'] ?></td>
-                                    <td><?php// $laporan['deskripsi'] ?></td>
-                                    <td><?php// $laporan['tgl_laporan'] ?></td>
-                                    <td><?php// $laporan['id_tugas'] ?></td>
-                                    <td><?php// $laporan['id_user'] ?></td>
+                                    <td>{{ $l['nama_laporan'] }}</td>
+                                    <td>{{ $l['deskripsi'] }}</td>
+                                    <td>{{ $l['tgl_laporan'] }}</td>
+                                    <td>{{ $l['id_tugas'] }}</td>
+                                    <td>{{ $l['id_user'] }}</td>
                                 </tr>
                             </div>
-                            <?php// endforeach ?>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

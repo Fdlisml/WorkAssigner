@@ -75,7 +75,7 @@
                <div class="card1">
                   <div class="card-left">
                      <div class="container-text">
-                        <div class="say">Good Morning, {{ session('name') }}</div>
+                        <div class="say"><span id="say"></span>, {{ session('name') }}</div>
                         <div class="desc">Selamat Mengerjakan Pekerjaannya. Semangat!</div>
                         <div id="txt"></div>
                         <div class="left2">
@@ -115,7 +115,7 @@
                <div class="recentOrders">
                   <div class="cardHeader">
                      <h2>Jobs Today</h2>
-                     <a href="hasil.php" class="btn">History Kerja</a>
+                     <a href="laporan" class="btn">History Kerja</a>
                   </div>
                   <?php //foreach ($data_tugas as $tugas) : 
                   ?>

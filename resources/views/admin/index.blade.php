@@ -151,17 +151,17 @@
                                     <th>TANGGAL MULAI</th>
                                     <th>TANGGAL SELESAI</th>
                                 </tr>
-                                <?php //foreach ($data_project as $project) : ?>
+                                @foreach ($project as $p)
                                 <div class="wadah-table">
                                     <tr>
-                                        <td><?php //$project['nama_project'] ?></td>
-                                        <td><?php //$project['tugas'] ?></td>
-                                        <td><?php //$project['deskripsi'] ?></td>
-                                        <td><?php //$project['tgl_mulai'] ?></td>
-                                        <td><?php //$project['tgl_selesai'] ?></td>
+                                        <td>{{ $p['nama_project'] }}</td>
+                                        <td>{{ $p['tugas'] }}</td>
+                                        <td>{{ $p['deskripsi'] }}</td>
+                                        <td>{{ $p['tgl_mulai'] }}</td>
+                                        <td>{{ $p['tgl_selesai'] }}</td>
                                     </tr>
                                 </div>
-                                <?php //endforeach ?>
+                                @endforeach
                             </thead>
                         </table>
                     </div>

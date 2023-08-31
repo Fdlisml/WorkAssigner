@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LaporanApi;
 use Illuminate\Http\Request;
 
 class LaporanAdminController extends Controller
@@ -11,7 +12,9 @@ class LaporanAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.laporan');
+        return view('admin.laporan',[
+         'laporan' => LaporanApi::getDataFromAPI()
+        ]);
     }
 
     /**
