@@ -7,7 +7,7 @@
 
 body {
     font-family: poppins;
-    background-image: url(../image/bg1.svg);
+    background-image: url(../../image/bg1.svg);
     backdrop-filter: blur(3px);
     background-repeat: no-repeat;
     background-size: cover;

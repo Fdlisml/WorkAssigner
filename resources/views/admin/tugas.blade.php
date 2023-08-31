@@ -1,18 +1,18 @@
 <?php
 
-session_start();
+// session_start();
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin')) {
-    header('Location: ../login.php');
-    exit();
-}
+// if (!isset($_SESSION['id_user']) || (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin')) {
+//     header('Location: ../login.php');
+//     exit();
+// }
 
-$id_user = $_SESSION['id_user'];
-$name = $_SESSION['name'];
+// $id_user = $_SESSION['id_user'];
+// $name = $_SESSION['name'];
 
-require_once '../api/tugas.php';
-require_once '../api/project.php';
-require_once '../api/user.php';
+// require_once '../api/tugas.php';
+// require_once '../api/project.php';
+// require_once '../api/user.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,7 @@ require_once '../api/user.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../css/admin/style.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@ require_once '../api/user.php';
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="assets/imgs/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
+                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
                                         alt="">
                                 </div>
                             </span>
@@ -46,7 +46,7 @@ require_once '../api/user.php';
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="index">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -55,7 +55,7 @@ require_once '../api/user.php';
                 </li>
 
                 <li>
-                    <a href="laporan.php">
+                    <a href="laporan">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
@@ -64,7 +64,7 @@ require_once '../api/user.php';
                 </li>
 
                 <li>
-                    <a href="tugas.php">
+                    <a href="tugas">
                         <span class="icon">
                             <ion-icon name="reader-outline"></ion-icon>
                         </span>
@@ -73,7 +73,7 @@ require_once '../api/user.php';
                 </li>
 
                 <li>
-                    <a href="../logout.php">
+                    <a href="/logout">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -122,17 +122,17 @@ require_once '../api/user.php';
                                 <label for="nama_project">
                                     Nama Project
                                     <select name="id_project">
-                                        <?php foreach ($data_project as $project) : ?>
-                                        <option value="<?= $project['id'] ?>"><?= $project['nama_project'] ?></option>
-                                        <?php endforeach ?>
+                                        <?php// foreach ($data_project as $project) : ?>
+                                        <option value="<?php// $project['id'] ?>"><?php // $project['nama_project'] ?></option>
+                                        <?php //endforeach ?>
                                     </select>
                                 </label>
                                 <label for="nama_developer">
                                     Nama Developer
                                     <select name="id_user">
-                                        <?php foreach ($data_user as $user) : ?>
-                                        <option value="<?= $user['id'] ?>"><?= $user['name'] ?></option>
-                                        <?php endforeach ?>
+                                        <?php //foreach ($data_user as $user) : ?>
+                                        <option value="<?php// $user['id'] ?>"><?php // $user['name'] ?></option>
+                                        <?php //endforeach ?>
                                     </select>
                                     <button class="cta">
                                 </label>
@@ -162,18 +162,18 @@ require_once '../api/user.php';
                                     <th>ID PROJECT</th>
                                     <th>ID USER</th>
                                 </tr>
-                                <?php foreach ($data_tugas as $tugas) : ?>
+                                <?php// foreach ($data_tugas as $tugas) : ?>
                                 <div class="wadah-table">
                                     <tr>
-                                        <td><?= $tugas['nama_tugas'] ?></td>
-                                        <td><?= $tugas['deskripsi'] ?></td>
-                                        <td><?= $tugas['tgl_mulai'] ?></td>
-                                        <td><?= $tugas['tgl_selesai'] ?></td>
-                                        <td><?= $tugas['id_project'] ?></td>
-                                        <td><?= $tugas['id_user'] ?></td>
+                                        <td><?php// $tugas['nama_tugas'] ?></td>
+                                        <td><?php// $tugas['deskripsi'] ?></td>
+                                        <td><?php// $tugas['tgl_mulai'] ?></td>
+                                        <td><?php// $tugas['tgl_selesai'] ?></td>
+                                        <td><?php// $tugas['id_project'] ?></td>
+                                        <td><?php// $tugas['id_user'] ?></td>
                                     </tr>
                                 </div>
-                                <?php endforeach ?>
+                                <?php// endforeach ?>
                             </thead>
                         </table>
                     </div>

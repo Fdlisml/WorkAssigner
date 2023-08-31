@@ -3,18 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DataUserApi;
 
-class DataUserApiController extends Controller
+class TugasAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('login',[
-            'user' => DataUserApi::getDataFromAPI()
-        ]);
+        return view('admin.tugas');
     }
 
     /**
@@ -22,7 +19,7 @@ class DataUserApiController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

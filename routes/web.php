@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\IndexUserController;
+use App\Http\Controllers\TugasAdminController;
+use App\Http\Controllers\LaporanUserController;
+use App\Http\Controllers\LaporanAdminController;
+use App\Http\Controllers\ProjectAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin/index');
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login_check', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::prefix('user')->group(function(){
+   Route::get('/index', [IndexUserController::class, 'index']);
+   Route::get('/laporan', [LaporanUserController::class, 'index']);
+   Route::post('/laporan', [IndexUserController::class, 'laporan']);
 });
 
-Route::get('/user', function () {
-    return view('user/index');
+Route::prefix('admin')->group(function(){
+   Route::get('/index', [ProjectAdminController::class, 'index']);
+   Route::get('/tugas', [TugasAdminController::class, 'index']);
+   Route::get('/laporan', [LaporanAdminController::class, 'index']);
 });

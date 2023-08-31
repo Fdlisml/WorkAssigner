@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
    <!-- ======= Styles ====== -->
-   <link rel="stylesheet" href="css/user/style.css">
+   <link rel="stylesheet" href="../css/user/style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
                   <div class="logo-flex">
                      <span class="icon">
                         <div class="logo-bg">
-                           <img src="image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png" alt="">
+                           <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png" alt="">
                         </div>
                      </span>
                      <span class="title">WorkAssigner</span>
@@ -29,7 +29,7 @@
             </li>
 
             <li>
-               <a href="index.php">
+               <a href="index">
                   <span class="icon">
                      <ion-icon name="reader-outline"></ion-icon>
                   </span>
@@ -38,7 +38,7 @@
             </li>
 
             <li>
-               <a href="user/hasil.php">
+               <a href="laporan">
                   <span class="icon">
                      <ion-icon name="checkmark-done-outline"></ion-icon>
                   </span>
@@ -47,7 +47,7 @@
             </li>
 
             <li>
-               <a href="logout.php">
+               <a href="/logout">
                   <span class="icon">
                      <ion-icon name="log-out-outline"></ion-icon>
                   </span>
@@ -75,7 +75,7 @@
                <div class="card1">
                   <div class="card-left">
                      <div class="container-text">
-                        <div class="say">Good Morning, <?php //$name ?></div>
+                        <div class="say">Good Morning, {{ session('name') }}</div>
                         <div class="desc">Selamat Mengerjakan Pekerjaannya. Semangat!</div>
                         <div id="txt"></div>
                         <div class="left2">
@@ -89,7 +89,7 @@
                   </div>
 
                   <div class="imgBx">
-                     <img src="image/Telecommuting-pana-removebg-preview.png">
+                     <img src="../image/Telecommuting-pana-removebg-preview.png">
                   </div>
                </div>
 
@@ -207,7 +207,7 @@
 
 
       <!-- =========== Scripts =========  -->
-      <script src="js/script.js"></script>
+      <script src="../js/script.js"></script>
 
       <!-- ====== ionicons ======= -->
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
