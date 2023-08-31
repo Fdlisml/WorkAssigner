@@ -124,3 +124,23 @@ const rangeValue = document.querySelector(".rangeValue");
 rangeInput.addEventListener('input', () => {
    rangeValue.textContent = rangeInput.value + '%';
 });
+
+//monn/day
+document.addEventListener("DOMContentLoaded", function () {
+   const card2Element = document.querySelector(".container2");
+   const dayElement = card2Element.querySelector("#day");
+   const nightElement = card2Element.querySelector("#night");
+ 
+   const currentTime = new Date().getHours();
+ 
+   if (currentTime >= 18 || currentTime < 6) {
+     // Sembunyikan elemen siang, tampilkan elemen malam
+     dayElement.style.display = "none";
+     nightElement.style.display = "block";
+   } else {
+     // Tampilkan elemen siang, sembunyikan elemen malam
+     dayElement.style.display = "block";
+     nightElement.style.display = "none";
+   }
+ });
+ 
