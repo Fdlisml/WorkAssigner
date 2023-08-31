@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TugasApi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class IndexUserController extends Controller
 {
@@ -12,8 +13,18 @@ class IndexUserController extends Controller
      */
     public function index()
     {
+        $tugas = TugasApi::getDataFromAPI();
+        $id_user = session('id');
+        $tugas_user = [];
+        foreach ($tugas as $t) {
+            if ($t['id_user'] === $id_user) {
+                $tugas_user[] = $t;
+            }
+        }
+
+        $randomTugas = Arr::random($tugas_user);
         return view('user.index',[
-            'tugas' => TugasApi::getDataFromAPI()
+            'tugas' => $randomTugas
         ]);
     }
 

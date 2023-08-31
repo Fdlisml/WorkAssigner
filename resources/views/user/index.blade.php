@@ -76,7 +76,7 @@
                   <div class="card-left">
                      <div class="container-text">
                         <div class="say"><span id="say"></span>, {{ session('name') }}</div>
-                        <div class="desc">Selamat Mengerjakan Pekerjaannya. Semangat!</div>
+                        <div class="desc">Good luck with your work. Spirit!</div>
                         <div id="txt"></div>
                         <div class="left2">
                            <p id="day"></p>
@@ -117,37 +117,34 @@
                      <h2>Jobs Today</h2>
                      <a href="laporan" class="btn">History Kerja</a>
                   </div>
-                  <?php //foreach ($data_tugas as $tugas) : 
-                  ?>
+                  
                   <div class="wadah-table">
                      <table>
                         <tbody>
                            <tr>
-                              <td>Name Tugas</td>
-                              <td><?php // $data_tugas["nama_tugas"] ?></td>
+                              <td>Name Task</td>
+                              <td>{{ $tugas['nama_tugas'] }}</td>
                            </tr>
                         </tbody>
 
                         <tbody>
                            <tr>
-                              <td>Deskripsi</td>
-                              <td><?php // $data_tugas["deskripsi"] ?></td>
+                              <td>Description</td>
+                              <td>{{ $tugas['deskripsi'] }}</td>
                            </tr>
 
                            <tr>
-                              <td>Tanggal Mulai</td>
-                              <td><?php // $data_tugas["tgl_mulai"] ?></td>
+                              <td>Start Date</td>
+                              <td>{{ $tugas['tgl_mulai'] }}</td>
                            </tr>
 
                            <tr>
-                              <td>Tanggal Selesai</td>
-                              <td><?php // $data_tugas["tgl_selesai"] ?></td>
+                              <td>Date of completion</td>
+                              <td>{{ $tugas['tgl_selesai'] }}</td>
                            </tr>
                         </tbody>
                      </table>
                   </div>
-                  <?php //endforeach 
-                  ?>
                </div>
 
                <!-- ================= New Customers ================ -->
@@ -164,19 +161,19 @@
                         <hr>
                         <form action="../api/laporan.php" method="POST">
                            <div class="center-form">
-                              <label for="">Nama Laporan</label><br>
+                              <label for="">Report Name</label><br>
                               <input type="text" name="nama_laporan" placeholder="Masukan Nama Laporan" required>
                               <br>
                               <br>
-                              <label for="">Deskripsi Laporan</label><br>
+                              <label for="">Report Description</label><br>
                               <textarea name="deskripsi" id="" cols="30" rows="5" placeholder="Masukan Laporan" required></textarea>
                               <br>
                               <br>
-                              <label for="">Keluhan</label><br>
+                              <label for="">Complaint</label><br>
                               <textarea name="keluhan" id="" cols="30" rows="5" placeholder="Masukan Keluhan" required></textarea>
                               <br>
                               <br>
-                              <label for="">Progres</label><br>
+                              <label for="">Progress</label><br>
                               <div class="field">
                                  <div class="range-active">
                                     <input class="range" type="range" name="progres" min="0" max="100" value="0" steps="1">
@@ -194,7 +191,7 @@
                                  <span class="circle" aria-hidden="true">
                                     <span class="icon arrow"></span>
                                  </span>
-                                 <span class="button-text">Simpan</span>
+                                 <span class="button-text">Send, !</span>
                               </button>
                            </div>
                         </form>

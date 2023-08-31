@@ -66,8 +66,8 @@
                     <div class="card1">
                         <div class="card-left">
                             <div class="container-text">
-                                <div class="say">Good Morning, {{ session('name') }}</div>
-                                <div class="desc">Selamat Mengerjakan Pekerjaannya. Semangat!</div>
+                                <div class="say"><span id="say"></span>, {{ session('name') }}</div>
+                                <div class="desc">Good luck with your work. Spirit!</div>
                                 <div id="txt"></div>
                                 <div class="left2">
                                     <p id="day"></p>
@@ -105,7 +105,7 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>Working Result</h2>
-                            <a href="index" class="btn">Pekerjaan</a>
+                            <a href="index" class="btn">Work</a>
                         </div>
                         @foreach ($laporan as $l)
                         <div class="wadah-table">
@@ -113,20 +113,20 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td>Name Laporan</td>
+                                            <td>Report Name</td>
                                             <td>{{ $l['nama_laporan'] }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Deskripsi</td>
+                                            <td>Description</td>
                                             <td>{{ $l['deskripsi'] }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Keluhan</td>
+                                            <td>Complaint</td>
                                             <td>{{ $l['keluhan'] }}</td>
                                         </tr>
                                         <form action="../api/laporan.php" method="POST">
                                             <tr>
-                                                <td>Progres</td>
+                                                <td>Progress</td>
                                                 <td>
                                                     <div class="field">
                                                         <div class="range-active">
@@ -141,7 +141,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Tanggal Laporan</td>
+                                                <td>Date Report</td>
                                                 <td>{{ $l['tgl_laporan'] }}</td>
                                             </tr>
                                     </tbody>
@@ -150,7 +150,7 @@
                             <div class="btn-update">
                                 <input type="hidden" name="id_laporan" value="{{ $l['id'] }}">
                                 <input type="hidden" name="_method" value="PUT">
-                                <button type="submit" class="btn" id="myBtn">Ubah</button>
+                                <button type="submit" class="btn" id="myBtn">Change</button>
                                 </form>
                             </div>
                         </div>
