@@ -841,7 +841,7 @@ form textarea {
 }
 
 .field input[type="range"] {
-    /* -webkit-appearance: none; */
+    -webkit-appearance: auto;
     padding: 0;
     width: 100%;
     height: 5px;
@@ -849,7 +849,7 @@ form textarea {
     outline: none;
     border: none;
     z-index: 2222;
-    accent-color: #191919;
+    accent-color: #45FFCA;
 }
 
 input[type="range"]::-webkit-slider-thumb {
