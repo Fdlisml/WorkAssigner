@@ -241,6 +241,7 @@ body {
 
 .form {
     width: 100%;
+    height: 100%;
     margin-top: 10px;
 }
 
@@ -249,28 +250,56 @@ form input {
     padding: 5px;
     border: 2px solid var(--black3);
     border-radius: 10px;
-    height: 2.4rem;
+    height: 2rem;
+    font-weight: bold;
+    outline: none solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+form .tugas,
+form .deskripsi,
+form .tgl_mulai,
+form .tgl-selesai{
+    width: 100%;
+    padding: 5px;
+    border: 2px solid var(--black3);
+    border-radius: 10px;
+    height: 2rem;
     font-weight: bold;
     outline: none solid black;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 form {
     font-weight: 500;
 }
 
-.form select {
+form select,
+form option
+{
     width: 100%;
     padding: 5px;
     border: 2px solid var(--black3);
     border-radius: 10px;
-    height: 2.4rem;
     font-weight: bold;
+    height: 2rem;
     outline: none solid black;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form textarea {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid var(--black3);
+    border-radius: 10px;
+    font-weight: bold;
+    outline: none solid black;
+    margin-top: 5px;
     margin-bottom: 5px;
 }
+
 
 .cta {
     position: relative;

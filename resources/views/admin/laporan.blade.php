@@ -107,8 +107,8 @@
                                 <th>NAMA LAPORAN</th>
                                 <th>DESKRIPSI</th>
                                 <th>TANGGAL LAPORAN</th>
-                                <th>ID TUGAS</th>
-                                <th>ID USER</th>
+                                <th>NAMA TUGAS</th>
+                                <th>NAMA DEVELOPER</th>
                             </tr>
                         </thead>
 
@@ -116,11 +116,11 @@
                             @foreach ($laporan as $l)
                             <div class="wadah-table">
                                 <tr>
-                                    <td>{{ $l['nama_laporan'] }}</td>
-                                    <td>{{ $l['deskripsi'] }}</td>
-                                    <td>{{ $l['tgl_laporan'] }}</td>
-                                    <td>{{ $l['id_tugas'] }}</td>
-                                    <td>{{ $l['id_user'] }}</td>
+                                    <td>{{ $l['laporan']['nama_laporan'] }}</td>
+                                    <td>{{ $l['laporan']['deskripsi'] }}</td>
+                                    <td>{{ $l['laporan']['tgl_laporan'] }}</td>
+                                    <td>{{ $l['tugas']['nama_tugas'] }}</td>
+                                    <td>{{ $l['user']['name'] }}</td>
                                 </tr>
                             </div>
                             @endforeach
@@ -132,7 +132,7 @@
     </div>
 
     <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
+    <script src="../js/script.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
