@@ -106,7 +106,8 @@
                         </div>
 
                         <div class="form">
-                            <form action="../api/tugas.php" method="POST">
+                            <form action="tugas/store" method="POST">
+                              @csrf
                                 <label for="tugas">
                                     tugas <input type="text" name="nama_tugas">
                                 </label>
@@ -122,17 +123,21 @@
                                 <label for="nama_project">
                                     Nama Project
                                     <select name="id_project">
-                                        <?php// foreach ($data_project as $project) : ?>
-                                        <option value="<?php// $project['id'] ?>"><?php // $project['nama_project'] ?></option>
-                                        <?php //endforeach ?>
+                                        @foreach ($projectData as $p)
+                                            <option value="{{ $p['id'] }}">
+                                                {{ $p['nama_project'] }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </label>
                                 <label for="nama_developer">
                                     Nama Developer
                                     <select name="id_user">
-                                        <?php //foreach ($data_user as $user) : ?>
-                                        <option value="<?php// $user['id'] ?>"><?php // $user['name'] ?></option>
-                                        <?php //endforeach ?>
+                                        @foreach ($userData as $u)
+                                            <option value="{{ $u['id'] }}">
+                                                {{ $u['name'] }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                     <button class="cta">
                                 </label>
@@ -162,18 +167,20 @@
                                     <th>ID PROJECT</th>
                                     <th>ID USER</th>
                                 </tr>
-                                <?php// foreach ($data_tugas as $tugas) : ?>
-                                <div class="wadah-table">
-                                    <tr>
-                                        <td><?php// $tugas['nama_tugas'] ?></td>
-                                        <td><?php// $tugas['deskripsi'] ?></td>
-                                        <td><?php// $tugas['tgl_mulai'] ?></td>
-                                        <td><?php// $tugas['tgl_selesai'] ?></td>
-                                        <td><?php// $tugas['id_project'] ?></td>
-                                        <td><?php// $tugas['id_user'] ?></td>
-                                    </tr>
-                                </div>
-                                <?php// endforeach ?>
+                                @foreach ($tugasData as $t)
+                                    <div class="wadah-table">
+                                        <tr>
+                                            <td>{{ $t['tugas']['nama_tugas'] }}</td>
+                                            <td>{{ $t['tugas']['deskripsi'] }}</td>
+                                            <td>{{ $t['tugas']['tgl_mulai'] }}</td>
+                                            <td>{{ $t['tugas']['tgl_selesai'] }}</td>
+                                            <td>{{ $t['project']['nama_project'] }}</td>
+                                            <td>{{ $t['user']['name'] }}</td>
+                                        </tr>
+                                    </div>
+                                @endforeach
+                                {{-- {{ dd($project) }}
+                                {{ dd($user) }} --}}
                             </thead>
                         </table>
                     </div>
