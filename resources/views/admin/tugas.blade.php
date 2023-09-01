@@ -107,18 +107,18 @@
 
                         <div class="form">
                             <form action="tugas/store" method="POST">
-                              @csrf
+                                @csrf
                                 <label for="tugas">
-                                    tugas <input type="text" name="nama_tugas">
+                                    tugas <input type="text" name="nama_tugas" class="tugas">
                                 </label>
                                 <label for="deskripsi">
-                                    Deskripsi <input type="text" name="deskripsi">
+                                    Deskripsi <input type="text" name="deskripsi" class="deskripsi">
                                 </label>
                                 <label for="tgl_mulai">
-                                    Tanggal Mulai <input type="date" name="tgl_mulai">
+                                    Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai">
                                 </label>
                                 <label for="tgl_selesai">
-                                    Tanggal Selesai <input type="date" name="tgl_selesai">
+                                    Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai">
                                 </label>
                                 <label for="nama_project">
                                     Nama Project
@@ -164,8 +164,8 @@
                                     <th>DESKRIPSI</th>
                                     <th>TANGGAL MULAI</th>
                                     <th>TANGGAL SELESAI</th>
-                                    <th>ID PROJECT</th>
-                                    <th>ID USER</th>
+                                    <th>NAMA PROJECT</th>
+                                    <th>NAMA DEVELOPER</th>
                                 </tr>
                                 @foreach ($tugasData as $t)
                                     <div class="wadah-table">
@@ -189,7 +189,7 @@
         </div>
 
         <!-- =========== Scripts =========  -->
-        <script src="assets/js/main.js"></script>
+        <script src="../js/script.js"></script>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

@@ -100,7 +100,7 @@
 
                         <div class="form">
                             <form action="project/store" method="post">
-                              @csrf
+                                @csrf
                                 <label for="nama_project">
                                     Nama Project
                                 </label>
@@ -114,7 +114,7 @@
                                 <label for="deskripsi">
                                     Deskripsi
                                 </label>
-                                <input type="text" name="deskripsi">
+                                <textarea name="deskripsi" id="" cols="10" rows="10"></textarea>
 
                                 <label for="tgl_mulai"><br>
                                     Tgl Mulai
@@ -124,7 +124,7 @@
                                 <label for="tgl_selesai">
                                     Tgl Selesai
                                 </label>
-                                <input type="date" name="tgl_selesai">
+                                <input type="date" name="tgl_selesai" class="datee">
 
                                 <button class="cta">
                                     <span>Send Work !</span>
@@ -153,15 +153,15 @@
                                     <th>TANGGAL SELESAI</th>
                                 </tr>
                                 @foreach ($project as $p)
-                                <div class="wadah-table">
-                                    <tr>
-                                        <td>{{ $p['nama_project'] }}</td>
-                                        <td>{{ $p['tugas'] }}</td>
-                                        <td>{{ $p['deskripsi'] }}</td>
-                                        <td>{{ $p['tgl_mulai'] }}</td>
-                                        <td>{{ $p['tgl_selesai'] }}</td>
-                                    </tr>
-                                </div>
+                                    <div class="wadah-table">
+                                        <tr>
+                                            <td>{{ $p['nama_project'] }}</td>
+                                            <td>{{ $p['tugas'] }}</td>
+                                            <td>{{ $p['deskripsi'] }}</td>
+                                            <td>{{ $p['tgl_mulai'] }}</td>
+                                            <td>{{ $p['tgl_selesai'] }}</td>
+                                        </tr>
+                                    </div>
                                 @endforeach
                             </thead>
                         </table>
@@ -171,7 +171,7 @@
         </div>
 
         <!-- =========== Scripts =========  -->
-        <script src="assets/js/main.js"></script>
+        <script src="../js/script.js"></script>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
