@@ -35,6 +35,7 @@ Route::prefix('user')->group(function(){
 Route::prefix('admin')->group(function(){
    Route::get('/index', [ProjectAdminController::class, 'index'])->middleware(CheckLoginMiddleware::class);
    Route::get('/tugas', [TugasAdminController::class, 'index'])->middleware(CheckLoginMiddleware::class);
+   Route::post('/tugas/store', [TugasAdminController::class, 'store'])->middleware(CheckLoginMiddleware::class);
    Route::get('/laporan', [LaporanAdminController::class, 'index'])->middleware(CheckLoginMiddleware::class);
    Route::post('/project/store', [ProjectAdminController::class, 'store'])->middleware(CheckLoginMiddleware::class);
 });
