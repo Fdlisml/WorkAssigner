@@ -241,7 +241,7 @@ body {
 
 .form {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 form input {
@@ -253,7 +253,7 @@ form input {
     font-weight: bold;
     outline: none solid black;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 form {
@@ -269,7 +269,7 @@ form {
     font-weight: bold;
     outline: none solid black;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .cta {
