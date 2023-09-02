@@ -74,12 +74,14 @@
                                 <span class="crater crater--2"></span>
                                 <span class="crater crater--3"></span>
                             </span>
-                            <span class="star star--1"></span>
-                            <span class="star star--2"></span>
-                            <span class="star star--3"></span>
-                            <span class="star star--4"></span>
-                            <span class="star star--5"></span>
-                            <span class="star star--6"></span>
+                            <div class="star-c">
+                                <span class="star star--1"></span>
+                                <span class="star star--2"></span>
+                                <span class="star star--3"></span>
+                                <span class="star star--4"></span>
+                                <span class="star star--5"></span>
+                                <span class="star star--6"></span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -252,7 +254,7 @@
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        
+
 </body>
 
 </html>
