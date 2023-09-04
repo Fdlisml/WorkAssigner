@@ -130,19 +130,19 @@ document.addEventListener("DOMContentLoaded", function () {
    const card2Element = document.querySelector(".container2");
    const dayElement = card2Element.querySelector("#day");
    const nightElement = card2Element.querySelector("#night");
- 
+
    const currentTime = new Date().getHours();
- 
+
    if (currentTime >= 18 || currentTime < 6) {
-     // Sembunyikan elemen siang, tampilkan elemen malam
-     dayElement.style.display = "none";
-     nightElement.style.display = "block";
+      // Sembunyikan elemen siang, tampilkan elemen malam
+      dayElement.style.display = "none";
+      nightElement.style.display = "block";
    } else {
-     // Tampilkan elemen siang, sembunyikan elemen malam
-     dayElement.style.display = "block";
-     nightElement.style.display = "none";
+      // Tampilkan elemen siang, sembunyikan elemen malam
+      dayElement.style.display = "block";
+      nightElement.style.display = "none";
    }
- });
+});
 
 //  night mode
 
@@ -153,21 +153,39 @@ const craters = document.querySelectorAll('.crater');
 const secMain = document.querySelector('.secMain')
 const cardBox = document.querySelector('.card1')
 
-toggleBtn.addEventListener('change', function() {
-    if (this.checked) {
-        // Night Mode
-        secMain.classList.add('night-mode');
-        card1.classList.add('night-mode');
-        toggleHandler.classList.add('night-mode');
-        stars.forEach(star => star.classList.add('night-mode'));
-        craters.forEach(crater => crater.classList.add('night-mode'));
-    } else {
-        // Normal Mode
-        secMain.classList.remove('night-mode');
-        card1.classList.add('night-mode');
-        toggleHandler.classList.remove('night-mode');
-        stars.forEach(star => star.classList.remove('night-mode'));
-        craters.forEach(crater => crater.classList.remove('night-mode'));
-    }
+toggleBtn.addEventListener('change', function () {
+   if (this.checked) {
+      // Night Mode
+      secMain.classList.add('night-mode');
+      card1.classList.add('night-mode');
+      toggleHandler.classList.add('night-mode');
+      stars.forEach(star => star.classList.add('night-mode'));
+      craters.forEach(crater => crater.classList.add('night-mode'));
+   } else {
+      // Normal Mode
+      secMain.classList.remove('night-mode');
+      card1.classList.add('night-mode');
+      toggleHandler.classList.remove('night-mode');
+      stars.forEach(star => star.classList.remove('night-mode'));
+      craters.forEach(crater => crater.classList.remove('night-mode'));
+   }
 });
- 
+
+// Fungsi untuk menampilkan loader
+function showLoader() {
+   var loader = document.querySelector('.container-loader');
+   loader.style.display = 'block';
+}
+
+// Fungsi untuk menyembunyikan loader
+function hideLoader() {
+   var loader = document.querySelector('.container-loader');
+   loader.style.display = 'none';
+}
+
+window.addEventListener('beforeunload', function () {
+   setTimeout(() => {
+      hideLoader();
+   }, 3000);
+   showLoader();
+});

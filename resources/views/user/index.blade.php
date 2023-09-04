@@ -261,30 +261,7 @@
             </div>
         </div>
 
-        <script>
-            // Fungsi untuk menampilkan loader
-            function showLoader() {
-                var loader = document.querySelector('.container-loader');
-                loader.style.display = 'block';
-            }
-
-            // Fungsi untuk menyembunyikan loader
-            function hideLoader() {
-                var loader = document.querySelector('.container-loader');
-                loader.style.display = 'none';
-            }
-
-            window.addEventListener('beforeunload', function() {
-                setTimeout(() => {
-                    hideLoader();
-                }, 3000);
-                showLoader();
-            });
-        </script>
-
         {{-- end loader --}}
-
-
 
         <!-- =========== Scripts =========  -->
 
