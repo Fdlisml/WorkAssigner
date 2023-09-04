@@ -254,24 +254,31 @@
 
 
         {{-- loader --}}
+        
+        <div class="conatiner-loader">
+            <div class="loader" id="loader">
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+                <div class="dot dot-4"></div>
+                <div class="dot dot-5"></div>
+            </div>
+        </div>
 
-        <div class="loader" id="loader">
-            <div class="dot dot-1"></div>
-            <div class="dot dot-2"></div>
-            <div class="dot dot-3"></div>
-            <div class="dot dot-4"></div>
-            <div class="dot dot-5"></div>
-          </div>
+        <button id="start-button">Mulai Loading</button>
 
-          <button id="start-button">Mulai Loading</button>
-          
 
 
         <!-- =========== Scripts =========  -->
-        <script src="../js/script.js"></>
+        <script src="../js/script.js">
+            < />
 
-        <!-- ====== ionicons ======= -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <
+            !-- === === ionicons === === = -- >
+                <
+                script type = "module"
+            src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" >
+        </script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
