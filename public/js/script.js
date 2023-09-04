@@ -171,3 +171,32 @@ toggleBtn.addEventListener('change', function() {
     }
 });
  
+
+// loader
+
+
+  // Fungsi untuk menampilkan loader
+  function showLoader() {
+    let loader = document.getElementById('loader');
+    loader.style.display = 'block';
+  }
+
+  // Fungsi untuk menyembunyikan loader
+  function hideLoader() {
+    let loader = document.getElementById('loader');
+    loader.style.display = 'none';
+  }
+
+  // Simulasikan proses loading (contoh: AJAX request)
+  function simulateLoading() {
+    showLoader();
+
+    // Simulasikan proses loading selama 3 detik
+    setTimeout(function () {
+      hideLoader();
+    }, 3000);
+  }
+
+  // Panggil fungsi simulateLoading() saat Anda ingin memulai proses loading.
+
+

@@ -12,7 +12,11 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}")
+        </script>
+    @endif
     <div class="container">
         <div class="navigation">
             <ul>
@@ -251,7 +255,7 @@
 
         {{-- loader --}}
 
-        <div class="loader">
+        <div class="loader" id="loader">
             <div class="dot dot-1"></div>
             <div class="dot dot-2"></div>
             <div class="dot dot-3"></div>
@@ -259,37 +263,12 @@
             <div class="dot dot-5"></div>
           </div>
 
-          <script>
-            // Fungsi untuk menampilkan loader
-            function showLoader() {
-              var loader = document.querySelector('.loader');
-              loader.style.display = 'block';
-            }
-          
-            // Fungsi untuk menyembunyikan loader
-            function hideLoader() {
-              var loader = document.querySelector('.loader');
-              loader.style.display = 'none';
-            }
-          
-            // Contoh penggunaan:
-            // Panggil showLoader() saat proses loading dimulai.
-            // Panggil hideLoader() saat proses loading selesai.
-          </script>
-
-          {{-- end loader --}}
+          <button id="start-button">Mulai Loading</button>
           
 
 
         <!-- =========== Scripts =========  -->
-
-        @if (session('error'))
-            <script>
-                alert("{{ session('error') }}")
-            </script>
-        @endif
-
-        <script src="../js/script.js"></script>
+        <script src="../js/script.js"></>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
