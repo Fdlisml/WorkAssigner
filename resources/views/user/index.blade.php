@@ -251,34 +251,39 @@
 
         {{-- loader --}}
 
-        <div class="loader">
-            <div class="dot dot-1"></div>
-            <div class="dot dot-2"></div>
-            <div class="dot dot-3"></div>
-            <div class="dot dot-4"></div>
-            <div class="dot dot-5"></div>
-          </div>
+        <div class="container-loader">
+            <div class="loader">
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+                <div class="dot dot-4"></div>
+                <div class="dot dot-5"></div>
+            </div>
+        </div>
 
-          <script>
+        <script>
             // Fungsi untuk menampilkan loader
             function showLoader() {
-              var loader = document.querySelector('.loader');
-              loader.style.display = 'block';
+                var loader = document.querySelector('.container-loader');
+                loader.style.display = 'block';
             }
-          
+
             // Fungsi untuk menyembunyikan loader
             function hideLoader() {
-              var loader = document.querySelector('.loader');
-              loader.style.display = 'none';
+                var loader = document.querySelector('.container-loader');
+                loader.style.display = 'none';
             }
-          
-            // Contoh penggunaan:
-            // Panggil showLoader() saat proses loading dimulai.
-            // Panggil hideLoader() saat proses loading selesai.
-          </script>
 
-          {{-- end loader --}}
-          
+            window.addEventListener('beforeunload', function() {
+                setTimeout(() => {
+                    hideLoader();
+                }, 3000);
+                showLoader();
+            });
+        </script>
+
+        {{-- end loader --}}
+
 
 
         <!-- =========== Scripts =========  -->

@@ -1401,6 +1401,17 @@ button:hover .button-text {
 
 /* loader */
 
+.container-loader{
+   display: none;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   position: fixed;
+   background-color: var(--blue); 
+   z-index: 9999;
+}
+
 .loader {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1425,31 +1436,31 @@ button:hover .button-text {
   }
   
   .dot-1 {
-    background-color: #4285f4;
+    background-color: var(--black3);
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
   }
   
   .dot-2 {
-    background-color: #34a853;
+    background-color: var(--black3);
     -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
   }
   
   .dot-3 {
-    background-color: #fbbc05;
+    background-color: var(--black3);
     -webkit-animation-delay: 0.6s;
     animation-delay: 0.6s;
   }
   
   .dot-4 {
-    background-color: #ea4335;
+    background-color: var(--black3);
     -webkit-animation-delay: 0.9s;
     animation-delay: 0.9s;
   }
   
   .dot-5 {
-    background-color: #4285f4;
+    background-color: var(--black3);
     -webkit-animation-delay: 1.2s;
     animation-delay: 1.2s;
   }
