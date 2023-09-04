@@ -31,7 +31,7 @@ class LoginController extends Controller
             return redirect($page);
          }
       }
-      return back()->withInput()->withErrors(['login' => 'Invalid username or password.']);
+      return back()->with('error', 'Invalid username or password.');
    }
 
    public function logout(Request $request)

@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth;
 
-class CheckLoginMiddleware
+class CheckLogin
 {
    /**
     * Handle an incoming request.
@@ -17,7 +16,7 @@ class CheckLoginMiddleware
    public function handle(Request $request, Closure $next): mixed
    {
       if (!$request->session()->has('id')) {
-         return redirect()->route('login'); // Ganti 'login' dengan nama route halaman login Anda
+         return redirect()->route('login');
       }
 
       return $next($request);

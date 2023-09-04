@@ -12,6 +12,11 @@
 
 <body>
     <!-- =============== Navigation ================ -->
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}")
+        </script>
+    @endif
     <div class="container">
         <div class="navigation">
             <ul>
@@ -249,7 +254,7 @@
 
 
         <!-- =========== Scripts =========  -->
-        <script src="../js/script.js"></script>
+        <script src="../js/script.js"></>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
