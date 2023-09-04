@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexUserController;
-use App\Http\Middleware\CheckLoginMiddleware;
 use App\Http\Controllers\TugasAdminController;
 use App\Http\Controllers\LaporanUserController;
 use App\Http\Controllers\LaporanAdminController;
 use App\Http\Controllers\ProjectAdminController;
+use App\Http\Middleware\CheckLogin;
+use App\Http\Middleware\CheckRole;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,22 +21,26 @@ use App\Http\Controllers\ProjectAdminController;
 |
 */
 
-Route::get('/', [IndexUserController::class, 'index'])->middleware(CheckLoginMiddleware::class);
+Route::get('/', [IndexUserController::class, 'index'])->middleware(CheckLogin::class);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login_check', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::prefix('user')->group(function(){
-   Route::get('/index', [IndexUserController::class, 'index'])->middleware(CheckLoginMiddleware::class);
-   Route::get('/laporan', [LaporanUserController::class, 'index'])->middleware(CheckLoginMiddleware::class);
-   Route::post('/laporan', [IndexUserController::class, 'laporan'])->middleware(CheckLoginMiddleware::class);
+Route::middleware(['check.login', 'role:user'])->group(function () {
+   Route::prefix('user')->group(function () {
+       Route::get('/index', [IndexUserController::class, 'index']);
+       Route::get('/laporan', [LaporanUserController::class, 'index']);
+       Route::post('/laporan', [IndexUserController::class, 'laporan']);
+   });
 });
 
-Route::prefix('admin')->group(function(){
-   Route::get('/index', [ProjectAdminController::class, 'index'])->middleware(CheckLoginMiddleware::class);
-   Route::get('/tugas', [TugasAdminController::class, 'index'])->middleware(CheckLoginMiddleware::class);
-   Route::post('/tugas/store', [TugasAdminController::class, 'store'])->middleware(CheckLoginMiddleware::class);
-   Route::get('/laporan', [LaporanAdminController::class, 'index'])->middleware(CheckLoginMiddleware::class);
-   Route::post('/project/store', [ProjectAdminController::class, 'store'])->middleware(CheckLoginMiddleware::class);
+Route::middleware(['check.login', 'role:admin'])->group(function () {
+   Route::prefix('admin')->group(function () {
+       Route::get('/index', [ProjectAdminController::class, 'index']);
+       Route::post('/project/store', [ProjectAdminController::class, 'store']);
+       Route::get('/tugas', [TugasAdminController::class, 'index']);
+       Route::post('/tugas/store', [TugasAdminController::class, 'store']);
+       Route::get('/laporan', [LaporanAdminController::class, 'index']);
+   });
 });

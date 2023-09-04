@@ -41,7 +41,11 @@
 </head>
 
 <body>
-
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}")
+        </script>
+    @endif
     <div class="container">
 
         <div class="left">
