@@ -12,7 +12,6 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-
     <div class="container">
         <div class="navigation">
             <ul>
@@ -251,8 +250,8 @@
 
         {{-- loader --}}
 
-        <div class="container-loader">
-            <div class="loader">
+        <div class="conatiner-loader">
+            <div class="loader" id="loader">
                 <div class="dot dot-1"></div>
                 <div class="dot dot-2"></div>
                 <div class="dot dot-3"></div>
@@ -263,7 +262,7 @@
 
         {{-- end loader --}}
 
-        <!-- =========== Scripts =========  -->
+        {{-- =========== Scripts ========= --}}
 
         @if (session('error'))
             <script>
@@ -273,7 +272,7 @@
 
         <script src="../js/script.js"></script>
 
-        <!-- ====== ionicons ======= -->
+        {{--  ====== ionicons ======= --}}
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
