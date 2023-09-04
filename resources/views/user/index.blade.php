@@ -250,7 +250,7 @@
 
         {{-- loader --}}
 
-        <div class="conatiner-loader">
+        <div class="container-loader">
             <div class="loader" id="loader">
                 <div class="dot dot-1"></div>
                 <div class="dot dot-2"></div>
