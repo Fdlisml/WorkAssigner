@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProjectApi;
 use App\Models\TugasApi;
+use App\Models\ProjectApi;
 use App\Models\UserApi;
 use Illuminate\Http\Request;
 
@@ -50,8 +50,8 @@ class TugasAdminController extends Controller
 
          $combinedData[] = [
             'tugas' => $t,
-            'project' => $projectData[0], // Ambil indeks pertama karena array_filter mengembalikan array
-            'user' => $userData[0], // Ambil indeks pertama karena array_filter mengembalikan array
+            'project' => $projectData[0], 
+            'user' => $userData[0], 
          ];
       }
 

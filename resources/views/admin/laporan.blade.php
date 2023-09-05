@@ -1,17 +1,3 @@
-<?php
-
-// session_start();
-
-// if (!isset($_SESSION['id_user']) || (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin')) {
-//     header('Location: ../login.php');
-//     exit();
-// }
-
-// $id_user = $_SESSION['id_user'];
-// $name = $_SESSION['name'];
-
-// require_once '../api/laporan.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,6 +92,8 @@
                             <tr>
                                 <th>NAMA LAPORAN</th>
                                 <th>DESKRIPSI</th>
+                                <th>KELUHAN</th>
+                                <th>PROGRES</th>
                                 <th>TANGGAL LAPORAN</th>
                                 <th>NAMA TUGAS</th>
                                 <th>NAMA DEVELOPER</th>
@@ -113,11 +101,13 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($laporan as $l)
+                            @foreach ($laporanData as $l)
                             <div class="wadah-table">
                                 <tr>
                                     <td>{{ $l['laporan']['nama_laporan'] }}</td>
                                     <td>{{ $l['laporan']['deskripsi'] }}</td>
+                                    <td>{{ $l['laporan']['keluhan'] }}</td>
+                                    <td>{{ $l['laporan']['progres'] }}</td>
                                     <td>{{ $l['laporan']['tgl_laporan'] }}</td>
                                     <td>{{ $l['tugas']['nama_tugas'] }}</td>
                                     <td>{{ $l['user']['name'] }}</td>
