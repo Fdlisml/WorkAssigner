@@ -88,7 +88,7 @@
 
                 <!-- ======================= Cards ================== -->
                 <div class="cardBox" id="myCardBox">
-                    <div class="card1" id="card1">
+                    <div class="card1">
                         <div class="card-left">
                             <div class="container-text">
                                 <div class="say"><span id="say"></span>, {{ session('name') }}</div>

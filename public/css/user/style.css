@@ -168,7 +168,7 @@ body {
 }
 
 .secMain {
-    background: var(--white);
+    background: #fff;
     margin-top: 20px;
     border-radius: 30px;
     margin-right: 20px;
@@ -411,12 +411,7 @@ input:checked+.toggleBtn .star--6 {
 
 
 /* night mode */
-.night-mode {
-    transition: .3s ease-in;
-    background-color: #313131;
-    color: #ffffff;
-    /* Add more styles for night mode here */
-}
+
 
 
 /* ======================= Cards ====================== */
@@ -430,10 +425,10 @@ input:checked+.toggleBtn .star--6 {
     grid-gap: 30px;
 }
 
-.cardBox .card1 {
+.card1 {
     position: relative;
     display: flex;
-    background: var(--white);
+    background-color: var(--white);
     padding: 30px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
@@ -442,6 +437,7 @@ input:checked+.toggleBtn .star--6 {
     cursor: pointer;
     height: 200px;
 }
+
 
 .card-left {
     width: 100%;
@@ -516,7 +512,6 @@ input:checked+.toggleBtn .star--6 {
     bottom: 40px;
     font-size: 40px;
     font-weight: 500;
-    color: var(--black3);
     display: inline-block;
     /* box-shadow: 0px 15px 15px 0px #929292; */
     /* filter: drop-shadow(0px 10px 10px #929292); */
@@ -531,19 +526,11 @@ input:checked+.toggleBtn .star--6 {
     bottom: 0;
 }
 
-.cardBox .card1:hover,
+/* .cardBox .card1:hover,
 .cardBox .card2:hover {
     background: var(--hover-bg);
     color: white;
-}
-
-.card1:hover #txt {
-    color: white;
-}
-
-.card-left:hover {
-    color: white;
-}
+} */
 
 .container2 {
     width: 250px;
@@ -933,6 +920,7 @@ input:checked+.toggleBtn .star--6 {
 .details .wadah-table {
     margin-top: 30px;
     padding: 15px;
+    color: var(--black3);
     /* background-color: #222; */
     border-radius: 15px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -1370,10 +1358,6 @@ button:hover .button-text {
         color: white;
     }
 
-    #txt {
-        color: white;
-    }
-
     .card1 .imgBx {
         display: none;
     }
@@ -1484,4 +1468,22 @@ button:hover .button-text {
       opacity: 0.5;
     }
   }
+
+  /* night mode secMain */
   
+  .night-mode {
+    transition: .3s ease-in;
+    background-color: #313131;
+    color: #ffffff;
+    z-index: 1000;
+    /* Add more styles for night mode here */
+}
+
+/* night mode card */
+.night-mode-card{
+    color: var(--blue);
+    box-shadow: 0px 0px 15px #535353;
+    transition: .3s ease-in;
+    background-color: #222222;
+    z-index: 1000;
+}
