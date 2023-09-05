@@ -17,6 +17,7 @@
     --black2: #999;
     --black3: #353535;
     --hover-bg: linear-gradient(to right, var(--blue), #36D1DC);
+    --night-mode-card: #222222;
 
 
 }
@@ -228,7 +229,7 @@ body {
     top: 2px;
     left: 3px;
     width: 30px;
-    height:30px;
+    height: 30px;
     background-color: #ffcf96;
     border-radius: 50px;
     -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
@@ -278,7 +279,7 @@ body {
     border-radius: 50%;
 }
 
-.star-c{
+.star-c {
     position: absolute;
     top: -2px;
 }
@@ -443,7 +444,7 @@ input:checked+.toggleBtn .star--6 {
     width: 100%;
 }
 
-.cardBox .card2 {
+.card2 {
     position: relative;
     display: flex;
     background: var(--white);
@@ -878,7 +879,7 @@ input:checked+.toggleBtn .star--6 {
     grid-gap: 30px;
 }
 
-.details .recentOrders {
+.recentOrders {
     position: relative;
     min-height: 500px;
     background: var(--white);
@@ -911,16 +912,15 @@ input:checked+.toggleBtn .star--6 {
     background-color: #0066ff8e;
 }
 
-.details table {
+table {
     width: 100%;
     border-collapse: collapse;
     border-top: 2px solid #27272794;
 }
 
-.details .wadah-table {
+.wadah-table {
     margin-top: 30px;
     padding: 15px;
-    color: var(--black3);
     /* background-color: #222; */
     border-radius: 15px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -1385,15 +1385,15 @@ button:hover .button-text {
 
 /* loader */
 
-.container-loader{
-   display: none;
-   top: 0;
-   bottom: 0;
-   right: 0;
-   left: 0;
-   position: fixed;
-   background-color: var(--blue);
-   z-index: 9999;
+.container-loader {
+    display: none;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--blue);
+    z-index: 9999;
 }
 
 .loader {
@@ -1407,9 +1407,9 @@ button:hover .button-text {
     -ms-flex-align: center;
     align-items: center;
     height: 100%;
-  }
-  
-  .dot {
+}
+
+.dot {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -1417,61 +1417,61 @@ button:hover .button-text {
     border-radius: 50%;
     -webkit-animation: dot-pulse2 1.5s ease-in-out infinite;
     animation: dot-pulse2 1.5s ease-in-out infinite;
-  }
-  
-  .dot-1 {
+}
+
+.dot-1 {
     background-color: var(--black3);
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
-  }
-  
-  .dot-2 {
+}
+
+.dot-2 {
     background-color: var(--black3);
     -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
-  }
-  
-  .dot-3 {
+}
+
+.dot-3 {
     background-color: var(--black3);
     -webkit-animation-delay: 0.6s;
     animation-delay: 0.6s;
-  }
-  
-  .dot-4 {
+}
+
+.dot-4 {
     background-color: var(--black3);
     -webkit-animation-delay: 0.9s;
     animation-delay: 0.9s;
-  }
-  
-  .dot-5 {
+}
+
+.dot-5 {
     background-color: var(--black3);
     -webkit-animation-delay: 1.2s;
     animation-delay: 1.2s;
-  }
-  
-  @keyframes dot-pulse2 {
-    0% {
-      -webkit-transform: scale(0.5);
-      transform: scale(0.5);
-      opacity: 0.5;
-    }
-  
-    50% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      opacity: 1;
-    }
-  
-    100% {
-      -webkit-transform: scale(0.5);
-      transform: scale(0.5);
-      opacity: 0.5;
-    }
-  }
+}
 
-  /* night mode secMain */
-  
-  .night-mode {
+@keyframes dot-pulse2 {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+}
+
+/* night mode secMain */
+
+.night-mode {
     transition: .3s ease-in;
     background-color: #313131;
     color: #ffffff;
@@ -1480,10 +1480,20 @@ button:hover .button-text {
 }
 
 /* night mode card */
-.night-mode-card{
-    color: var(--blue);
+.night-mode-card {
+    color: #fff;
     box-shadow: 0px 0px 15px #535353;
-    transition: .3s ease-in;
+    transition: .3s ease;
     background-color: #222222;
     z-index: 1000;
+}
+
+.table-night{
+    transition: .3s ease;
+    border-top: 2px solid #ffffff;
+}
+
+.td-night{
+    transition: 0s;
+    border-bottom: 2px solid #ffffff;
 }

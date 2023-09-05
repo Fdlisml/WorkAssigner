@@ -150,24 +150,41 @@ const toggleBtn = document.getElementById('dn');
 const toggleHandler = document.querySelector('.toggle__handler');
 const stars = document.querySelectorAll('.star');
 const craters = document.querySelectorAll('.crater');
+// night-mode
 const secMain = document.querySelector('.secMain')
 const card1 = document.querySelector('.card1');
+const card2 = document.querySelector('.card2'); 
+const recentorders = document.querySelector('.recentOrders');
+const wadahTable = document.querySelector('table');
+const td = document.querySelector('.details table td');
+
 
 toggleBtn.addEventListener('change', function () {
    if (this.checked) {
       // Night Mode
-      secMain.classList.add('night-mode');
-      card1.classList.add('night-mode-card');
       toggleHandler.classList.add('night-mode');
       stars.forEach(star => star.classList.add('night-mode'));
       craters.forEach(crater => crater.classList.add('night-mode'));
+      // night-mode
+      secMain.classList.add('night-mode');
+      card1.classList.add('night-mode-card');
+      card2.classList.add('night-mode-card');
+      recentorders.classList.add('night-mode-card');
+      wadahTable.classList.add('table-night');
+      td.classList.add('td-night');
    } else {
       // Normal Mode
-      secMain.classList.remove('night-mode');
-      card1.classList.remove('night-mode-card');
       toggleHandler.classList.remove('night-mode');
       stars.forEach(star => star.classList.remove('night-mode'));
       craters.forEach(crater => crater.classList.remove('night-mode'));
+      // night-mode
+      secMain.classList.remove('night-mode');
+      card1.classList.remove('night-mode-card');
+      card2.classList.remove('night-mode-card');
+      recentorders.classList.remove('night-mode-card');
+      wadahTable.classList.remove('table-night');
+      td.classList.remove('td-night');
+
    }
    console.log("Toggle checked: " + this.checked);
 });
