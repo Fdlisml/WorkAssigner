@@ -31,7 +31,8 @@ Route::middleware(['check.login', 'role:user'])->group(function () {
    Route::prefix('user')->group(function () {
        Route::get('/index', [IndexUserController::class, 'index']);
        Route::get('/laporan', [LaporanUserController::class, 'index']);
-       Route::post('/laporan', [IndexUserController::class, 'laporan']);
+       Route::post('/laporan/store', [IndexUserController::class, 'store']);
+       Route::post('/laporan/update/{id}', [IndexUserController::class, 'update']);
    });
 });
 

@@ -12,8 +12,9 @@ class LaporanUserController extends Controller
      */
     public function index()
     {
-        return view('user.hasil', [
-         'laporan' => LaporanApi::getDataFromAPI()
+        return view('user.page.hasil', [
+         'laporan' => LaporanApi::getDataFromAPI(),
+         'slug' => 'laporan'
         ]);
     }
 

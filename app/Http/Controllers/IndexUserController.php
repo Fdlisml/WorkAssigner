@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\TugasApi;
-use Illuminate\Http\Request;
+use App\Models\LaporanApi;
 use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 
 class IndexUserController extends Controller
 {
@@ -24,8 +25,9 @@ class IndexUserController extends Controller
       }
 
       $randomTugas = Arr::random($tugas_user);
-      return view('user.index', [
-         'tugas' => $randomTugas
+      return view('user.page.index', [
+         'tugas' => $randomTugas,
+         'slug' => 'index'
       ]);
    }
 
@@ -42,7 +44,19 @@ class IndexUserController extends Controller
     */
    public function store(Request $request)
    {
-      //
+      $data_laporan = $request->validate([
+         'nama_laporan' => ['required'],
+         'deskripsi' => ['required'],
+         'keluhan' => ['required'],
+         'progres' => ['required'],
+         'tgl_laporan' => ['required'],
+         'id_tugas' => ['required'],
+         'id_user' => ['required']
+     ]);
+
+     LaporanApi::postDataToAPI($data_laporan);
+
+     return redirect('/user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
    }
 
    /**
@@ -66,7 +80,13 @@ class IndexUserController extends Controller
     */
    public function update(Request $request, string $id)
    {
-      //
+      $data_laporan = $request->validate([
+         'progres' => ['required']
+     ]);
+
+     LaporanApi::updateDataInAPI($id, $data_laporan);
+
+     return redirect('/user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
    }
 
    /**
