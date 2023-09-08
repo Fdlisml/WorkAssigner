@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProjectApi;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProjectAdminController extends Controller
 {
@@ -82,8 +83,9 @@ class ProjectAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProjectApi $project)
+    public function destroy(string $id)
     {
-        
+        ProjectApi::deleteDataInAPI($id);
+        return redirect('/admin/project')->with('success', 'Data Project Berhasil di Hapus');
     }
 }
