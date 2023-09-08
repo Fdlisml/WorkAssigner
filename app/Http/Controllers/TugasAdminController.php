@@ -85,7 +85,7 @@ class TugasAdminController extends Controller
 
       TugasApi::postDataToAPI($data_tugas);
 
-      return redirect('/admin/tugas')->with('success', 'Data tugas Berhasil di Tambah');
+      return redirect('admin/tugas')->with('success', 'Data tugas Berhasil di Tambah');
    }
 
    /**
@@ -101,7 +101,12 @@ class TugasAdminController extends Controller
     */
    public function edit(string $id)
    {
-      //
+dd(TugasApi::getDataByIdFromAPI($id));
+
+      return view('admin.tugas', [
+         'tugas' => TugasApi::getDataFromAPI(),
+         'tugasEdit' => TugasApi::getDataByIdFromAPI($id),
+      ]);
    }
 
    /**
@@ -109,7 +114,19 @@ class TugasAdminController extends Controller
     */
    public function update(Request $request, string $id)
    {
-      //
+      $data_tugas = $request->validate([
+         'tugas' => ['required'],
+         'deskripsi' => ['required'],
+         'tgl_mulai' => ['required'],
+         'tgl_selesai' => ['required'],
+         'id_project' => ['required'],
+         'id_user' => ['required']
+     ]);
+
+     // Panggil metode postDataToAPI() dengan data yang divalidasi
+     TugasApi::updateDataInAPI($id, $data_tugas);
+
+     return redirect('admin/tugas')->with('success', 'Data Tugas Berhasil di Update');
    }
 
    /**

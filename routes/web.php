@@ -50,6 +50,7 @@ Route::middleware(['check.login', 'role:admin'])->group(function () {
        Route::get('/laporan/destroy/{id}', [LaporanAdminController::class, 'destroy']);
        Route::post('/laporan/update/{id}', [LaporanAdminController::class, 'update']);
        Route::get('/tugas/destroy/{id}', [TugasAdminController::class, 'destroy']);
+       Route::get('/tugas/edit/{id}', [TugasAdminController::class, 'edit']);
        Route::post('/tugas/update/{id}', [TugasAdminController::class, 'update']);
    });
 });
