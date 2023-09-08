@@ -161,6 +161,7 @@
                                     <th>DESKRIPSI</th>
                                     <th>TANGGAL MULAI</th>
                                     <th>TANGGAL SELESAI</th>
+                                    <th>ACTION</th>
                                 </tr>
                                 @foreach ($project as $p)
                                     <div class="wadah-table">

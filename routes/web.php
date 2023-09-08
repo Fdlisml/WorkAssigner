@@ -9,6 +9,7 @@ use App\Http\Controllers\LaporanAdminController;
 use App\Http\Controllers\ProjectAdminController;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckRole;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,11 @@ Route::middleware(['check.login', 'role:admin'])->group(function () {
        Route::get('/tugas', [TugasAdminController::class, 'index']);
        Route::post('/tugas/store', [TugasAdminController::class, 'store']);
        Route::get('/laporan', [LaporanAdminController::class, 'index']);
+       Route::get('/project/destroy/{id}', [ProjectAdminController::class, 'destroy']);
+       Route::post('/project/update/{id}', [ProjectAdminController::class, 'update']);
+       Route::get('/laporan/destroy/{id}', [LaporanAdminController::class, 'destroy']);
+       Route::post('/laporan/update/{id}', [LaporanAdminController::class, 'update']);
+       Route::get('/tugas/destroy/{id}', [TugasAdminController::class, 'destroy']);
+       Route::post('/tugas/update/{id}', [TugasAdminController::class, 'update']);
    });
 });

@@ -84,5 +84,6 @@ class ProjectAdminController extends Controller
      */
     public function destroy(ProjectApi $project)
     {
+        
     }
 }
