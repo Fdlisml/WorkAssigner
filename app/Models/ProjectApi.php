@@ -20,6 +20,15 @@ class ProjectApi extends Model
       return $data['data_project'];
    }
 
+   public static function getDataByIdFromAPI($id)
+{
+    $client = new Client();
+    $response = $client->get(self::API_ENDPOINT . $id);
+    $data = json_decode($response->getBody(), true);
+
+    return $data['data_project'];
+}
+
    public static function postDataToAPI($postData)
    {
       $client = new Client();
@@ -46,10 +55,5 @@ class ProjectApi extends Model
       $response = $client->delete(self::API_ENDPOINT . '/' . $id);
 
       return $response->getStatusCode(); // Returns the HTTP status code
-   }
-
-   public function tugas()
-   {
-      return $this->hasMany(TugasApi::class, 'project_id', 'id');
    }
 }
