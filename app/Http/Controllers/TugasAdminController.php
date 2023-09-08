@@ -117,6 +117,7 @@ class TugasAdminController extends Controller
     */
    public function destroy(string $id)
    {
-      //
+      TugasApi::deleteDataInAPI($id);
+      return redirect('/admin/tugas')->with('success', 'Data Tugas Berhasil di Hapus');
    }
 }

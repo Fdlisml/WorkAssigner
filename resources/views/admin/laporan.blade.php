@@ -97,6 +97,7 @@
                                 <th>TANGGAL LAPORAN</th>
                                 <th>NAMA TUGAS</th>
                                 <th>NAMA DEVELOPER</th>
+                                <th>ACTION</th>
                             </tr>
                         </thead>
 
@@ -111,6 +112,7 @@
                                     <td>{{ $l['laporan']['tgl_laporan'] }}</td>
                                     <td>{{ $l['tugas']['nama_tugas'] }}</td>
                                     <td>{{ $l['user']['name'] }}</td>
+                                    <td><a href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a></td>
                                 </tr>
                             </div>
                             @endforeach

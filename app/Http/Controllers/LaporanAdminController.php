@@ -93,6 +93,7 @@ class LaporanAdminController extends Controller
     */
    public function destroy(string $id)
    {
-      //
+      LaporanApi::deleteDataInAPI($id);
+      return redirect('/admin/laporan')->with('success', 'Data Laporan Berhasil di Hapus');
    }
 }

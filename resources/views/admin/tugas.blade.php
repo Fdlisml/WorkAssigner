@@ -166,6 +166,7 @@
                                     <th>TANGGAL SELESAI</th>
                                     <th>NAMA PROJECT</th>
                                     <th>NAMA DEVELOPER</th>
+                                    <th>ACTION</th>
                                 </tr>
                                 @foreach ($tugasData as $t)
                                     <div class="wadah-table">
@@ -176,6 +177,7 @@
                                             <td>{{ $t['tugas']['tgl_selesai'] }}</td>
                                             <td>{{ $t['project']['nama_project'] }}</td>
                                             <td>{{ $t['user']['name'] }}</td>
+                                            <td><a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a></td>
                                         </tr>
                                     </div>
                                 @endforeach
