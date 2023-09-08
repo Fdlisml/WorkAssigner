@@ -22,7 +22,7 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 |
 */
 
-Route::get('/', [IndexUserController::class, 'index'])->middleware(CheckLogin::class);
+Route::get('/', [IndexUserController::class, 'index'])->middleware(['check.login']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login_check', [LoginController::class, 'login']);
