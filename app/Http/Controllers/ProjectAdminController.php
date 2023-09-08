@@ -58,6 +58,8 @@ class ProjectAdminController extends Controller
      */
     public function edit(string $id)
     {
+dd(ProjectApi::getDataByIdFromAPI($id));
+
       return view('admin.index', [
          'project' => ProjectApi::getDataFromAPI(),
          'projectEdit' => ProjectApi::getDataByIdFromAPI($id),

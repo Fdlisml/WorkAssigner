@@ -104,6 +104,31 @@
                             <h2>Tugas</h2>
                             <a href="#" class="btn">View All</a>
                         </div>
+                        @if (Request::is('admin/tugas/edit/*'))
+                        @php
+                            $data = [
+                                'url' => 'admin/tugas/update/' . $tugasEdit['id'],
+                                'tugas' => $tugasEdit['tugas'],
+                                'deskripsi' => $tugasEdit['deskripsi'],
+                                'tgl_mulai' => $tugasEdit['tgl_mulai'],
+                                'tgl_selesai' => $tugasEdit['tgl_selesai'],
+                                'id_project' => $tugasEdit['id_project'],
+                                'id_user' => $tugasEdit['id_user'],
+                            ];
+                        @endphp
+                    @else
+                        @php
+                            $data = [
+                                'url' => 'admin/tugas/store',
+                                'tugas' => '',
+                                'deskripsi' => '',
+                                'tgl_mulai' => '',
+                                'tgl_selesai' => '',
+                                'id_project' => '',
+                                'id_user' => ''
+                            ];
+                        @endphp
+                    @endif
 
                         <div class="form">
                             <form action="tugas/store" method="POST">
@@ -177,7 +202,10 @@
                                             <td>{{ $t['tugas']['tgl_selesai'] }}</td>
                                             <td>{{ $t['project']['nama_project'] }}</td>
                                             <td>{{ $t['user']['name'] }}</td>
-                                            <td><a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a></td>
+                                            <td>
+                                                <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                                <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                            </td>
                                         </tr>
                                     </div>
                                 @endforeach

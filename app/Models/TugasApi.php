@@ -19,6 +19,15 @@ class TugasApi extends Model
       return $data['data_tugas'];
    }
 
+   public static function getDataByIdFromAPI($id)
+   {
+      $client = new Client();
+      $response = $client->get(self::API_ENDPOINT . $id);
+      $data = json_decode($response->getBody(), true);
+
+      return $data['data_tugas'];
+   }
+
    public static function postDataToAPI($postData)
    {
       $client = new Client();
