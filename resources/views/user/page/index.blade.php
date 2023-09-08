@@ -1,4 +1,5 @@
 @extends('main')
+
 @section('content')
     <!-- ================ Order Details List ================= -->
     <div class="details">

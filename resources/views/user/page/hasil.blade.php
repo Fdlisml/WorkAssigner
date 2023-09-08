@@ -33,7 +33,9 @@
                                                     <input class="range" type="range" name="progres" min="0"
                                                         max="100" value="{{ $l['progres'] }}" steps="1">
                                                 </div>
-                                                <span class="rangeValue">{{ $l['progres'] }}%</span>
+                                                <div>
+                                                    <span class="rangeValue">{{ $l['progres'] }}%</span>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
