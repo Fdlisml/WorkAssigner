@@ -171,7 +171,7 @@
                                             <td>{{ $p['deskripsi'] }}</td>
                                             <td>{{ $p['tgl_mulai'] }}</td>
                                             <td>{{ $p['tgl_selesai'] }}</td>
-                                            <td><a href="{{ url('/project/destroy/' . $p['id']) }}">HAPUS</a></td>
+                                            <td><a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a></td>
                                         </tr>
                                     </div>
                                 @endforeach

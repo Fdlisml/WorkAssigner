@@ -86,6 +86,6 @@ class ProjectAdminController extends Controller
     public function destroy(string $id)
     {
         ProjectApi::deleteDataInAPI($id);
-        return redirect('/admin/project')->with('success', 'Data Project Berhasil di Hapus');
+        return redirect('/admin/index')->with('success', 'Data Project Berhasil di Hapus');
     }
 }
