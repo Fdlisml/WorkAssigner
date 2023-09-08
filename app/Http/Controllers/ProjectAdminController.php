@@ -23,7 +23,7 @@ class ProjectAdminController extends Controller
      */
     public function create()
     {
-        return view('project.create');
+        //
     }
 
     /**
@@ -56,9 +56,12 @@ class ProjectAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id, ProjectApi $project)
+    public function edit(string $id)
     {
-        //
+      return view('admin.index', [
+         'project' => ProjectApi::getDataFromAPI(),
+         'projectEdit' => ProjectApi::getDataByIdFromAPI($id),
+      ]);
     }
 
     /**

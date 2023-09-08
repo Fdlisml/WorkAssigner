@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../css/admin/style.css">
+    <link rel="stylesheet" href="{{ url('css/admin/style.css') }}">
 </head>
 
 <body>
@@ -23,8 +23,8 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
-                                        alt="">
+                                    <img
+                                        src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
 
-                
+
 
                 <!-- ================ Order Details List ================= -->
                 <div class="details">
@@ -108,33 +108,56 @@
                             <a href="#" class="btn">View All</a>
                         </div>
 
+                        @if (Request::is('admin/project/edit/*'))
+                            @php
+                                $data = [
+                                    'url' => 'admin/project/update/' . $projectEdit['id'],
+                                    'nama_project' => $projectEdit['nama_project'],
+                                    'tugas' => $projectEdit['tugas'],
+                                    'deskripsi' => $projectEdit['deskripsi'],
+                                    'tgl_mulai' => $projectEdit['tgl_mulai'],
+                                    'tgl_selesai' => $projectEdit['tgl_selesai'],
+                                ];
+                            @endphp
+                        @else
+                            @php
+                                $data = [
+                                    'url' => 'admin/project/store',
+                                    'nama_project' => '',
+                                    'tugas' => '',
+                                    'deskripsi' => '',
+                                    'tgl_mulai' => '',
+                                    'tgl_selesai' => '',
+                                ];
+                            @endphp
+                        @endif
                         <div class="form">
-                            <form action="project/store" method="post">
+                            <form action="{{ url($data['url']) }}" method="post">
                                 @csrf
-                                <label for="nama_project">
+                                <label>
                                     Nama Project
                                 </label>
-                                <input type="text" name="nama_project">
+                                <input type="text" name="nama_project" value="{{ $data['nama_project'] }}">
 
-                                <label for="tugas">
+                                <label>
                                     Tugas
                                 </label>
-                                <input type="text" name="tugas">
+                                <input type="text" name="tugas" value="{{ $data['tugas'] }}">
 
-                                <label for="deskripsi">
+                                <label>
                                     Deskripsi
                                 </label>
-                                <textarea name="deskripsi" id="" cols="10" rows="10"></textarea>
+                                <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
 
-                                <label for="tgl_mulai"><br>
+                                <label><br>
                                     Tgl Mulai
                                 </label>
-                                <input type="date" name="tgl_mulai">
+                                <input type="date" name="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
 
-                                <label for="tgl_selesai">
+                                <label>
                                     Tgl Selesai
                                 </label>
-                                <input type="date" name="tgl_selesai" class="datee">
+                                <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
 
                                 <button class="cta">
                                     <span>Send Work !</span>
@@ -171,7 +194,10 @@
                                             <td>{{ $p['deskripsi'] }}</td>
                                             <td>{{ $p['tgl_mulai'] }}</td>
                                             <td>{{ $p['tgl_selesai'] }}</td>
-                                            <td><a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a></td>
+                                            <td>
+                                                <a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a>
+                                                <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a>
+                                            </td>
                                         </tr>
                                     </div>
                                 @endforeach
@@ -193,7 +219,7 @@
         </div>
 
         <!-- =========== Scripts =========  -->
-        <script src="../js/script.js"></script>
+        <script src="{{ url('js/script.js') }}"></script>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
