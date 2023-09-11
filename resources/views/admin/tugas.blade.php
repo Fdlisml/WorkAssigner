@@ -16,7 +16,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="{{ url('/admin/index') }}">
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
@@ -29,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="index">
+                    <a href="{{ url('/admin/index') }}">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -38,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="laporan">
+                    <a href="{{ url('/admin/laporan') }}">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="tugas">
+                    <a href="{{ url('/admin/tugas') }}">
                         <span class="icon">
                             <ion-icon name="reader-outline"></ion-icon>
                         </span>
@@ -56,7 +56,7 @@
                 </li>
 
                 <li>
-                    <a href="/logout">
+                    <a href="{{ url('/logout') }}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -97,14 +97,14 @@
                     </div>
                 </div>
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Tugas</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    @if (Request::is('admin/tugas/edit/*'))
+                <!-- ================ Order Details List ================= -->
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Tugas</h2>
+                            <a href="#" class="btn">View All</a>
+                        </div>
+                        @if (Request::is('admin/tugas/edit/*'))
                             @php
                                 $data = [
                                     'url' => 'admin/tugas/update/' . $tugasEdit['id'],
@@ -125,7 +125,7 @@
                                     'tgl_mulai' => '',
                                     'tgl_selesai' => '',
                                     'id_project' => '',
-                                    'id_user' => '',,
+                                    'id_user' => '',
                                 ];
                             @endphp
                         @endif
@@ -155,7 +155,8 @@
                                         <option></option>
                                         @foreach ($projectData as $p)
                                             @if ($p['id'] == $data['id_project'])
-                                                <option value="{{ $p['id'] }}" selected>{{ $p['nama_project'] }}</option>
+                                                <option value="{{ $p['id'] }}" selected>{{ $p['nama_project'] }}
+                                                </option>
                                             @else
                                                 <option value="{{ $p['id'] }}">{{ $p['nama_project'] }}</option>
                                             @endif
@@ -168,7 +169,8 @@
                                         <option></option>
                                         @foreach ($userData as $u)
                                             @if ($u['id'] == $data['id_user'])
-                                                <option value="{{ $u['id'] }}" selected>{{ $u['name'] }}</option>
+                                                <option value="{{ $u['id'] }}" selected>{{ $u['name'] }}
+                                                </option>
                                             @else
                                                 <option value="{{ $u['id'] }}">{{ $u['name'] }}</option>
                                             @endif
@@ -186,11 +188,11 @@
                         </div>
                     </div>
 
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Data Tugas</h2>
-                    </div>
+                    <!-- ================= New Customers ================ -->
+                    <div class="recentCustomers">
+                        <div class="cardHeader">
+                            <h2>Data Tugas</h2>
+                        </div>
 
                         <table>
                             <thead>
@@ -226,12 +228,21 @@
             </div>
         </div>
 
+        @if (session('error'))
+            <script>
+                alert("{{ session('error') }}")
+            </script>
+        @elseif (session('success'))
+            <script>
+                alert("{{ session('success') }}")
+            </script>
+        @endif
         <!-- =========== Scripts =========  -->
         <script src="{{ url('js/script.js') }}"></script>
 
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- ====== ionicons ======= -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
