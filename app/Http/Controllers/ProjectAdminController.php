@@ -13,8 +13,9 @@ class ProjectAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index', [
-            'project' => ProjectApi::getDataFromAPI()
+        return view('admin.page.index', [
+            'project' => ProjectApi::getDataFromAPI(),
+            "slug" => "style"
         ]);
     }
 

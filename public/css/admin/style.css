@@ -408,7 +408,7 @@ input:checked+.toggleBtn .star--6 {
 
 /* ================== Order Details List ============== */
 .details {
-    margin-top: -10px;
+    margin-top: -20px;
     position: relative;
     height: 100%;
     width: 100%;
@@ -420,7 +420,6 @@ input:checked+.toggleBtn .star--6 {
 
 .recentOrders {
     position: relative;
-    max-height: 80vh;
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -580,10 +579,9 @@ form textarea {
 .recentCustomers {
     /* margin-top: 30px; */
     overflow-y: auto;
-    overflow-x: hidden ;
     position: relative;
     display: grid;
-    max-height: 80vh;
+    max-height: 85vh;
     padding: 20px;
     background: var(--white);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -603,15 +601,40 @@ table tr {
 }
 
 table th {
-    padding: 10px 15px;
+    padding: 5px 10px;
     border: 1px solid var(--black3);
 }
 
 table tr td {
-    padding: 10px 15px;
+    padding: 5px 10px;
     border: 1px solid var(--black3);
 }
 
+td .btn-action{
+    display: flex;
+    gap: 1rem;
+    border: none;
+    align-items: center;
+    height: 100%;
+}
+
+table tr td a{
+    text-decoration: none;
+}
+
+table tr td a:nth-child(1){
+    background-color: rgba(250, 54, 54, 0.882);
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+table tr td a:nth-child(2){
+    background-color: rgba(250, 147, 38, 0.882);
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10px;
+}
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
