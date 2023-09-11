@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../css/admin/style.css">
+    <link rel="stylesheet" href="{{ url('css/admin/style.css') }}">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
+                                    <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}"
                                         alt="">
                                 </div>
                             </span>
@@ -94,17 +94,36 @@
                     <div class="user">
                         <img src="public/image/customer01.jpg" alt="">
                     </div>
+                    <div class="toggleWrapper">
+                        <input type="checkbox" class="dn" id="dn">
+                        <label for="dn" class="toggleBtn">
+                            <span class="toggle__handler">
+                                <span class="crater crater--1"></span>
+                                <span class="crater crater--2"></span>
+                                <span class="crater crater--3"></span>
+                            </span>
+                            <div class="star-c">
+                                <span class="star star--1"></span>
+                                <span class="star star--2"></span>
+                                <span class="star star--3"></span>
+                                <span class="star star--4"></span>
+                                <span class="star star--5"></span>
+                                <span class="star star--6"></span>
+                            </div>
+                        </label>
+                    </div>
                 </div>
 
 
-                <!-- ================ Order Details List ================= -->
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2>Tugas</h2>
-                            <a href="#" class="btn">View All</a>
-                        </div>
-                        @if (Request::is('admin/tugas/edit/*'))
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Tugas</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    @if (Request::is('admin/tugas/edit/*'))
                         @php
                             $data = [
                                 'url' => 'admin/tugas/update/' . $tugasEdit['id'],
@@ -125,105 +144,105 @@
                                 'tgl_mulai' => '',
                                 'tgl_selesai' => '',
                                 'id_project' => '',
-                                'id_user' => ''
+                                'id_user' => '',
                             ];
                         @endphp
                     @endif
 
-                        <div class="form">
-                            <form action="tugas/store" method="POST">
-                                @csrf
-                                <label for="tugas">
-                                    tugas <input type="text" name="nama_tugas" class="tugas">
-                                </label>
-                                <label for="deskripsi">
-                                    Deskripsi <input type="text" name="deskripsi" class="deskripsi">
-                                </label>
-                                <label for="tgl_mulai">
-                                    Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai">
-                                </label>
-                                <label for="tgl_selesai">
-                                    Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai">
-                                </label>
-                                <label for="nama_project">
-                                    Nama Project
-                                    <select name="id_project">
-                                        @foreach ($projectData as $p)
-                                            <option value="{{ $p['id'] }}">
-                                                {{ $p['nama_project'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </label>
-                                <label for="nama_developer">
-                                    Nama Developer
-                                    <select name="id_user">
-                                        @foreach ($userData as $u)
-                                            <option value="{{ $u['id'] }}">
-                                                {{ $u['name'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <button class="cta">
-                                </label>
-                                <span>Send Work !</span>
-                                <svg viewBox="0 0 13 10" height="10px" width="15px">
-                                    <path d="M1,5 L11,5"></path>
-                                    <polyline points="8 1 12 5 8 9"></polyline>
-                                </svg>
-                                </button>
-                            </form>
-                        </div>
+                    <div class="form">
+                        <form action="tugas/store" method="POST">
+                            @csrf
+                            <label for="tugas">
+                                tugas <input type="text" name="nama_tugas" class="tugas">
+                            </label>
+                            <label for="deskripsi">
+                                Deskripsi <input type="text" name="deskripsi" class="deskripsi">
+                            </label>
+                            <label for="tgl_mulai">
+                                Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai">
+                            </label>
+                            <label for="tgl_selesai">
+                                Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai">
+                            </label>
+                            <label for="nama_project">
+                                Nama Project
+                                <select name="id_project">
+                                    @foreach ($projectData as $p)
+                                        <option value="{{ $p['id'] }}">
+                                            {{ $p['nama_project'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            <label for="nama_developer">
+                                Nama Developer
+                                <select name="id_user">
+                                    @foreach ($userData as $u)
+                                        <option value="{{ $u['id'] }}">
+                                            {{ $u['name'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <button class="cta">
+                            </label>
+                            <span>Send Work !</span>
+                            <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ================= New Customers ================ -->
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Data Tugas</h2>
                     </div>
 
-                    <!-- ================= New Customers ================ -->
-                    <div class="recentCustomers">
-                        <div class="cardHeader">
-                            <h2>Data Tugas</h2>
-                        </div>
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>NAMA TUGAS</th>
-                                    <th>DESKRIPSI</th>
-                                    <th>TANGGAL MULAI</th>
-                                    <th>TANGGAL SELESAI</th>
-                                    <th>NAMA PROJECT</th>
-                                    <th>NAMA DEVELOPER</th>
-                                    <th>ACTION</th>
-                                </tr>
-                                @foreach ($tugasData as $t)
-                                    <div class="wadah-table">
-                                        <tr>
-                                            <td>{{ $t['tugas']['nama_tugas'] }}</td>
-                                            <td>{{ $t['tugas']['deskripsi'] }}</td>
-                                            <td>{{ $t['tugas']['tgl_mulai'] }}</td>
-                                            <td>{{ $t['tugas']['tgl_selesai'] }}</td>
-                                            <td>{{ $t['project']['nama_project'] }}</td>
-                                            <td>{{ $t['user']['name'] }}</td>
-                                            <td>
-                                                <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
-                                                <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
-                                            </td>
-                                        </tr>
-                                    </div>
-                                @endforeach
-                                {{-- {{ dd($project) }}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NAMA TUGAS</th>
+                                <th>DESKRIPSI</th>
+                                <th>TANGGAL MULAI</th>
+                                <th>TANGGAL SELESAI</th>
+                                <th>NAMA PROJECT</th>
+                                <th>NAMA DEVELOPER</th>
+                                <th>ACTION</th>
+                            </tr>
+                            @foreach ($tugasData as $t)
+                                <div class="wadah-table">
+                                    <tr>
+                                        <td>{{ $t['tugas']['nama_tugas'] }}</td>
+                                        <td>{{ $t['tugas']['deskripsi'] }}</td>
+                                        <td>{{ $t['tugas']['tgl_mulai'] }}</td>
+                                        <td>{{ $t['tugas']['tgl_selesai'] }}</td>
+                                        <td>{{ $t['project']['nama_project'] }}</td>
+                                        <td>{{ $t['user']['name'] }}</td>
+                                        <td>
+                                            <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                            <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                        </td>
+                                    </tr>
+                                </div>
+                            @endforeach
+                            {{-- {{ dd($project) }}
                                 {{ dd($user) }} --}}
-                            </thead>
-                        </table>
-                    </div>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- =========== Scripts =========  -->
-        <script src="../js/script.js"></script>
+    <!-- =========== Scripts =========  -->
+    <script src="{{ url('js/script.js') }}"></script>
 
-        <!-- ====== ionicons ======= -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

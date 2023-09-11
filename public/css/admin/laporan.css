@@ -153,6 +153,216 @@ body {
     pointer-events: none;
 }
 
+.toggleWrapper {
+    color: white;
+}
+
+.toggleWrapper input {
+    position: absolute;
+    left: -99em;
+}
+
+.toggleBtn {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    height: 35px;
+    background-color: #83d8ff;
+    border-radius: 84px;
+    -webkit-transition: background-color 200ms
+        cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.toggle__handler {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top: 2px;
+    left: 3px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffcf96;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.toggle__handler .crater {
+    position: absolute;
+    background-color: #e8cda5;
+    opacity: 0;
+    -webkit-transition: opacity 200ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
+    border-radius: 100%;
+}
+
+.toggle__handler .crater--1 {
+    top: 15px;
+    left: 7px;
+    width: 4px;
+    height: 4px;
+}
+
+.toggle__handler .crater--2 {
+    top: 18px;
+    left: 15px;
+    width: 6px;
+    height: 6px;
+}
+
+.toggle__handler .crater--3 {
+    top: 7px;
+    left: 18px;
+    width: 8px;
+    height: 8px;
+}
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    -webkit-transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    border-radius: 50%;
+}
+
+.star-c {
+    position: absolute;
+    top: -2px;
+}
+
+.star--1 {
+    top: 10px;
+    left: 35px;
+    z-index: 0;
+    width: 30px;
+    height: 3px;
+}
+
+.star--2 {
+    top: 18px;
+    left: 28px;
+    z-index: 1;
+    width: 30px;
+    height: 3px;
+}
+
+.star--3 {
+    top: 27px;
+    left: 40px;
+    z-index: 0;
+    width: 30px;
+    height: 3px;
+}
+
+.star--4,
+.star--5,
+.star--6 {
+    opacity: 0;
+    -webkit-transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.star--4 {
+    top: 16px;
+    left: 11px;
+    z-index: 0;
+    width: 2px;
+    height: 2px;
+    -webkit-transform: translate3d(3px, 0, 0);
+    transform: translate3d(3px, 0, 0);
+}
+
+.star--5 {
+    top: 32px;
+    left: 17px;
+    z-index: 0;
+    width: 3px;
+    height: 3px;
+    -webkit-transform: translate3d(3px, 0, 0);
+    transform: translate3d(3px, 0, 0);
+}
+
+.star--6 {
+    top: 36px;
+    left: 28px;
+    z-index: 0;
+    width: 2px;
+    height: 2px;
+    -webkit-transform: translate3d(3px, 0, 0);
+    transform: translate3d(3px, 0, 0);
+}
+
+input:checked + .toggleBtn {
+    background-color: #749dd6;
+}
+
+input:checked + .toggleBtn:before {
+    color: #749ed7;
+}
+
+input:checked + .toggleBtn:after {
+    color: #fff;
+}
+
+input:checked + .toggleBtn .toggle__handler {
+    background-color: #ffe5b5;
+    -webkit-transform: translate3d(40px, 0, 0) rotate(0);
+    transform: translate3d(54px, 0, 0) rotate(0);
+}
+
+input:checked + .toggleBtn .toggle__handler .crater {
+    opacity: 1;
+}
+
+input:checked + .toggleBtn .star--1 {
+    width: 2px;
+    height: 2px;
+}
+
+input:checked + .toggleBtn .star--2 {
+    width: 4px;
+    height: 4px;
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+}
+
+input:checked + .toggleBtn .star--3 {
+    width: 2px;
+    height: 2px;
+    -webkit-transform: translate3d(-7px, 0, 0);
+    transform: translate3d(-7px, 0, 0);
+}
+
+input:checked + .toggleBtn .star--4,
+input:checked + .toggleBtn .star--5,
+input:checked + .toggle .star--6 {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+input:checked + .toggleBtn .star--4 {
+    -webkit-transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+input:checked + .toggleBtn .star--5 {
+    -webkit-transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+input:checked + .toggleBtn .star--6 {
+    -webkit-transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
 /* ===================== Main ===================== */
 .main {
     position: absolute;
@@ -339,11 +549,13 @@ body {
 .recentCustomers thead th {
     top: 0;
     position: sticky;
+    color: #222222;
     background-color: white;
     z-index: 1;
     border: 1px solid black;
     padding: 12px 10px;
     width: 30%;
+    transition: 0.3s ease-in;
 }
 
 .recentCustomers table tr td {
@@ -368,9 +580,9 @@ body {
     color: var(--white);
 }
 
-.recentCustomers table tr:hover td h4 span {
+/* .recentCustomers table tr:hover td h4 span {
     color: var(--white);
-}
+} */
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
@@ -454,4 +666,24 @@ body {
         right: 0;
         left: initial;
     }
+}
+.night-mode {
+    transition: 0.3s ease-in;
+    background-color: #313131;
+    color: #ffffff;
+    z-index: 1000;
+    /* Add more styles for night mode here */
+}
+
+/* night mode card */
+.night-mode-card {
+    color: white;
+    box-shadow: 0px 0px 15px #535353;
+    transition: 0.3s ease;
+    background-color: #222222;
+    z-index: 1000;
+}
+
+.night-mode-card-table {
+    border: 1px solid white;
 }

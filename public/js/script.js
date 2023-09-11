@@ -28,8 +28,8 @@ const craters = document.querySelectorAll('.crater');
 const secMain = document.querySelector('.secMain');
 const recentOrders = document.querySelector('.recentOrders');
 const recentCustomers = document.querySelector('.recentCustomers');
-const tds = document.getElementsByTagName('table tr td');
-
+const ths = document.querySelectorAll('.recentCustomers thead th');
+const tds = document.querySelectorAll('.recentCustomers table tr td ');
 
 toggleBtn.addEventListener('change', function () {
     if (this.checked) {
@@ -37,21 +37,31 @@ toggleBtn.addEventListener('change', function () {
         stars.forEach(star => star.classList.add('night-mode'));
         craters.forEach(crater => crater.classList.add('night-mode'));
         secMain.classList.add('night-mode');
-        recentOrders.classList.add('night-mode-card');
-        recentCustomers.classList.add('night-mode-card');
-        tds.forEach(function (td) {
-            td.style.border = '1px solid var(--white)';
+        ths.forEach(function (th) {
+            th.style.backgroundColor = '#222222';
+            th.style.color = 'white';
+            th.style.borderColor = 'white';
         });
+        tds.forEach(function (td) {
+            td.style.borderColor = 'white';
+        });
+        recentCustomers.classList.add('night-mode-card');        
+        recentOrders.classList.add('night-mode-card');
     } else {
         toggleHandler.classList.remove('night-mode');
         stars.forEach(star => star.classList.remove('night-mode'));
         craters.forEach(crater => crater.classList.remove('night-mode'));
         secMain.classList.remove('night-mode');
-        recentOrders.classList.remove('night-mode-card');
-        recentCustomers.classList.remove('night-mode-card');
-        tds.forEach(function (td) {
-            td.style.border = '1px solid var(--black3)';
+        ths.forEach(function (th) {
+            th.style.backgroundColor = 'white';
+            th.style.color = '#222222';
+            th.style.borderColor = 'black';
         });
+        tds.forEach(function (td) {
+            td.style.borderColor = 'var(--black3)';
+        });
+        recentCustomers.classList.remove('night-mode-card');
+        recentOrders.classList.remove('night-mode-card');
     }
 });
 
