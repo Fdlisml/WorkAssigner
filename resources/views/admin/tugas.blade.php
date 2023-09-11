@@ -228,6 +228,16 @@
             </div>
         </div>
 
+        <div class="container-loader">
+            <div class="loader" id="loader">
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+                <div class="dot dot-4"></div>
+                <div class="dot dot-5"></div>
+            </div>
+        </div>
+
         @if (session('error'))
             <script>
                 alert("{{ session('error') }}")
@@ -237,6 +247,7 @@
                 alert("{{ session('success') }}")
             </script>
         @endif
+        
         <!-- =========== Scripts =========  -->
         <script src="{{ url('js/script.js') }}"></script>
 

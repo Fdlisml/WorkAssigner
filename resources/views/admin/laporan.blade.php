@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../css/admin/laporan.css">
+    <link rel="stylesheet" href="{{ url('css/admin/laporan.css') }}">
 </head>
 
 <body>
@@ -20,8 +20,7 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img
-                                        src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
+                                    <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -143,6 +142,27 @@
             </div>
         </div>
     </div>
+
+    <div class="container-loader">
+        <div class="loader" id="loader">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+            <div class="dot dot-4"></div>
+            <div class="dot dot-5"></div>
+        </div>
+    </div>
+
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}")
+        </script>
+    @elseif (session('success'))
+        <script>
+            alert("{{ session('success') }}")
+        </script>
+    @endif
+
 
     <!-- =========== Scripts =========  -->
     <script src="{{ url('js/script.js') }}"></script>

@@ -221,6 +221,7 @@
                 alert("{{ session('success') }}")
             </script>
         @endif
+        
         <!-- =========== Scripts =========  -->
         <script src="{{ url('js/script.js') }}"></script>
 
