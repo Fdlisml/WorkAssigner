@@ -789,6 +789,7 @@ table tr td {
 
 
 .night-mode {
+    
     transition: .3s ease-in;
     background-color: #313131;
     color: #ffffff;

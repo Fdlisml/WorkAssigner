@@ -20,8 +20,7 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img
-                                        src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
+                                    <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -78,17 +77,34 @@
                     <div class="user">
                         <img src="public/image/customer01.jpg" alt="">
                     </div>
+                    <div class="toggleWrapper">
+                        <input type="checkbox" class="dn" id="dn">
+                        <label for="dn" class="toggleBtn">
+                            <span class="toggle__handler">
+                                <span class="crater crater--1"></span>
+                                <span class="crater crater--2"></span>
+                                <span class="crater crater--3"></span>
+                            </span>
+                            <div class="star-c">
+                                <span class="star star--1"></span>
+                                <span class="star star--2"></span>
+                                <span class="star star--3"></span>
+                                <span class="star star--4"></span>
+                                <span class="star star--5"></span>
+                                <span class="star star--6"></span>
+                            </div>
+                        </label>
+                    </div>
                 </div>
 
-
-                <!-- ================ Order Details List ================= -->
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2>Tugas</h2>
-                            <a href="#" class="btn">View All</a>
-                        </div>
-                        @if (Request::is('admin/tugas/edit/*'))
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Tugas</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    @if (Request::is('admin/tugas/edit/*'))
                             @php
                                 $data = [
                                     'url' => 'admin/tugas/update/' . $tugasEdit['id'],
@@ -109,7 +125,7 @@
                                     'tgl_mulai' => '',
                                     'tgl_selesai' => '',
                                     'id_project' => '',
-                                    'id_user' => '',
+                                    'id_user' => '',,
                                 ];
                             @endphp
                         @endif
@@ -170,11 +186,11 @@
                         </div>
                     </div>
 
-                    <!-- ================= New Customers ================ -->
-                    <div class="recentCustomers">
-                        <div class="cardHeader">
-                            <h2>Data Tugas</h2>
-                        </div>
+                <!-- ================= New Customers ================ -->
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Data Tugas</h2>
+                    </div>
 
                         <table>
                             <thead>
@@ -197,8 +213,7 @@
                                             <td>{{ $t['project']['nama_project'] }}</td>
                                             <td>{{ $t['user']['name'] }}</td>
                                             <td>
-                                                <a
-                                                    href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                                <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
                                                 <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
                                             </td>
                                         </tr>
@@ -214,9 +229,9 @@
         <!-- =========== Scripts =========  -->
         <script src="{{ url('js/script.js') }}"></script>
 
-        <!-- ====== ionicons ======= -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
