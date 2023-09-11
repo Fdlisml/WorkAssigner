@@ -1,19 +1,3 @@
-<?php
-
-// session_start();
-
-// if (!isset($_SESSION['id_user']) || (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin')) {
-//     header('Location: ../login.php');
-//     exit();
-// }
-
-// $id_user = $_SESSION['id_user'];
-// $name = $_SESSION['name'];
-
-// require_once '../api/tugas.php';
-// require_once '../api/project.php';
-// require_once '../api/user.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../css/admin/style.css">
+    <link rel="stylesheet" href="{{ url('css/admin/style.css') }}">
 </head>
 
 <body>
@@ -36,8 +20,8 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
-                                        alt="">
+                                    <img
+                                        src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -105,72 +89,82 @@
                             <a href="#" class="btn">View All</a>
                         </div>
                         @if (Request::is('admin/tugas/edit/*'))
-                        @php
-                            $data = [
-                                'url' => 'admin/tugas/update/' . $tugasEdit['id'],
-                                'tugas' => $tugasEdit['tugas'],
-                                'deskripsi' => $tugasEdit['deskripsi'],
-                                'tgl_mulai' => $tugasEdit['tgl_mulai'],
-                                'tgl_selesai' => $tugasEdit['tgl_selesai'],
-                                'id_project' => $tugasEdit['id_project'],
-                                'id_user' => $tugasEdit['id_user'],
-                            ];
-                        @endphp
-                    @else
-                        @php
-                            $data = [
-                                'url' => 'admin/tugas/store',
-                                'tugas' => '',
-                                'deskripsi' => '',
-                                'tgl_mulai' => '',
-                                'tgl_selesai' => '',
-                                'id_project' => '',
-                                'id_user' => ''
-                            ];
-                        @endphp
-                    @endif
+                            @php
+                                $data = [
+                                    'url' => 'admin/tugas/update/' . $tugasEdit['id'],
+                                    'nama_tugas' => $tugasEdit['nama_tugas'],
+                                    'deskripsi' => $tugasEdit['deskripsi'],
+                                    'tgl_mulai' => $tugasEdit['tgl_mulai'],
+                                    'tgl_selesai' => $tugasEdit['tgl_selesai'],
+                                    'id_project' => $tugasEdit['id_project'],
+                                    'id_user' => $tugasEdit['id_user'],
+                                ];
+                            @endphp
+                        @else
+                            @php
+                                $data = [
+                                    'url' => 'admin/tugas/store',
+                                    'nama_tugas' => '',
+                                    'deskripsi' => '',
+                                    'tgl_mulai' => '',
+                                    'tgl_selesai' => '',
+                                    'id_project' => '',
+                                    'id_user' => '',
+                                ];
+                            @endphp
+                        @endif
 
                         <div class="form">
-                            <form action="tugas/store" method="POST">
+                            <form action="{{ url($data['url']) }}" method="POST">
                                 @csrf
-                                <label for="tugas">
-                                    tugas <input type="text" name="nama_tugas" class="tugas">
+                                <label>
+                                    Tugas <input type="text" name="nama_tugas" class="tugas"
+                                        value="{{ $data['nama_tugas'] }}">
                                 </label>
-                                <label for="deskripsi">
-                                    Deskripsi <input type="text" name="deskripsi" class="deskripsi">
+                                <label>
+                                    Deskripsi <input type="text" name="deskripsi" class="deskripsi"
+                                        value="{{ $data['deskripsi'] }}">
                                 </label>
-                                <label for="tgl_mulai">
-                                    Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai">
+                                <label>
+                                    Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai"
+                                        value="{{ $data['tgl_mulai'] }}">
                                 </label>
-                                <label for="tgl_selesai">
-                                    Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai">
+                                <label>
+                                    Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai"
+                                        value="{{ $data['tgl_selesai'] }}">
                                 </label>
-                                <label for="nama_project">
+                                <label>
                                     Nama Project
                                     <select name="id_project">
+                                        <option></option>
                                         @foreach ($projectData as $p)
-                                            <option value="{{ $p['id'] }}">
-                                                {{ $p['nama_project'] }}
-                                            </option>
+                                            @if ($p['id'] == $data['id_project'])
+                                                <option value="{{ $p['id'] }}" selected>{{ $p['nama_project'] }}</option>
+                                            @else
+                                                <option value="{{ $p['id'] }}">{{ $p['nama_project'] }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </label>
-                                <label for="nama_developer">
+                                <label>
                                     Nama Developer
                                     <select name="id_user">
+                                        <option></option>
                                         @foreach ($userData as $u)
-                                            <option value="{{ $u['id'] }}">
-                                                {{ $u['name'] }}
-                                            </option>
+                                            @if ($u['id'] == $data['id_user'])
+                                                <option value="{{ $u['id'] }}" selected>{{ $u['name'] }}</option>
+                                            @else
+                                                <option value="{{ $u['id'] }}">{{ $u['name'] }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
-                                    <button class="cta">
                                 </label>
-                                <span>Send Work !</span>
-                                <svg viewBox="0 0 13 10" height="10px" width="15px">
-                                    <path d="M1,5 L11,5"></path>
-                                    <polyline points="8 1 12 5 8 9"></polyline>
-                                </svg>
+                                <button type="submit" class="cta">
+                                    <span>Send Work !</span>
+                                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                        <path d="M1,5 L11,5"></path>
+                                        <polyline points="8 1 12 5 8 9"></polyline>
+                                    </svg>
                                 </button>
                             </form>
                         </div>
@@ -203,14 +197,13 @@
                                             <td>{{ $t['project']['nama_project'] }}</td>
                                             <td>{{ $t['user']['name'] }}</td>
                                             <td>
-                                                <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                                <a
+                                                    href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
                                                 <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
                                             </td>
                                         </tr>
                                     </div>
                                 @endforeach
-                                {{-- {{ dd($project) }}
-                                {{ dd($user) }} --}}
                             </thead>
                         </table>
                     </div>
@@ -219,7 +212,7 @@
         </div>
 
         <!-- =========== Scripts =========  -->
-        <script src="../js/script.js"></script>
+        <script src="{{ url('js/script.js') }}"></script>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

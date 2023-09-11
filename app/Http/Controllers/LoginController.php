@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserApi;
+use App\Models\LoginApi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -17,21 +19,37 @@ class LoginController extends Controller
 
    public function login(Request $request)
    {
-      $userData = UserApi::getDataFromAPI();
+      $data_login = $request->validate([
+         'username' => ['required'],
+         'password' => ['required'],
+      ]);
 
-      // Mengecek username dan password
-      foreach ($userData as $user) {
-         if ($user['username'] === $request->username && $user['password'] === $request->password) {
-            session([
-               'role' => $user['role'],
-               'name' => $user['name'],
-               'id' => $user['id']
-            ]);
-            $page = ($user['role'] === "user") ? "/user/index" : "/admin/index";
-            return redirect($page);
-         }
+      $user = LoginApi::login($data_login);
+
+      $response_data = json_decode($user, true);
+
+      $success = $response_data['success'];
+      $message = $response_data['message'];
+
+      if ($success) {
+         $id = $response_data['data']['id'];
+         $token = $response_data['data']['token'];
+         $name = $response_data['data']['name'];
+         $username = $response_data['data']['username'];
+         $role = $response_data['data']['role'];
+         session([
+            'id' => $id,
+            'token' => $token,
+            'name' => $name,
+            'username' => $username,
+            'role' => $role
+         ]);
+      } else {
+         echo "Error: " . $message;
       }
-      return back()->with('error', 'Invalid username or password.');
+
+      $page = ($role === "user") ? "/user/index" : "/admin/index";
+      return redirect($page);
    }
 
    public function logout(Request $request)

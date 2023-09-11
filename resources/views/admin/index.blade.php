@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,8 +95,6 @@
                     </div>
                 </div>
 
-
-
                 <!-- ================ Order Details List ================= -->
                 <div class="details">
                     <div class="recentOrders">
@@ -159,7 +154,7 @@
                                 </label>
                                 <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
 
-                                <button class="cta">
+                                <button type="submit" class="cta">
                                     <span>Send Work !</span>
                                     <svg viewBox="0 0 13 10" height="10px" width="15px">
                                         <path d="M1,5 L11,5"></path>
@@ -218,6 +213,15 @@
             </div>
         </div>
 
+        @if (session('error'))
+            <script>
+                alert("{{ session('error') }}")
+            </script>
+        @elseif (session('success'))
+            <script>
+                alert("{{ session('success') }}")
+            </script>
+        @endif
         <!-- =========== Scripts =========  -->
         <script src="{{ url('js/script.js') }}"></script>
 

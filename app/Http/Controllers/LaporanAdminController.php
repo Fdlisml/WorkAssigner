@@ -14,9 +14,11 @@ class LaporanAdminController extends Controller
     */
    public function index()
    {
-      $laporan = LaporanApi::getDataFromAPI();
-      $tugas = TugasApi::getDataFromAPI();
-      $user = UserApi::getDataFromAPI();
+      session_start();
+      $token = session('token');
+      $laporan = LaporanApi::getDataFromAPI($token);
+      $tugas = TugasApi::getDataFromAPI($token);
+      $user = UserApi::getDataFromAPI($token);
 
       $combinedData = [];
 
@@ -91,9 +93,11 @@ class LaporanAdminController extends Controller
    /**
     * Remove the specified resource from storage.
     */
-   public function destroy(string $id)
+   public function destroy(int $id)
    {
-      LaporanApi::deleteDataInAPI($id);
+      session_start();
+      $token = session('token');
+      LaporanApi::deleteDataInAPI($id, $token);
       return redirect('/admin/laporan')->with('success', 'Data Laporan Berhasil di Hapus');
    }
 }

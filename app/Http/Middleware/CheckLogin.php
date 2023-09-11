@@ -15,7 +15,7 @@ class CheckLogin
     */
    public function handle(Request $request, Closure $next): mixed
    {
-      if (!$request->session()->has('id')) {
+      if (!$request->session()->has('token')) {
          return redirect()->route('login');
       }
 
