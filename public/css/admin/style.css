@@ -812,6 +812,7 @@ table tr td a:nth-child(2){
 
 
 .night-mode {
+    
     transition: .3s ease-in;
     background-color: #313131;
     color: #ffffff;

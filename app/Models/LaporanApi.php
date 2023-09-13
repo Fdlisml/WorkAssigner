@@ -8,42 +8,69 @@ use GuzzleHttp\Client;
 
 class LaporanApi extends Model
 {
-    use HasFactory;
-    const API_ENDPOINT = 'https://klikyuk.com/ngankngonk/fadli/project-pkl/api/laporan.php/';
-    public static function getDataFromAPI()
-    {
-        $client = new Client();
-        $response = $client->get(self::API_ENDPOINT);
-        $data = json_decode($response->getBody(), true);
+   use HasFactory;
+   const API_ENDPOINT = 'https://klikyuk.com/WorkAssigner-Server/api/laporans';
+   public static function getDataFromAPI($token)
+   {
+      $client = new Client();
+      $response = $client->get(self::API_ENDPOINT, [
+         'headers' => [
+            'Authorization' => 'Bearer ' . $token,
+         ]
+      ]);
+      $data = json_decode($response->getBody(), true);
 
-        return $data['data_laporan'];
-    }
+      return $data['data_laporan'];
+   }
 
-    public static function postDataToAPI($postData)
-    {
-        $client = new Client();
-        $response = $client->post(self::API_ENDPOINT, [
-            'json' => $postData
-        ]);
+   public static function getDataByIdFromAPI($id, $token)
+   {
+      $client = new Client();
+      $response = $client->get(self::API_ENDPOINT . '/' . $id, [
+            'headers' => [
+               'Authorization' => 'Bearer ' . $token,
+            ]
+         ]);
+      $data = json_decode($response->getBody(), true);
 
-        return $response->getStatusCode(); // Returns the HTTP status code
-    }
+      return $data['data_laporan'];
+   }
 
-    public static function updateDataInAPI($id, $updatedData)
-    {
-        $client = new Client();
-        $response = $client->put(self::API_ENDPOINT . '/' . $id, [
-            'json' => $updatedData
-        ]);
+   public static function postDataToAPI($postData, $token)
+   {
+      $client = new Client();
+      $response = $client->post(self::API_ENDPOINT, [
+         'headers' => [
+            'Authorization' => 'Bearer ' . $token,
+         ],
+         'json' => $postData
+      ]);
 
-        return $response->getStatusCode(); // Returns the HTTP status code
-    }
+      return $response->getStatusCode(); // Returns the HTTP status code
+   }
 
-    public static function deleteDataInAPI($id)
-    {
-        $client = new Client();
-        $response = $client->delete(self::API_ENDPOINT . '/' . $id);
+   public static function updateDataInAPI($id, $updatedData, $token)
+   {
+      $client = new Client();
+      $response = $client->put(self::API_ENDPOINT . '/' . $id, [
+         'headers' => [
+            'Authorization' => 'Bearer ' . $token,
+         ],
+         'json' => $updatedData
+      ]);
 
-        return $response->getStatusCode(); // Returns the HTTP status code
-    }
+      return $response->getStatusCode(); // Returns the HTTP status code
+   }
+
+   public static function deleteDataInAPI($id, $token)
+   {
+      $client = new Client();
+      $response = $client->delete(self::API_ENDPOINT . '/' . $id, [
+         'headers' => [
+            'Authorization' => 'Bearer ' . $token,
+         ]
+      ]);
+
+      return $response->getStatusCode(); // Returns the HTTP status code
+   }
 }

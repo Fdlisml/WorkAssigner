@@ -22,7 +22,7 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 |
 */
 
-Route::get('/', [IndexUserController::class, 'index'])->middleware(CheckLogin::class);
+Route::get('/', [IndexUserController::class, 'index'])->middleware(['check.login']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login_check', [LoginController::class, 'login']);
@@ -32,8 +32,8 @@ Route::middleware(['check.login', 'role:user'])->group(function () {
    Route::prefix('user')->group(function () {
        Route::get('/index', [IndexUserController::class, 'index']);
        Route::get('/laporan', [LaporanUserController::class, 'index']);
-       Route::post('/laporan/store', [IndexUserController::class, 'store']);
-       Route::post('/laporan/update/{id}', [IndexUserController::class, 'update']);
+       Route::post('/laporan/store', [LaporanUserController::class, 'store']);
+       Route::post('/laporan/update/{id}', [LaporanUserController::class, 'update']);
    });
 });
 
@@ -41,15 +41,15 @@ Route::middleware(['check.login', 'role:admin'])->group(function () {
    Route::prefix('admin')->group(function () {
        Route::get('/index', [ProjectAdminController::class, 'index']);
        Route::post('/project/store', [ProjectAdminController::class, 'store']);
-       Route::get('/tugas', [TugasAdminController::class, 'index']);
-       Route::post('/tugas/store', [TugasAdminController::class, 'store']);
-       Route::get('/laporan', [LaporanAdminController::class, 'index']);
-       Route::get('/project/destroy/{id}', [ProjectAdminController::class, 'destroy']);
        Route::get('/project/edit/{id}', [ProjectAdminController::class, 'edit']);
        Route::post('/project/update/{id}', [ProjectAdminController::class, 'update']);
-       Route::get('/laporan/destroy/{id}', [LaporanAdminController::class, 'destroy']);
-       Route::post('/laporan/update/{id}', [LaporanAdminController::class, 'update']);
-       Route::get('/tugas/destroy/{id}', [TugasAdminController::class, 'destroy']);
+       Route::get('/project/destroy/{id}', [ProjectAdminController::class, 'destroy']);
+       Route::get('/tugas', [TugasAdminController::class, 'index']);
+       Route::post('/tugas/store', [TugasAdminController::class, 'store']);
+       Route::get('/tugas/edit/{id}', [TugasAdminController::class, 'edit']);
        Route::post('/tugas/update/{id}', [TugasAdminController::class, 'update']);
+       Route::get('/tugas/destroy/{id}', [TugasAdminController::class, 'destroy']);
+       Route::get('/laporan', [LaporanAdminController::class, 'index']);
+       Route::get('/laporan/destroy/{id}', [LaporanAdminController::class, 'destroy']);
    });
 });

@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="btn-form">
-                            <input type="hidden" name="tgl_laporan" value="{{ date('Y/M/D') }}">
+                            <input type="hidden" name="tgl_laporan" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
                             <input type="hidden" name="id_tugas" value="{{ $tugas['id'] }}">
                             <input type="hidden" name="id_user" value="{{ session('id') }}">
                             <button class="learn-more" type="submit">

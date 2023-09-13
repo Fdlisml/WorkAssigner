@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LaporanApi;
 use App\Models\TugasApi;
 use App\Models\ProjectApi;
 use App\Models\UserApi;
@@ -14,9 +15,11 @@ class TugasAdminController extends Controller
     */
    public function index()
    {
-      $tugas = TugasApi::getDataFromAPI();
-      $project = ProjectApi::getDataFromAPI();
-      $user = UserApi::getDataFromAPI();
+      session_start();
+      $token = session('token');
+      $tugas = TugasApi::getDataFromAPI($token);
+      $project = ProjectApi::getDataFromAPI($token);
+      $user = UserApi::getDataFromAPI($token);
 
       $combinedData = [];
 
@@ -24,22 +27,12 @@ class TugasAdminController extends Controller
          $id_project = $t['id_project'];
          $id_user = $t['id_user'];
 
-         // Mencari data proyek berdasarkan id_project
-         // $projectData = array_values(array_filter($project, function ($p) use ($id_project) {
-         //    return $p['id'] === $id_project;
-         // }));
-
          $projectData = [];
          foreach ($project as $p) {
             if ($p['id'] === $id_project) {
                $projectData[0] = $p;
             }
          }
-
-         // Mencari data pengguna berdasarkan id_user
-         // $userData = array_values(array_filter($user, function ($u) use ($id_user) {
-         //    return $u['id'] === $id_user;
-         // }));
 
          $userData = [];
          foreach ($user as $u) {
@@ -50,8 +43,8 @@ class TugasAdminController extends Controller
 
          $combinedData[] = [
             'tugas' => $t,
-            'project' => $projectData[0], 
-            'user' => $userData[0], 
+            'project' => $projectData[0],
+            'user' => $userData[0],
          ];
       }
 
@@ -74,6 +67,8 @@ class TugasAdminController extends Controller
     */
    public function store(Request $request)
    {
+      session_start();
+      $token = session('token');
       $data_tugas = $request->validate([
          'nama_tugas' => ['required'],
          'deskripsi' => ['required'],
@@ -83,9 +78,9 @@ class TugasAdminController extends Controller
          'id_user' => ['required']
       ]);
 
-      TugasApi::postDataToAPI($data_tugas);
+      TugasApi::postDataToAPI($data_tugas, $token);
 
-      return redirect('/admin/tugas')->with('success', 'Data tugas Berhasil di Tambah');
+      return redirect('admin/tugas')->with('success', 'Data tugas Berhasil di Tambah');
    }
 
    /**
@@ -99,25 +94,91 @@ class TugasAdminController extends Controller
    /**
     * Show the form for editing the specified resource.
     */
-   public function edit(string $id)
+   public function edit(int $id)
    {
-      //
+      session_start();
+      $token = session('token');
+      $tugas = TugasApi::getDataFromAPI($token);
+      $project = ProjectApi::getDataFromAPI($token);
+      $user = UserApi::getDataFromAPI($token);
+
+      $combinedData = [];
+
+      foreach ($tugas as $t) {
+         $id_project = $t['id_project'];
+         $id_user = $t['id_user'];
+
+         $projectData = [];
+         foreach ($project as $p) {
+            if ($p['id'] === $id_project) {
+               $projectData[0] = $p;
+            }
+         }
+
+         $userData = [];
+         foreach ($user as $u) {
+            if ($u['id'] === $id_user) {
+               $userData[0] = $u;
+            }
+         }
+
+         $combinedData[] = [
+            'tugas' => $t,
+            'project' => $projectData[0],
+            'user' => $userData[0],
+         ];
+      }
+
+      return view('admin.tugas', [
+         'tugasData' => $combinedData,
+         'projectData' => $project,
+         'userData' => $user,
+         'tugasEdit' => TugasApi::getDataByIdFromAPI($id, $token)
+      ]);
    }
 
    /**
     * Update the specified resource in storage.
     */
-   public function update(Request $request, string $id)
+   public function update(Request $request, int $id)
    {
-      //
+      session_start();
+      $token = session('token');
+      $data_tugas = $request->validate([
+         'nama_tugas' => ['required'],
+         'deskripsi' => ['required'],
+         'tgl_mulai' => ['required'],
+         'tgl_selesai' => ['required'],
+         'id_project' => ['required'],
+         'id_user' => ['required']
+      ]);
+
+      TugasApi::updateDataInAPI($id, $data_tugas, $token);
+
+      return redirect('/admin/tugas')->with('success', 'Data Tugas Berhasil di Update');
    }
 
    /**
     * Remove the specified resource from storage.
     */
-   public function destroy(string $id)
+   public function destroy(int $id)
    {
-      TugasApi::deleteDataInAPI($id);
+      session_start();
+      $token = session('token');
+      $laporan = LaporanApi::getDataFromAPI($token);
+
+      $laporanData = [];
+      foreach ($laporan as $l) {
+         if ($l['id_tugas'] === $id) {
+            $laporanData[] = $l;
+         }
+      }
+
+      if ($laporanData) {
+         return back()->with('error', "Tugas masih digunakan di menu Laporan");
+      }
+
+      TugasApi::deleteDataInAPI($id, $token);
       return redirect('/admin/tugas')->with('success', 'Data Tugas Berhasil di Hapus');
    }
 }

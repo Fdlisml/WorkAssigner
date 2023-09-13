@@ -14,9 +14,11 @@ class IndexUserController extends Controller
     */
    public function index()
    {
-      $tugas = TugasApi::getDataFromAPI();
+      session_start();
+      $token = session('token');
+      $tugas = TugasApi::getDataFromAPI($token);
       $id_user = session('id');
-      
+
       $tugas_user = [];
       foreach ($tugas as $t) {
          if ($t['id_user'] === $id_user) {
@@ -44,19 +46,7 @@ class IndexUserController extends Controller
     */
    public function store(Request $request)
    {
-      $data_laporan = $request->validate([
-         'nama_laporan' => ['required'],
-         'deskripsi' => ['required'],
-         'keluhan' => ['required'],
-         'progres' => ['required'],
-         'tgl_laporan' => ['required'],
-         'id_tugas' => ['required'],
-         'id_user' => ['required']
-     ]);
-
-     LaporanApi::postDataToAPI($data_laporan);
-
-     return redirect('/user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
+      //
    }
 
    /**
@@ -80,13 +70,7 @@ class IndexUserController extends Controller
     */
    public function update(Request $request, string $id)
    {
-      $data_laporan = $request->validate([
-         'progres' => ['required']
-     ]);
-
-     LaporanApi::updateDataInAPI($id, $data_laporan);
-
-     return redirect('/user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
+      //
    }
 
    /**
