@@ -40,7 +40,7 @@ body {
 }
 
 .navigation.active {
-    
+
     width: 80px;
 }
 
@@ -121,6 +121,7 @@ body {
     text-align: start;
     white-space: nowrap;
 }
+
 .toggleWrapper {
     color: white;
 }
@@ -610,7 +611,7 @@ table tr td {
     border: 1px solid var(--black3);
 }
 
-td .btn-action{
+td .btn-action {
     display: flex;
     gap: 1rem;
     border: none;
@@ -618,23 +619,30 @@ td .btn-action{
     height: 100%;
 }
 
+table tr td .flex-btn{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 table tr td a{
     text-decoration: none;
 }
 
-table tr td a:nth-child(1){
+table tr td a:nth-child(1) {
     background-color: rgba(250, 54, 54, 0.882);
     padding: 10px 15px;
     color: white;
     border-radius: 10px;
 }
 
-table tr td a:nth-child(2){
+table tr td a:nth-child(2) {
     background-color: rgba(250, 147, 38, 0.882);
     padding: 10px 15px;
     color: white;
     border-radius: 10px;
 }
+
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
     .navigation {
@@ -812,7 +820,7 @@ table tr td a:nth-child(2){
 
 
 .night-mode {
-    
+
     transition: .3s ease-in;
     background-color: #313131;
     color: #ffffff;
@@ -829,6 +837,6 @@ table tr td a:nth-child(2){
     z-index: 1000;
 }
 
-.night-mode-card-table{
+.night-mode-card-table {
     border: 1px solid white;
 }

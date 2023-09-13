@@ -20,7 +20,8 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
+                                    <img
+                                        src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -131,7 +132,9 @@
                                         <td>{{ $l['tugas']['nama_tugas'] }}</td>
                                         <td>{{ $l['user']['name'] }}</td>
                                         <td>
-                                            <a href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a>
+                                            <div class="flex-btn">
+                                                <a href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a>
+                                            </div>
                                         </td>
                                     </tr>
                                 </div>

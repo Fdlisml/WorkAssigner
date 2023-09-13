@@ -20,7 +20,8 @@
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
+                                    <img
+                                        src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -215,8 +216,10 @@
                                             <td>{{ $t['project']['nama_project'] }}</td>
                                             <td>{{ $t['user']['name'] }}</td>
                                             <td>
-                                                <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
-                                                <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                                <div class="flex-btn">
+                                                    <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a> |
+                                                    <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </div>
@@ -247,7 +250,7 @@
                 alert("{{ session('success') }}")
             </script>
         @endif
-        
+
         <!-- =========== Scripts =========  -->
         <script src="{{ url('js/script.js') }}"></script>
 

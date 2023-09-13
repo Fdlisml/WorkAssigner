@@ -170,8 +170,7 @@ body {
     height: 35px;
     background-color: #83d8ff;
     border-radius: 84px;
-    -webkit-transition: background-color 200ms
-        cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    -webkit-transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
     transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -299,66 +298,66 @@ body {
     transform: translate3d(3px, 0, 0);
 }
 
-input:checked + .toggleBtn {
+input:checked+.toggleBtn {
     background-color: #749dd6;
 }
 
-input:checked + .toggleBtn:before {
+input:checked+.toggleBtn:before {
     color: #749ed7;
 }
 
-input:checked + .toggleBtn:after {
+input:checked+.toggleBtn:after {
     color: #fff;
 }
 
-input:checked + .toggleBtn .toggle__handler {
+input:checked+.toggleBtn .toggle__handler {
     background-color: #ffe5b5;
     -webkit-transform: translate3d(40px, 0, 0) rotate(0);
     transform: translate3d(54px, 0, 0) rotate(0);
 }
 
-input:checked + .toggleBtn .toggle__handler .crater {
+input:checked+.toggleBtn .toggle__handler .crater {
     opacity: 1;
 }
 
-input:checked + .toggleBtn .star--1 {
+input:checked+.toggleBtn .star--1 {
     width: 2px;
     height: 2px;
 }
 
-input:checked + .toggleBtn .star--2 {
+input:checked+.toggleBtn .star--2 {
     width: 4px;
     height: 4px;
     -webkit-transform: translate3d(-5px, 0, 0);
     transform: translate3d(-5px, 0, 0);
 }
 
-input:checked + .toggleBtn .star--3 {
+input:checked+.toggleBtn .star--3 {
     width: 2px;
     height: 2px;
     -webkit-transform: translate3d(-7px, 0, 0);
     transform: translate3d(-7px, 0, 0);
 }
 
-input:checked + .toggleBtn .star--4,
-input:checked + .toggleBtn .star--5,
-input:checked + .toggle .star--6 {
+input:checked+.toggleBtn .star--4,
+input:checked+.toggleBtn .star--5,
+input:checked+.toggle .star--6 {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
-input:checked + .toggleBtn .star--4 {
+input:checked+.toggleBtn .star--4 {
     -webkit-transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
     transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-input:checked + .toggleBtn .star--5 {
+input:checked+.toggleBtn .star--5 {
     -webkit-transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
     transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-input:checked + .toggleBtn .star--6 {
+input:checked+.toggleBtn .star--6 {
     -webkit-transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
     transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
@@ -376,9 +375,11 @@ input:checked + .toggleBtn .star--6 {
 .secMain {
     background: var(--white);
     margin-top: 20px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    /* border-top-left-radius: 30px;
+    border-top-right-radius: 30px; */
+    border-radius: 30px;
     margin-right: 20px;
+    min-height: 95vh;
 }
 
 .main.active {
@@ -555,7 +556,6 @@ input:checked + .toggleBtn .star--6 {
     border: 1px solid black;
     padding: 12px 10px;
     width: 30%;
-    transition: 0.3s ease-in;
 }
 
 .recentCustomers table tr td {
@@ -578,6 +578,18 @@ input:checked + .toggleBtn .star--6 {
 .recentCustomers table tr:hover {
     background: var(--blue);
     color: var(--white);
+}
+
+.flex-btn a{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(250, 54, 54, 0.882);
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.flex-btn a:active{
+    background-color: rgba(250, 54, 54, 0.572);
 }
 
 /* .recentCustomers table tr:hover td h4 span {
@@ -667,6 +679,7 @@ input:checked + .toggleBtn .star--6 {
         left: initial;
     }
 }
+
 .night-mode {
     transition: 0.3s ease-in;
     background-color: #313131;

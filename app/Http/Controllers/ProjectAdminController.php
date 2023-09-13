@@ -17,7 +17,7 @@ class ProjectAdminController extends Controller
    {
       session_start();
       $token = session('token');
-      return view('admin.page.index', [
+      return view('admin.index', [
          'project' => ProjectApi::getDataFromAPI($token),
          "slug" => "style"
       ]);

@@ -46,7 +46,7 @@ class LaporanAdminController extends Controller
             'user' => $userData[0],
          ];
       }
-      return view('admin.page.laporan', [
+      return view('admin.laporan', [
          'laporanData' => $combinedData,
       ]);
    }
