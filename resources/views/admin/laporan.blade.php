@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../css/admin/laporan.css">
+    <link rel="stylesheet" href="{{ url('css/admin/laporan.css') }}">
 </head>
 
 <body>
@@ -16,12 +16,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="{{ url('/admin/index') }}">
                         <div class="logo-flex">
                             <span class="icon">
                                 <div class="logo-bg">
-                                    <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
-                                        alt="">
+                                    <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                                 </div>
                             </span>
                             <span class="title">WorkAssigner</span>
@@ -30,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="index">
+                    <a href="{{ url('/admin/index') }}">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -39,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="laporan">
+                    <a href="{{ url('/admin/laporan') }}">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
@@ -48,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="tugas">
+                    <a href="{{ url('/admin/tugas') }}">
                         <span class="icon">
                             <ion-icon name="reader-outline"></ion-icon>
                         </span>
@@ -57,7 +56,7 @@
                 </li>
 
                 <li>
-                    <a href="/logout">
+                    <a href="{{ url('/logout') }}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -77,6 +76,25 @@
 
                     <div class="user">
                         <img src="">
+                    </div>
+
+                    <div class="toggleWrapper">
+                        <input type="checkbox" class="dn" id="dn">
+                        <label for="dn" class="toggleBtn">
+                            <span class="toggle__handler">
+                                <span class="crater crater--1"></span>
+                                <span class="crater crater--2"></span>
+                                <span class="crater crater--3"></span>
+                            </span>
+                            <div class="star-c">
+                                <span class="star star--1"></span>
+                                <span class="star star--2"></span>
+                                <span class="star star--3"></span>
+                                <span class="star star--4"></span>
+                                <span class="star star--5"></span>
+                                <span class="star star--6"></span>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
@@ -103,18 +121,20 @@
 
                         <tbody>
                             @foreach ($laporanData as $l)
-                            <div class="wadah-table">
-                                <tr>
-                                    <td>{{ $l['laporan']['nama_laporan'] }}</td>
-                                    <td>{{ $l['laporan']['deskripsi'] }}</td>
-                                    <td>{{ $l['laporan']['keluhan'] }}</td>
-                                    <td>{{ $l['laporan']['progres'] }}</td>
-                                    <td>{{ $l['laporan']['tgl_laporan'] }}</td>
-                                    <td>{{ $l['tugas']['nama_tugas'] }}</td>
-                                    <td>{{ $l['user']['name'] }}</td>
-                                    <td><a href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a></td>
-                                </tr>
-                            </div>
+                                <div class="wadah-table">
+                                    <tr>
+                                        <td>{{ $l['laporan']['nama_laporan'] }}</td>
+                                        <td>{{ $l['laporan']['deskripsi'] }}</td>
+                                        <td>{{ $l['laporan']['keluhan'] }}</td>
+                                        <td>{{ $l['laporan']['progres'] }}</td>
+                                        <td>{{ $l['laporan']['tgl_laporan'] }}</td>
+                                        <td>{{ $l['tugas']['nama_tugas'] }}</td>
+                                        <td>{{ $l['user']['name'] }}</td>
+                                        <td>
+                                            <a href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a>
+                                        </td>
+                                    </tr>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -123,8 +143,29 @@
         </div>
     </div>
 
+    <div class="container-loader">
+        <div class="loader" id="loader">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+            <div class="dot dot-4"></div>
+            <div class="dot dot-5"></div>
+        </div>
+    </div>
+
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}")
+        </script>
+    @elseif (session('success'))
+        <script>
+            alert("{{ session('success') }}")
+        </script>
+    @endif
+
+
     <!-- =========== Scripts =========  -->
-    <script src="../js/script.js"></script>
+    <script src="{{ url('js/script.js') }}"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
