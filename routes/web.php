@@ -8,6 +8,7 @@ use App\Http\Controllers\LaporanUserController;
 use App\Http\Controllers\LaporanAdminController;
 use App\Http\Controllers\ProjectAdminController;
 use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckRole;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
@@ -53,7 +54,7 @@ Route::middleware(['check.login', 'role:admin'])->group(function () {
        Route::get('/laporan', [LaporanAdminController::class, 'index']);
        Route::get('/laporan/destroy/{id}', [LaporanAdminController::class, 'destroy']);
        Route::get('/user', [UserAdminController::class, 'index']);
-       Route::post('/user/store', [UserAdminController::class, 'store']);
+       Route::post('/user/register', [AuthController::class, 'register']);
        Route::get('/user/edit/{id}', [UserAdminController::class, 'edit']);
        Route::post('/user/update/{id}', [UserAdminController::class, 'update']);
        Route::get('/user/destroy/{id}', [UserAdminController::class, 'destroy']);

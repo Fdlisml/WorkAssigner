@@ -106,23 +106,21 @@
                         @if (Request::is('admin/user/edit/*'))
                             @php
                                 $data = [
-                                    'url' => 'admin/project/update/' . $projectEdit['id'],
-                                    'nama_project' => $projectEdit['nama_project'],
-                                    'tugas' => $projectEdit['tugas'],
-                                    'deskripsi' => $projectEdit['deskripsi'],
-                                    'tgl_mulai' => $projectEdit['tgl_mulai'],
-                                    'tgl_selesai' => $projectEdit['tgl_selesai'],
+                                    'url' => 'admin/user/update/' . $projectEdit['id'],
+                                    'name' => $projectEdit['nama_project'],
+                                    'username' => $projectEdit['tugas'],
+                                    'password' => $projectEdit['tugas'],
+                                    'role' => $projectEdit['deskripsi'],
                                 ];
                             @endphp
                         @else
                             @php
                                 $data = [
-                                    'url' => 'admin/user/store',
-                                    'nama_project' => '',
-                                    'tugas' => '',
-                                    'deskripsi' => '',
-                                    'tgl_mulai' => '',
-                                    'tgl_selesai' => '',
+                                    'url' => 'admin/user/register',
+                                    'name' => '',
+                                    'username' => '',
+                                    'password' => '',
+                                    'role' => '',
                                 ];
                             @endphp
                         @endif
@@ -138,6 +136,11 @@
                                     Username
                                 </label>
                                 <input type="text" name="username" value="{{ $data['username'] }}">
+                                
+                                <label>
+                                    Password
+                                </label>
+                                <input type="password" name="password" value="{{ $data['password'] }}">
 
                                 {{-- <label><br>
                                     Tgl Mulai
@@ -178,9 +181,9 @@
                                             <td>{{ $u['role'] }}</td>
                                             <td>
                                                 <div class="flex-btn">
-                                                    {{-- <a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a>
+                                                    <a href="{{ url('admin/user/destroy/' . $u['id']) }}">HAPUS</a>
                                                     |
-                                                    <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a> --}}
+                                                    <a href="{{ url('admin/user/edit/' . $u['id']) }}">Edit</a>
                                                 </div>
                                             </td>
                                         </tr>

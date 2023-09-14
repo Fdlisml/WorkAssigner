@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserApi;
-use App\Models\LoginApi;
+use App\Models\AuthApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,6 +16,37 @@ class LoginController extends Controller
       return view('login');
    }
 
+   public function register(Request $request)
+   {
+      $data_register = $request->validate([
+         'name' => ['required'],
+         'username' => ['required'],
+         'password' => ['required'],
+         'role' => ['required']
+      ]);
+
+      $user = AuthApi::register($data_register);
+
+      $response_data = json_decode($user, true);
+
+      $success = $response_data['success'];
+      $message = $response_data['message'];
+
+      if ($success) {
+         $id = $response_data['data']['id'];
+         $token = $response_data['data']['token'];
+         $name = $response_data['data']['name'];
+         session([
+            'id' => $id,
+            'token' => $token,
+            'name' => $name
+         ]);
+      } else {
+         echo "Error: " . $message;
+      }
+
+      return redirect('/admin/user');
+   }
    public function login(Request $request)
    {
       $data_login = $request->validate([
@@ -24,7 +54,7 @@ class LoginController extends Controller
          'password' => ['required'],
       ]);
 
-      $user = LoginApi::login($data_login);
+      $user = AuthApi::login($data_login);
 
       $response_data = json_decode($user, true);
 
@@ -56,53 +86,5 @@ class LoginController extends Controller
    {
       $request->session()->invalidate();
       return redirect('/login');
-   }
-
-   /**
-    * Show the form for creating a new resource.
-    */
-   public function create()
-   {
-      //
-   }
-
-   /**
-    * Store a newly created resource in storage.
-    */
-   public function store(Request $request)
-   {
-      //
-   }
-
-   /**
-    * Display the specified resource.
-    */
-   public function show(string $id)
-   {
-      //
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(string $id)
-   {
-      //
-   }
-
-   /**
-    * Update the specified resource in storage.
-    */
-   public function update(Request $request, string $id)
-   {
-      //
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    */
-   public function destroy(string $id)
-   {
-      //
    }
 }

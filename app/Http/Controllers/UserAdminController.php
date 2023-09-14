@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TugasApi;
 use App\Models\UserApi;
 use Illuminate\Http\Request;
 
@@ -32,17 +33,18 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
-        session_start();
-        $token = session('token');
-        $data_user = $request->validate([
-            'name' => ['required'],
-            'username' => ['required'],
-            'role' => ['required']
-        ]);
+        // session_start();
+        // $token = session('token');
+        // $data_user = $request->validate([
+        //     'name' => ['required'],
+        //     'username' => ['required'],
+        //     'password' => ['required'],
+        //     'role' => ['required']
+        // ]);
 
-        UserApi::postDataToAPI($data_user, $token);
+        // UserApi::postDataToAPI($data_user, $token);
 
-        return redirect('/admin/user')->with('success', 'Data User Berhasil di Tambah');
+        // return redirect('/admin/user')->with('success', 'Data User Berhasil di Tambah');
     }
 
     /**
@@ -66,7 +68,18 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        session_start();
+        $token = session('token');
+        $data_user = $request->validate([
+            'name' => ['required'],
+            'username' => ['required'],
+            'password' => ['required'],
+            'role' => ['required']
+        ]);
+
+        UserApi::updateDataInAPI($id, $data_user, $token);
+
+        return redirect('admin/user')->with('success', 'Data User Berhasil di Update');
     }
 
     /**
@@ -74,6 +87,23 @@ class UserAdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        session_start();
+        $token = session('token');
+
+        $tugas = TugasApi::getDataFromAPI($token);
+
+        $tugasData = [];
+        foreach ($tugas as $t) {
+            if ($t['id_user'] === $id) {
+                $tugasData[] = $t;
+            }
+        }
+
+        if ($tugasData) {
+            return back()->with('error', "User masih digunakan di menu Tugas");
+        }
+
+        UserApi::deleteDataInAPI($id, $token);
+        return redirect('/admin/user')->with('success', 'Data User Berhasil di Hapus');
     }
 }
