@@ -103,7 +103,7 @@
                             <a href="#" class="btn">View All</a>
                         </div>
 
-                        @if (Request::is('admin/project/edit/*'))
+                        @if (Request::is('admin/user/edit/*'))
                             @php
                                 $data = [
                                     'url' => 'admin/project/update/' . $projectEdit['id'],
@@ -117,7 +117,7 @@
                         @else
                             @php
                                 $data = [
-                                    'url' => 'admin/project/store',
+                                    'url' => 'admin/user/store',
                                     'nama_project' => '',
                                     'tugas' => '',
                                     'deskripsi' => '',
@@ -130,16 +130,16 @@
                             <form action="{{ url($data['url']) }}" method="post">
                                 @csrf
                                 <label>
-                                    Nama Project
+                                    Name
                                 </label>
-                                <input type="text" name="nama_project" value="{{ $data['nama_project'] }}">
-
+                                <input type="text" name="name" value="{{ $data['name'] }}">
+                                
                                 <label>
-                                    Deskripsi
+                                    Username
                                 </label>
-                                <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
+                                <input type="text" name="username" value="{{ $data['username'] }}">
 
-                                <label><br>
+                                {{-- <label><br>
                                     Tgl Mulai
                                 </label>
                                 <input type="date" name="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
@@ -147,7 +147,7 @@
                                 <label>
                                     Tgl Selesai
                                 </label>
-                                <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
+                                <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}"> --}}
 
                                 <button type="submit" class="cta">
                                     <span>Send Work !</span>
@@ -165,26 +165,22 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>NAMA PROJECT</th>
-                                    <th>TUGAS</th>
-                                    <th>DESKRIPSI</th>
-                                    <th>TANGGAL MULAI</th>
-                                    <th>TANGGAL SELESAI</th>
+                                    <th>NAME</th>
+                                    <th>USERNAME</th>
+                                    <th>ROLE</th>
                                     <th>ACTION</th>
                                 </tr>
-                                @foreach ($project as $p)
+                                @foreach ($user as $u)
                                     <div class="wadah-table">
                                         <tr>
-                                            <td>{{ $p['nama_project'] }}</td>
-                                            <td>{{ $p['tugas'] }}</td>
-                                            <td>{{ $p['deskripsi'] }}</td>
-                                            <td>{{ $p['tgl_mulai'] }}</td>
-                                            <td>{{ $p['tgl_selesai'] }}</td>
+                                            <td>{{ $u['name'] }}</td>
+                                            <td>{{ $u['username'] }}</td>
+                                            <td>{{ $u['role'] }}</td>
                                             <td>
                                                 <div class="flex-btn">
-                                                    <a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a>
+                                                    {{-- <a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a>
                                                     |
-                                                    <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a>
+                                                    <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a> --}}
                                                 </div>
                                             </td>
                                         </tr>

@@ -454,6 +454,7 @@ input:checked+.toggleBtn .star--6 {
     margin-top: 10px;
 }
 
+
 form input {
     width: 100%;
     padding: 5px;
@@ -463,7 +464,7 @@ form input {
     font-weight: bold;
     outline: none solid black;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 form .tugas,
@@ -516,25 +517,16 @@ form textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 30px auto;
     padding: 12px 18px;
     transition: all 0.2s ease;
     border: none;
-    background: none;
-}
-
-.cta:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    border-radius: 50px;
     background: var(--blue);
-    width: 45px;
-    height: 45px;
-    transition: all 0.3s ease;
+    width: 80%;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 5px 1px rgb(74, 74, 74);
 }
 
 .cta span {
@@ -543,38 +535,16 @@ form textarea {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: #234567;
-}
-
-.cta svg {
-    position: relative;
-    top: 0;
-    margin-left: 10px;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: #234567;
-    stroke-width: 2;
-    transform: translateX(-5px);
-    transition: all 0.3s ease;
+    color: white;
 }
 
 .cta span:hover {
     color: white;
 }
 
-.cta:hover:before {
-    width: 100%;
-    background: var(--blue);
-}
-
-.cta:hover svg {
-    transform: translateX(0);
-    stroke: white;
-}
-
 .cta:active {
-    transform: scale(0.95);
+    background-color: #a084e89e;
+    color: #535353;
 }
 
 .recentCustomers {
@@ -619,13 +589,13 @@ td .btn-action {
     height: 100%;
 }
 
-table tr td .flex-btn{
+table tr td .flex-btn {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-table tr td a{
+table tr td a {
     text-decoration: none;
 }
 

@@ -135,22 +135,6 @@
                             <form action="{{ url($data['url']) }}" method="POST">
                                 @csrf
                                 <label>
-                                    Tugas <input type="text" name="nama_tugas" class="tugas"
-                                        value="{{ $data['nama_tugas'] }}">
-                                </label>
-                                <label>
-                                    Deskripsi <input type="text" name="deskripsi" class="deskripsi"
-                                        value="{{ $data['deskripsi'] }}">
-                                </label>
-                                <label>
-                                    Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai"
-                                        value="{{ $data['tgl_mulai'] }}">
-                                </label>
-                                <label>
-                                    Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai"
-                                        value="{{ $data['tgl_selesai'] }}">
-                                </label>
-                                <label>
                                     Nama Project
                                     <select name="id_project">
                                         <option></option>
@@ -164,6 +148,23 @@
                                         @endforeach
                                     </select>
                                 </label>
+                                <label>
+                                    Tugas <input type="text" name="nama_tugas" class="tugas"
+                                        value="{{ $data['nama_tugas'] }}">
+                                </label>
+                                <label>
+                                    Deskripsi 
+                                    <textarea name="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea> 
+                                </label>
+                                <label>
+                                    Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai"
+                                        value="{{ $data['tgl_mulai'] }}">
+                                </label>
+                                <label>
+                                    Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai"
+                                        value="{{ $data['tgl_selesai'] }}">
+                                </label>
+                                
                                 <label>
                                     Nama Developer
                                     <select name="id_user">
