@@ -39,11 +39,11 @@ class AuthController extends Controller
             'token' => $token,
             'name' => $name
          ]);
+         return redirect('/admin/user');
       } else {
          echo "Error: " . $message;
       }
 
-      return redirect('/admin/user');
    }
    public function login(Request $request)
    {
@@ -72,12 +72,12 @@ class AuthController extends Controller
             'username' => $username,
             'role' => $role
          ]);
+         $page = ($role === "user") ? "/user/index" : "/admin/index";
+         return redirect($page);
       } else {
          echo "Error: " . $message;
       }
 
-      $page = ($role === "user") ? "/user/index" : "/admin/index";
-      return redirect($page);
    }
 
    public function logout(Request $request)
