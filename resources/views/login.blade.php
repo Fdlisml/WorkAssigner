@@ -1,34 +1,3 @@
-<?php
-// session_start();
-
-// require_once 'api/sendRequest.php';
-
-// if (isset($_POST['login'])) {
-//    $username = $_POST['username'];
-//    $password = $_POST['password'];
-//    $url = "https://klikyuk.com/ngankngonk/fadli/project-pkl/api/user.php?username=$username&password=$password";
-//    $response = sendRequest($url, 'GET');
-//    $data = json_decode($response, true);
-
-//    if (!isset($data['data_user'])) {
-//       $error = '<script>alert("Username atau password salah!");</script>';
-//       echo $error;
-//    } else {
-//       $user = $data['data_user'];
-//       $_SESSION['id_user'] = $user['id'];
-//       $_SESSION['username'] = $user['username'];
-//       $_SESSION['name'] = $user['name'];
-//       $_SESSION['role'] = $user['role'];
-//       if ($user['role'] === "user") {
-//          header('location:user/index.php');
-//          exit();
-//       } elseif ($user['role'] === "admin") {
-//          header('location:admin/index.php');
-//          exit();
-//       }
-//    }
-// }
-?>
 <!DOCTYPE html>
 <html lang="en">
 

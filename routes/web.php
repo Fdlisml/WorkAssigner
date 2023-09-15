@@ -26,9 +26,9 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 Route::get('/', [IndexUserController::class, 'index'])->middleware(['check.login']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login_check', [LoginController::class, 'login']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login_check', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['check.login', 'role:user'])->group(function () {
    Route::prefix('user')->group(function () {

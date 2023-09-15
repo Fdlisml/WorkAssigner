@@ -58,15 +58,20 @@ class UserAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+      session_start();
+      $token = session('token');
+      return view('admin.user', [
+         'user' => UserApi::getDataFromAPI($token),
+         'userEdit' => UserApi::getDataByIdFromAPI($id, $token),
+      ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
         session_start();
         $token = session('token');
@@ -85,7 +90,7 @@ class UserAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         session_start();
         $token = session('token');

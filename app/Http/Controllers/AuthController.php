@@ -6,7 +6,7 @@ use App\Models\AuthApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
    /**
     * Display a listing of the resource.
@@ -33,11 +33,9 @@ class LoginController extends Controller
       $message = $response_data['message'];
 
       if ($success) {
-         $id = $response_data['data']['id'];
          $token = $response_data['data']['token'];
          $name = $response_data['data']['name'];
          session([
-            'id' => $id,
             'token' => $token,
             'name' => $name
          ]);

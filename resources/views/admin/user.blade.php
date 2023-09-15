@@ -106,11 +106,11 @@
                         @if (Request::is('admin/user/edit/*'))
                             @php
                                 $data = [
-                                    'url' => 'admin/user/update/' . $projectEdit['id'],
-                                    'name' => $projectEdit['nama_project'],
-                                    'username' => $projectEdit['tugas'],
-                                    'password' => $projectEdit['tugas'],
-                                    'role' => $projectEdit['deskripsi'],
+                                    'url' => 'admin/user/update/' . $userEdit['id'],
+                                    'name' => $userEdit['name'],
+                                    'username' => $userEdit['username'],
+                                    'password' => $userEdit['password'],
+                                    'role' => $userEdit['role'],
                                 ];
                             @endphp
                         @else
@@ -131,16 +131,33 @@
                                     Name
                                 </label>
                                 <input type="text" name="name" value="{{ $data['name'] }}">
-                                
+
                                 <label>
                                     Username
                                 </label>
                                 <input type="text" name="username" value="{{ $data['username'] }}">
-                                
+
                                 <label>
                                     Password
                                 </label>
                                 <input type="password" name="password" value="{{ $data['password'] }}">
+
+                                <label>
+                                    Role
+                                </label>
+                                <select name="role">
+                                    @if ($data['role'] === 'user')
+                                        <option value="user" selected>User</option>
+                                        <option value="admin">Admin</option>
+                                    @elseif($data['role'] === 'admin')
+                                        <option value="user">User</option>
+                                        <option value="admin" selected>Admin</option>
+                                    @else
+                                        <option></option>
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    @endif
+                                </select>
 
                                 {{-- <label><br>
                                     Tgl Mulai
@@ -170,6 +187,7 @@
                                 <tr>
                                     <th>NAME</th>
                                     <th>USERNAME</th>
+                                    <th>PASSWORD</th>
                                     <th>ROLE</th>
                                     <th>ACTION</th>
                                 </tr>
@@ -178,6 +196,7 @@
                                         <tr>
                                             <td>{{ $u['name'] }}</td>
                                             <td>{{ $u['username'] }}</td>
+                                            <td>{{ ($u['password']) }}</td>
                                             <td>{{ $u['role'] }}</td>
                                             <td>
                                                 <div class="flex-btn">

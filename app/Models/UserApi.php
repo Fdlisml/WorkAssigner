@@ -36,19 +36,6 @@ class UserApi extends Model
       return $data['data_user'];
    }
 
-   // public static function postDataToAPI($postData, $token)
-   // {
-   //    $client = new Client();
-   //    $response = $client->post(self::API_ENDPOINT, [
-   //       'headers' => [
-   //          'Authorization' => 'Bearer ' . $token,
-   //       ],
-   //       'json' => $postData
-   //    ]);
-
-   //    return $response->getStatusCode(); // Returns the HTTP status code
-   // }
-
    public static function updateDataInAPI($id, $updatedData, $token)
    {
       $client = new Client();
