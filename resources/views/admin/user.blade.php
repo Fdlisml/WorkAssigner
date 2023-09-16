@@ -108,7 +108,7 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2>Data Project</h2>
+                            <h2>Form User</h2>
                         </div>
 
                         @if (Request::is('admin/user/edit/*'))
@@ -187,7 +187,7 @@
                     <!-- ================= New Customers ================ -->
                     <div class="recentCustomers">
                         <div class="cardHeader">
-                            <h2>Data Project</h2>
+                            <h2>Data User</h2>
                         </div>
 
                         <table>

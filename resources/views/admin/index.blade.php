@@ -108,7 +108,7 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2>Data Project</h2>
+                            <h2>Form Project</h2>
                         </div>
 
                         @if (Request::is('admin/project/edit/*'))

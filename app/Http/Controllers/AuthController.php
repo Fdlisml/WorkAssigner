@@ -75,7 +75,7 @@ class AuthController extends Controller
          $page = ($role === "user") ? "/user/index" : "/admin/index";
          return redirect($page);
       } else {
-         echo "Error: " . $message;
+         return redirect()->route('login')->with('error', $message);
       }
 
    }

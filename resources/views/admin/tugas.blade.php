@@ -111,7 +111,7 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2>Tugas</h2>
+                            <h2>Form Tugas</h2>
                         </div>
                         @if (Request::is('admin/tugas/edit/*'))
                             @php
@@ -157,6 +157,20 @@
                                     </select>
                                 </label>
                                 <label>
+                                    Nama Developer
+                                    <select name="id_user">
+                                        <option></option>
+                                        @foreach ($userData as $u)
+                                            @if ($u['id'] == $data['id_user'])
+                                                <option value="{{ $u['id'] }}" selected>{{ $u['name'] }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $u['id'] }}">{{ $u['name'] }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </label>
+                                <label>
                                     Tugas <input type="text" name="nama_tugas" class="tugas"
                                         value="{{ $data['nama_tugas'] }}">
                                 </label>
@@ -171,21 +185,6 @@
                                 <label>
                                     Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai"
                                         value="{{ $data['tgl_selesai'] }}">
-                                </label>
-
-                                <label>
-                                    Nama Developer
-                                    <select name="id_user">
-                                        <option></option>
-                                        @foreach ($userData as $u)
-                                            @if ($u['id'] == $data['id_user'])
-                                                <option value="{{ $u['id'] }}" selected>{{ $u['name'] }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $u['id'] }}">{{ $u['name'] }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
                                 </label>
                                 <button type="submit" class="cta">
                                     <span>Send Work !</span>
