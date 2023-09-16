@@ -39,6 +39,15 @@
                 </li>
 
                 <li>
+                    <a href="{{ url('/admin/user') }}">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">User</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ url('/admin/laporan') }}">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
@@ -100,7 +109,6 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>Data Project</h2>
-                            <a href="#" class="btn">View All</a>
                         </div>
 
                         @if (Request::is('admin/user/edit/*'))
@@ -196,7 +204,7 @@
                                         <tr>
                                             <td>{{ $u['name'] }}</td>
                                             <td>{{ $u['username'] }}</td>
-                                            <td>{{ ($u['password']) }}</td>
+                                            <td>{{ $u['password'] }}</td>
                                             <td>{{ $u['role'] }}</td>
                                             <td>
                                                 <div class="flex-btn">

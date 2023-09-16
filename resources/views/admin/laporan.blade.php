@@ -39,6 +39,15 @@
                 </li>
 
                 <li>
+                    <a href="{{ url('/admin/user') }}">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">User</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ url('/admin/laporan') }}">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
@@ -133,7 +142,8 @@
                                         <td>{{ $l['user']['name'] }}</td>
                                         <td>
                                             <div class="flex-btn">
-                                                <a href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a>
+                                                <a
+                                                    href="{{ url('admin/laporan/destroy/' . $l['laporan']['id']) }}">HAPUS</a>
                                             </div>
                                         </td>
                                     </tr>

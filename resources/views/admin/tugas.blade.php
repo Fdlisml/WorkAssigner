@@ -39,6 +39,15 @@
                 </li>
 
                 <li>
+                    <a href="{{ url('/admin/user') }}">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">User</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ url('/admin/laporan') }}">
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
@@ -103,7 +112,6 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>Tugas</h2>
-                            <a href="#" class="btn">View All</a>
                         </div>
                         @if (Request::is('admin/tugas/edit/*'))
                             @php
@@ -153,8 +161,8 @@
                                         value="{{ $data['nama_tugas'] }}">
                                 </label>
                                 <label>
-                                    Deskripsi 
-                                    <textarea name="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea> 
+                                    Deskripsi
+                                    <textarea name="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
                                 </label>
                                 <label>
                                     Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai"
@@ -164,7 +172,7 @@
                                     Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai"
                                         value="{{ $data['tgl_selesai'] }}">
                                 </label>
-                                
+
                                 <label>
                                     Nama Developer
                                     <select name="id_user">
@@ -218,8 +226,11 @@
                                             <td>{{ $t['user']['name'] }}</td>
                                             <td>
                                                 <div class="flex-btn">
-                                                    <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a> |
-                                                    <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                                    <a
+                                                        href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                                    |
+                                                    <a
+                                                        href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
                                                 </div>
                                             </td>
                                         </tr>
