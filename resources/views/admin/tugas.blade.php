@@ -85,8 +85,8 @@
                     </div>
 
                     <div class="search">
-                        <form action="{{ url('/admin/project/search') }}" method="GET">
-                            <input type="text" name="keyword" placeholder="Cari proyek...">
+                        <form action="{{ url('/admin/tugas/search') }}" method="GET">
+                            <input type="text" name="keyword" placeholder="Cari tugas...">
                             <ion-icon name="search-outline"></ion-icon>
                         </form>
                     </div>
