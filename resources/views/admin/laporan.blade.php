@@ -123,6 +123,7 @@
                                 <th>KELUHAN</th>
                                 <th>PROGRES</th>
                                 <th>TANGGAL LAPORAN</th>
+                                <th>NAMA PROJECT</th>
                                 <th>NAMA TUGAS</th>
                                 <th>NAMA DEVELOPER</th>
                                 <th>ACTION</th>
@@ -138,6 +139,7 @@
                                         <td>{{ $l['laporan']['keluhan'] }}</td>
                                         <td>{{ $l['laporan']['progres'] }}</td>
                                         <td>{{ $l['laporan']['tgl_laporan'] }}</td>
+                                        <td>{{ $l['project']['nama_project'] }}</td>
                                         <td>{{ $l['tugas']['nama_tugas'] }}</td>
                                         <td>{{ $l['user']['name'] }}</td>
                                         <td>

@@ -116,8 +116,8 @@
                                 $data = [
                                     'url' => 'admin/project/update/' . $projectEdit['id'],
                                     'nama_project' => $projectEdit['nama_project'],
-                                    'tugas' => $projectEdit['tugas'],
                                     'deskripsi' => $projectEdit['deskripsi'],
+                                    'prioritas' => $projectEdit['prioritas'],
                                     'tgl_mulai' => $projectEdit['tgl_mulai'],
                                     'tgl_selesai' => $projectEdit['tgl_selesai'],
                                 ];
@@ -127,8 +127,8 @@
                                 $data = [
                                     'url' => 'admin/project/store',
                                     'nama_project' => '',
-                                    'tugas' => '',
                                     'deskripsi' => '',
+                                    'prioritas' => '',
                                     'tgl_mulai' => '',
                                     'tgl_selesai' => '',
                                 ];
@@ -141,19 +141,24 @@
                                     Nama Project
                                 </label>
                                 <input type="text" name="nama_project" value="{{ $data['nama_project'] }}">
-
+                                
                                 <label>
-                                    Deskripsi
-                                </label>
-                                <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
+                                   Deskripsi
+                                 </label>
+                                 <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
+                                 
+                                 <label>
+                                     Prioritas
+                                 </label>
+                                 <input type="number" name="prioritas" max="10" min="1" value="{{ $data['prioritas'] }}">
 
                                 <label><br>
-                                    Tgl Mulai
+                                    Tanggal Mulai
                                 </label>
                                 <input type="date" name="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
 
                                 <label>
-                                    Tgl Selesai
+                                    Tanggal Selesai
                                 </label>
                                 <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
 
@@ -174,8 +179,8 @@
                             <thead>
                                 <tr>
                                     <th>NAMA PROJECT</th>
-                                    <th>TUGAS</th>
                                     <th>DESKRIPSI</th>
+                                    <th>PRIORITAS</th>
                                     <th>TANGGAL MULAI</th>
                                     <th>TANGGAL SELESAI</th>
                                     <th>ACTION</th>
@@ -184,8 +189,8 @@
                                     <div class="wadah-table">
                                         <tr>
                                             <td>{{ $p['nama_project'] }}</td>
-                                            <td>{{ $p['tugas'] }}</td>
                                             <td>{{ $p['deskripsi'] }}</td>
+                                            <td>{{ $p['prioritas'] }}</td>
                                             <td>{{ $p['tgl_mulai'] }}</td>
                                             <td>{{ $p['tgl_selesai'] }}</td>
                                             <td>
@@ -193,6 +198,8 @@
                                                     <a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a>
                                                     |
                                                     <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a>
+                                                    |
+                                                    <a href="{{ url('admin/tugas/create/' . $p['id']) }}">Tambah Tugas</a>
                                                 </div>
                                             </td>
                                         </tr>

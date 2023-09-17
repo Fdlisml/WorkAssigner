@@ -48,6 +48,7 @@ Route::middleware(['check.login', 'role:admin'])->group(function () {
        Route::get('/project/destroy/{id}', [ProjectAdminController::class, 'destroy']);
        Route::get('/tugas', [TugasAdminController::class, 'index']);
        Route::post('/tugas/store', [TugasAdminController::class, 'store']);
+       Route::get('/tugas/create/{id_project}', [TugasAdminController::class, 'create_project_selected']);
        Route::get('/tugas/edit/{id}', [TugasAdminController::class, 'edit']);
        Route::post('/tugas/update/{id}', [TugasAdminController::class, 'update']);
        Route::get('/tugas/destroy/{id}', [TugasAdminController::class, 'destroy']);

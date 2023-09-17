@@ -7,6 +7,7 @@ use App\Models\TugasApi;
 use App\Models\ProjectApi;
 use App\Models\UserApi;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class TugasAdminController extends Controller
 {
@@ -91,33 +92,30 @@ class TugasAdminController extends Controller
       //
    }
 
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(int $id)
+   public function create_project_selected(int $id_project)
    {
       session_start();
       $token = session('token');
       $tugas = TugasApi::getDataFromAPI($token);
-      $project = ProjectApi::getDataFromAPI($token);
-      $user = UserApi::getDataFromAPI($token);
+      $projects = ProjectApi::getDataFromAPI($token);
+      $users = UserApi::getDataFromAPI($token);
 
       $combinedData = [];
 
       foreach ($tugas as $t) {
-         $id_project = $t['id_project'];
-         $id_user = $t['id_user'];
+         $id_projects = $t['id_project'];
+         $id_users = $t['id_user'];
 
          $projectData = [];
-         foreach ($project as $p) {
-            if ($p['id'] === $id_project) {
+         foreach ($projects as $p) {
+            if ($p['id'] === $id_projects) {
                $projectData[0] = $p;
             }
          }
 
          $userData = [];
-         foreach ($user as $u) {
-            if ($u['id'] === $id_user) {
+         foreach ($users as $u) {
+            if ($u['id'] === $id_users) {
                $userData[0] = $u;
             }
          }
@@ -131,9 +129,55 @@ class TugasAdminController extends Controller
 
       return view('admin.tugas', [
          'tugasData' => $combinedData,
-         'projectData' => $project,
-         'userData' => $user,
-         'tugasEdit' => TugasApi::getDataByIdFromAPI($id, $token)
+         'projectData' => $projects,
+         'userData' => $users,
+         'tugasDataF' => ProjectApi::getDataByIdFromAPI($id_project, $token)
+      ]);
+   }
+
+   /**
+    * Show the form for editing the specified resource.
+    */
+   public function edit(int $id)
+   {
+      session_start();
+      $token = session('token');
+      $tugas = TugasApi::getDataFromAPI($token);
+      $projects = ProjectApi::getDataFromAPI($token);
+      $users = UserApi::getDataFromAPI($token);
+
+      $combinedData = [];
+
+      foreach ($tugas as $t) {
+         $id_projects = $t['id_project'];
+         $id_users = $t['id_user'];
+
+         $projectData = [];
+         foreach ($projects as $p) {
+            if ($p['id'] === $id_projects) {
+               $projectData[0] = $p;
+            }
+         }
+
+         $userData = [];
+         foreach ($users as $u) {
+            if ($u['id'] === $id_users) {
+               $userData[0] = $u;
+            }
+         }
+
+         $combinedData[] = [
+            'tugas' => $t,
+            'project' => $projectData[0],
+            'user' => $userData[0],
+         ];
+      }
+
+      return view('admin.tugas', [
+         'tugasData' => $combinedData,
+         'projectData' => $projects,
+         'userData' => $users,
+         'tugasDataF' => TugasApi::getDataByIdFromAPI($id, $token)
       ]);
    }
 

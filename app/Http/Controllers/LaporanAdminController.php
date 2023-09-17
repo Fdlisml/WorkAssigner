@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LaporanApi;
+use App\Models\ProjectApi;
 use App\Models\TugasApi;
 use App\Models\UserApi;
 use Illuminate\Http\Request;
@@ -16,26 +17,36 @@ class LaporanAdminController extends Controller
    {
       session_start();
       $token = session('token');
-      $laporan = LaporanApi::getDataFromAPI($token);
+      $laporans = LaporanApi::getDataFromAPI($token);
       $tugas = TugasApi::getDataFromAPI($token);
-      $user = UserApi::getDataFromAPI($token);
+      $users = UserApi::getDataFromAPI($token);
+      $projects = ProjectApi::getDataFromAPI($token);
 
       $combinedData = [];
 
-      foreach ($laporan as $l) {
+      foreach ($laporans as $l) {
          $id_tugas = $l['id_tugas'];
-         $id_user = $l['id_user'];
+         $id_users = $l['id_user'];
 
          $tugasData = [];
          foreach ($tugas as $t) {
             if ($t['id'] === $id_tugas) {
+               $id_project = $t['id_project'];
+
+               $projectData = [];
+               foreach ($projects as $p){
+                  if ($p['id'] === $id_project) {
+                     $projectData[0] = $p;
+                  }
+               }
+
                $tugasData[0] = $t;
             }
          }
 
          $userData = [];
-         foreach ($user as $u) {
-            if ($u['id'] === $id_user) {
+         foreach ($users as $u) {
+            if ($u['id'] === $id_users) {
                $userData[0] = $u;
             }
          }
@@ -43,7 +54,8 @@ class LaporanAdminController extends Controller
          $combinedData[] = [
             'laporan' => $l,
             'tugas' => $tugasData[0],
-            'user' => $userData[0],
+            'project' => $projectData[0],
+            'user' => $userData[0]
          ];
       }
       return view('admin.laporan', [

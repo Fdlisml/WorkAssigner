@@ -116,13 +116,25 @@
                         @if (Request::is('admin/tugas/edit/*'))
                             @php
                                 $data = [
-                                    'url' => 'admin/tugas/update/' . $tugasEdit['id'],
-                                    'nama_tugas' => $tugasEdit['nama_tugas'],
-                                    'deskripsi' => $tugasEdit['deskripsi'],
-                                    'tgl_mulai' => $tugasEdit['tgl_mulai'],
-                                    'tgl_selesai' => $tugasEdit['tgl_selesai'],
-                                    'id_project' => $tugasEdit['id_project'],
-                                    'id_user' => $tugasEdit['id_user'],
+                                    'url' => 'admin/tugas/update/' . $tugasDataF['id'],
+                                    'nama_tugas' => $tugasDataF['nama_tugas'],
+                                    'deskripsi' => $tugasDataF['deskripsi'],
+                                    'tgl_mulai' => $tugasDataF['tgl_mulai'],
+                                    'tgl_selesai' => $tugasDataF['tgl_selesai'],
+                                    'id_project' => $tugasDataF['id_project'],
+                                    'id_user' => $tugasDataF['id_user'],
+                                ];
+                            @endphp
+                        @elseif (Request::is('admin/tugas/create/*'))
+                            @php
+                                $data = [
+                                    'url' => 'admin/tugas/store',
+                                    'nama_tugas' => '',
+                                    'deskripsi' => '',
+                                    'tgl_mulai' => '',
+                                    'tgl_selesai' => '',
+                                    'id_project' => $tugasDataF['id'],
+                                    'id_user' => '',
                                 ];
                             @endphp
                         @else
