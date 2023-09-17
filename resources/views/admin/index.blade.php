@@ -84,6 +84,13 @@
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
 
+                    <div class="search">
+                        <form action="{{ url('/admin/project/search') }}" method="GET">
+                            <input type="text" name="keyword" placeholder="Cari proyek...">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </form>
+                    </div>
+
                     <div class="toggleWrapper">
                         <input type="checkbox" class="dn" id="dn">
                         <label for="dn" class="toggleBtn">
@@ -176,13 +183,6 @@
                             <h2>Data Project</h2>
                         </div>
 
-                        <div class="search">
-                            <form action="{{ url('/admin/project/search') }}" method="GET">
-                                <input type="text" name="keyword" placeholder="Cari proyek...">
-                                <button type="submit">Cari</button>
-                            </form>
-                        </div>
-
                         <table>
                             <thead>
                                 <tr>
@@ -207,7 +207,8 @@
                                                     |
                                                     <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a>
                                                     |
-                                                    <a href="{{ url('admin/tugas/create/' . $p['id']) }}">Tambah Tugas</a>
+                                                    <a href="{{ url('admin/tugas/create/' . $p['id']) }}">Tambah
+                                                        Tugas</a>
                                                 </div>
                                             </td>
                                         </tr>

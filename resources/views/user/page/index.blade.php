@@ -34,6 +34,7 @@
                             <td>{{ $tugas['tgl_selesai'] }}</td>
                         </tr>
                     </tbody>
+                    
                 </table>
             </div>
         </div>

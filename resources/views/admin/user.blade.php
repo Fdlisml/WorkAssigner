@@ -84,6 +84,13 @@
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
 
+                    <div class="search">
+                        <form action="{{ url('/admin/project/search') }}" method="GET">
+                            <input type="text" name="keyword" placeholder="Cari proyek...">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </form>
+                    </div>
+
                     <div class="toggleWrapper">
                         <input type="checkbox" class="dn" id="dn">
                         <label for="dn" class="toggleBtn">
@@ -179,13 +186,6 @@
                             <h2>Data User</h2>
                         </div>
 
-                        <div class="search">
-                            <form action="{{ url('/admin/user/search') }}" method="GET">
-                                <input type="text" name="keyword" placeholder="Cari user...">
-                                <button type="submit">Cari</button>
-                            </form>
-                        </div>
-
                         <table>
                             <thead>
                                 <tr>
@@ -196,7 +196,6 @@
                                     <th>ACTION</th>
                                 </tr>
                                 @foreach ($user as $u)
-                                    <div class="wadah-table">
                                         <tr>
                                             <td>{{ $u['name'] }}</td>
                                             <td>{{ $u['username'] }}</td>
@@ -210,7 +209,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    </div>
+                                    
                                 @endforeach
                             </thead>
                         </table>
