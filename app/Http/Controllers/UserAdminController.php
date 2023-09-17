@@ -20,6 +20,22 @@ class UserAdminController extends Controller
         ]);
     }
 
+   public function search()
+   {
+      session_start();
+      $token = session('token');
+      $users = UserApi::getDataFromAPI($token);
+
+      $keyword = request('keyword');
+      $filteredUser = array_filter($users, function ($user) use ($keyword) {
+         return strpos(strtolower($user['name']), strtolower($keyword)) !== false;
+      });
+
+      return view('admin.user', [
+         'user' => $filteredUser,
+      ]);
+   }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -141,16 +141,17 @@
                                     Nama Project
                                 </label>
                                 <input type="text" name="nama_project" value="{{ $data['nama_project'] }}">
-                                
+
                                 <label>
-                                   Deskripsi
-                                 </label>
-                                 <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
-                                 
-                                 <label>
-                                     Prioritas
-                                 </label>
-                                 <input type="number" name="prioritas" max="10" min="1" value="{{ $data['prioritas'] }}">
+                                    Deskripsi
+                                </label>
+                                <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
+
+                                <label>
+                                    Prioritas
+                                </label>
+                                <input type="number" name="prioritas" max="10" min="1"
+                                    value="{{ $data['prioritas'] }}">
 
                                 <label><br>
                                     Tanggal Mulai
@@ -173,6 +174,13 @@
                     <div class="recentCustomers">
                         <div class="cardHeader">
                             <h2>Data Project</h2>
+                        </div>
+
+                        <div class="search">
+                            <form action="{{ url('/admin/project/search') }}" method="GET">
+                                <input type="text" name="keyword" placeholder="Cari proyek...">
+                                <button type="submit">Cari</button>
+                            </form>
                         </div>
 
                         <table>

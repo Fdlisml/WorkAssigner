@@ -166,17 +166,6 @@
                                         <option value="admin">Admin</option>
                                     @endif
                                 </select>
-
-                                {{-- <label><br>
-                                    Tgl Mulai
-                                </label>
-                                <input type="date" name="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
-
-                                <label>
-                                    Tgl Selesai
-                                </label>
-                                <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}"> --}}
-
                                 <button type="submit" class="cta">
                                     <span>Send Work !</span>
                                 </button>
@@ -188,6 +177,13 @@
                     <div class="recentCustomers">
                         <div class="cardHeader">
                             <h2>Data User</h2>
+                        </div>
+
+                        <div class="search">
+                            <form action="{{ url('/admin/user/search') }}" method="GET">
+                                <input type="text" name="keyword" placeholder="Cari user...">
+                                <button type="submit">Cari</button>
+                            </form>
                         </div>
 
                         <table>

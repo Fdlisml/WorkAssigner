@@ -215,6 +215,13 @@
                             <h2>Data Tugas</h2>
                         </div>
 
+                        <div class="search">
+                            <form action="{{ url('/admin/tugas/search') }}" method="GET">
+                                <input type="text" name="keyword" placeholder="Cari tugas...">
+                                <button type="submit">Cari</button>
+                            </form>
+                        </div>
+
                         <table>
                             <thead>
                                 <tr>

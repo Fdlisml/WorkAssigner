@@ -17,9 +17,7 @@ class ProjectAdminController extends Controller
    {
       session_start();
       $token = session('token');
-
       $projects = ProjectApi::getDataFromAPI($token);
-
       usort($projects, function ($a, $b) {
          return $a['prioritas'] - $b['prioritas'];
       });
@@ -29,6 +27,27 @@ class ProjectAdminController extends Controller
          "slug" => "style"
       ]);
    }
+   
+   public function search()
+   {
+      session_start();
+      $token = session('token');
+      $projects = ProjectApi::getDataFromAPI($token);
+      usort($projects, function ($a, $b) {
+         return $a['prioritas'] - $b['prioritas'];
+      });
+
+      $keyword = request('keyword');
+      $filteredProjects = array_filter($projects, function ($project) use ($keyword) {
+         return strpos(strtolower($project['nama_project']), strtolower($keyword)) !== false;
+      });
+
+      return view('admin.index', [
+         'project' => $filteredProjects,
+         'slug' => 'style'
+      ]);
+   }
+
    /**
     * Display a listing of the resource.
     */

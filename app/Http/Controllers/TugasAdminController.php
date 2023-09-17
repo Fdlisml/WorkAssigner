@@ -23,7 +23,6 @@ class TugasAdminController extends Controller
       $user = UserApi::getDataFromAPI($token);
 
       $combinedData = [];
-
       foreach ($tugas as $t) {
          $id_project = $t['id_project'];
          $id_user = $t['id_user'];
@@ -51,6 +50,52 @@ class TugasAdminController extends Controller
 
       return view('admin.tugas', [
          'tugasData' => $combinedData,
+         'projectData' => $project,
+         'userData' => $user
+      ]);
+   }
+
+   public function search()
+   {
+      session_start();
+      $token = session('token');
+      $tugas = TugasApi::getDataFromAPI($token);
+      $project = ProjectApi::getDataFromAPI($token);
+      $user = UserApi::getDataFromAPI($token);
+
+      $tugasData = [];
+      foreach ($tugas as $t) {
+         $id_project = $t['id_project'];
+         $id_user = $t['id_user'];
+
+         $projectData = [];
+         foreach ($project as $p) {
+            if ($p['id'] === $id_project) {
+               $projectData[0] = $p;
+            }
+         }
+
+         $userData = [];
+         foreach ($user as $u) {
+            if ($u['id'] === $id_user) {
+               $userData[0] = $u;
+            }
+         }
+
+         $tugasData[] = [
+            'tugas' => $t,
+            'project' => $projectData[0],
+            'user' => $userData[0],
+         ];
+      }
+
+      $keyword = request('keyword');
+      $filteredTugas = array_filter($tugasData, function ($t) use ($keyword) {
+         return strpos(strtolower($t['tugas']['nama_tugas']), strtolower($keyword)) !== false;
+      });
+
+      return view('admin.tugas', [
+         'tugasData' => $filteredTugas,
          'projectData' => $project,
          'userData' => $user
       ]);
@@ -101,7 +146,6 @@ class TugasAdminController extends Controller
       $users = UserApi::getDataFromAPI($token);
 
       $combinedData = [];
-
       foreach ($tugas as $t) {
          $id_projects = $t['id_project'];
          $id_users = $t['id_user'];
@@ -147,7 +191,6 @@ class TugasAdminController extends Controller
       $users = UserApi::getDataFromAPI($token);
 
       $combinedData = [];
-
       foreach ($tugas as $t) {
          $id_projects = $t['id_project'];
          $id_users = $t['id_user'];

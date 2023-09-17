@@ -23,7 +23,6 @@ class LaporanAdminController extends Controller
       $projects = ProjectApi::getDataFromAPI($token);
 
       $combinedData = [];
-
       foreach ($laporans as $l) {
          $id_tugas = $l['id_tugas'];
          $id_users = $l['id_user'];
@@ -58,10 +57,67 @@ class LaporanAdminController extends Controller
             'user' => $userData[0]
          ];
       }
+
       return view('admin.laporan', [
          'laporanData' => $combinedData,
       ]);
    }
+     
+   public function search()
+   {
+      session_start();
+      $token = session('token');
+      $laporans = LaporanApi::getDataFromAPI($token);
+      $tugas = TugasApi::getDataFromAPI($token);
+      $users = UserApi::getDataFromAPI($token);
+      $projects = ProjectApi::getDataFromAPI($token);
+
+      $laporanData = [];
+      foreach ($laporans as $l) {
+         $id_tugas = $l['id_tugas'];
+         $id_users = $l['id_user'];
+
+         $tugasData = [];
+         foreach ($tugas as $t) {
+            if ($t['id'] === $id_tugas) {
+               $id_project = $t['id_project'];
+
+               $projectData = [];
+               foreach ($projects as $p){
+                  if ($p['id'] === $id_project) {
+                     $projectData[0] = $p;
+                  }
+               }
+
+               $tugasData[0] = $t;
+            }
+         }
+
+         $userData = [];
+         foreach ($users as $u) {
+            if ($u['id'] === $id_users) {
+               $userData[0] = $u;
+            }
+         }
+
+         $laporanData[] = [
+            'laporan' => $l,
+            'tugas' => $tugasData[0],
+            'project' => $projectData[0],
+            'user' => $userData[0]
+         ];
+      }
+
+      $keyword = request('keyword');
+      $filteredLaporans = array_filter($laporanData, function ($laporan) use ($keyword) {
+         return strpos(strtolower($laporan['laporan']['nama_laporan']), strtolower($keyword)) !== false;
+      });
+
+      return view('admin.laporan', [
+         'laporanData' => $filteredLaporans,
+      ]);
+   }
+
    /**
     * Show the form for creating a new resource.
     */

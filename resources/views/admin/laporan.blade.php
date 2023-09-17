@@ -115,6 +115,14 @@
                     <div class="cardHeader">
                         <h2>Data Laporan</h2>
                     </div>
+
+                    <div class="search">
+                        <form action="{{ url('/admin/laporan/search') }}" method="GET">
+                            <input type="text" name="keyword" placeholder="Cari laporan...">
+                            <button type="submit">Cari</button>
+                        </form>
+                    </div>
+
                     <table>
                         <thead>
                             <tr>
