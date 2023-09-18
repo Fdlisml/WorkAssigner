@@ -867,6 +867,7 @@ table tr td a:nth-child(3) {
 }
 
 /* Add Animation */
+
 @-webkit-keyframes animatetop {
    from {
       left: -300px;
@@ -903,7 +904,7 @@ table tr td a:nth-child(3) {
 .close:focus {
    color: #000;
    text-decoration: none;
-   cursor: pointer;
+   cursor: pointer;  
 }
 
 /* nightmode */

@@ -1332,11 +1332,10 @@ button:hover .button-text {
     /* Full width */
     height: 100%;
     /* Full height */
-    overflow: auto;
+    overflow: hidden;
     /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.219);
     /* Black w/ opacity */
 }
 
@@ -1352,11 +1351,25 @@ button:hover .button-text {
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.7s;
+    
 }
 
 /* Add Animation */
-@-webkit-keyframes animatetop {
+
+@keyframes animatetop {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* @-webkit-keyframes animatetop {
     from {
         left: -300px;
         opacity: 0
@@ -1378,7 +1391,7 @@ button:hover .button-text {
         left: 0;
         opacity: 1
     }
-}
+} */
 
 /* The Close Button */
 .close {
@@ -1498,7 +1511,8 @@ button:hover .button-text {
     .field .range-active input.range {
         width: 100%;
     }
-    .modal-content{
+
+    .modal-content {
         width: 40%;
     }
 }
@@ -1580,7 +1594,7 @@ button:hover .button-text {
         right: 0;
     }
 
-    .modal-content{
+    .modal-content {
         width: 80%;
     }
 }
