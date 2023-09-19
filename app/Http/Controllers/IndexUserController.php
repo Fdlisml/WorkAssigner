@@ -26,9 +26,8 @@ class IndexUserController extends Controller
          }
       }
 
-      $randomTugas = Arr::random($tugas_user);
       return view('user.page.index', [
-         'tugas' => $randomTugas,
+         'tugas' => $tugas_user,
          'slug' => 'index'
       ]);
    }

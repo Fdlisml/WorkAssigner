@@ -6,13 +6,28 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Jobs Today</h2>
-                <a id="myBtn" class="btn">Form Laporan</a>
+                
             </div>
 
             <div class="wadah-table">
-                <table>
+                <table> 
+                    <thead>
+                        <th>Name Task</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>Date of completion</th>
+                        <th>Action</th>
+                    </thead>
+                    @foreach ($tugas as $t)
                     <tbody>
-                        <tr>
+                        <td>{{ $t['nama_tugas'] }}</td>
+                        <td>{{ $t['deskripsi'] }}</td>
+                        <td>{{ $t['tgl_mulai'] }}</td>
+                        <td>{{ $t['tgl_selesai'] }}</td>
+                        <td><a id="myBtn" class="btn">Laporan</a></td>
+                    </tbody>
+                    @endforeach
+                    {{-- <tr>
                             <td>Name Task</td>
                             <td>{{ $tugas['nama_tugas'] }}</td>
                         </tr>
@@ -32,8 +47,7 @@
                         <tr>
                             <td>Date of completion</td>
                             <td>{{ $tugas['tgl_selesai'] }}</td>
-                        </tr>
-                    </tbody>
+                        </tr> --}}
                 </table>
             </div>
         </div>
@@ -83,7 +97,7 @@
                                 <div class="btn-form">
                                     <input type="hidden" name="tgl_laporan"
                                         value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
-                                    <input type="hidden" name="id_tugas" value="{{ $tugas['id'] }}">
+                                    {{-- <input type="hidden" name="id_tugas" value="{{ $tugas['id'] }}"> --}}
                                     <input type="hidden" name="id_user" value="{{ session('id') }}">
                                     <button class="learn-more" type="submit">
                                         <span class="circle" aria-hidden="true">
