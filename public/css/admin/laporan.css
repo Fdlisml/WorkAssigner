@@ -412,15 +412,15 @@ input:checked+.toggleBtn .star--6 {
     position: relative;
     width: 40%;
     margin: 0 10px;
-  }
-  
-  .search form {
+}
+
+.search form {
     position: relative;
     width: 100%;
     display: flex;
-  }
-  
-  .search form input {
+}
+
+.search form input {
     width: 100%;
     height: 35px;
     border-radius: 40px;
@@ -431,15 +431,15 @@ input:checked+.toggleBtn .star--6 {
     border: 1px solid var(--black2);
     display: flex;
     align-items: center;
-  }
-  
-  .search form ion-icon {
+}
+
+.search form ion-icon {
     position: absolute;
     top: 8px;
     left: 10px;
     font-size: 1.2rem;
     color: #535353;
-  }
+}
 
 
 /* ======================= Cards ====================== */
@@ -570,13 +570,13 @@ input:checked+.toggleBtn .star--6 {
     border-collapse: collapse;
     /* border: 1px solid black; */
     text-align: center;
-    border: 1px solid var(--black1);
+    border: 2px solid var(--black1);
 }
 
 .recentCustomers thead {
     top: 0;
     position: sticky;
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: white;
     z-index: 1;
 }
@@ -587,15 +587,17 @@ input:checked+.toggleBtn .star--6 {
     color: #222222;
     background-color: white;
     z-index: 1;
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 12px 10px;
     width: 30%;
 }
 
+
+
 .recentCustomers table tr td {
     padding: 12px 10px;
     width: 30%;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .recentCustomers table tr td h4 {
@@ -614,7 +616,7 @@ input:checked+.toggleBtn .star--6 {
     color: var(--white);
 }
 
-.flex-btn a{
+.flex-btn a {
     text-decoration: none;
     color: white;
     background-color: rgba(250, 54, 54, 0.882);
@@ -622,7 +624,7 @@ input:checked+.toggleBtn .star--6 {
     border-radius: 15px;
 }
 
-.flex-btn a:active{
+.flex-btn a:active {
     background-color: rgba(250, 54, 54, 0.572);
 }
 

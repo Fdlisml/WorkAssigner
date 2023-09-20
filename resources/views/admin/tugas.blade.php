@@ -113,7 +113,7 @@
 
                 <!-- ================ Order Details List ================= -->
                 <div class="details">
-                    <div id="myModal" class="modal">
+                    <div id="myModal" class="modal" @if(Request::is('admin/tugas/create/*')) style='display: block' @endif>
 
                         <!-- Modal content -->
                         <div class="modal-content">
@@ -271,12 +271,8 @@
         </div>
 
         <div class="container-loader">
-            <div class="loader" id="loader">
-                <div class="dot dot-1"></div>
-                <div class="dot dot-2"></div>
-                <div class="dot dot-3"></div>
-                <div class="dot dot-4"></div>
-                <div class="dot dot-5"></div>
+            <div class="progress-loader">
+                <div class="progress"></div>
             </div>
         </div>
 

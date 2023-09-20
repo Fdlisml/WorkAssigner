@@ -1139,78 +1139,51 @@ input[type="range"]::-ms-thumb {
    z-index: 9999999;
 }
 
-.loader {
-   display: -webkit-box;
-   display: -ms-flexbox;
-   display: flex;
-   -webkit-box-pack: center;
-   -ms-flex-pack: center;
-   justify-content: center;
-   -webkit-box-align: center;
-   -ms-flex-align: center;
-   align-items: center;
-   height: 100%;
-}
-
-.dot {
-   display: inline-block;
-   width: 10px;
-   height: 10px;
-   margin-right: 6px;
-   border-radius: 50%;
-   -webkit-animation: dot-pulse2 1.5s ease-in-out infinite;
-   animation: dot-pulse2 1.5s ease-in-out infinite;
-}
-
-.dot-1 {
-   background-color: var(--black3);
-   -webkit-animation-delay: 0s;
-   animation-delay: 0s;
-}
-
-.dot-2 {
-   background-color: var(--black3);
-   -webkit-animation-delay: 0.3s;
-   animation-delay: 0.3s;
-}
-
-.dot-3 {
-   background-color: var(--black3);
-   -webkit-animation-delay: 0.6s;
-   animation-delay: 0.6s;
-}
-
-.dot-4 {
-   background-color: var(--black3);
-   -webkit-animation-delay: 0.9s;
-   animation-delay: 0.9s;
-}
-
-.dot-5 {
-   background-color: var(--black3);
-   -webkit-animation-delay: 1.2s;
-   animation-delay: 1.2s;
-}
-
-@keyframes dot-pulse2 {
+.progress-loader {
+   top: 50%;
+   left: 50%;
+   position: absolute;
+   transform: translate(-50%, -50%);
+ }
+ 
+ .progress-loader {
+   width: 150px;
+   background: rgba(236, 236, 238, 0.253);
+   height: 3px;
+   border-radius: 7px;
+ }
+ 
+ .progress {
+   content: '';
+   width: 1px;
+   height: 3px;
+   border-radius: 7px;
+   background: rgb(255, 255, 255);
+   transition: 0.5s;
+   animation: loading1274 5s 1 forwards;
+ }
+ 
+ @keyframes loading1274 {
    0% {
-      -webkit-transform: scale(0.5);
-      transform: scale(0.5);
-      opacity: 0.5;
+     width: 0%;
    }
-
+ 
+   10% {
+     width: 10%;
+   }
+ 
    50% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      opacity: 1;
+     width: 40%;
    }
-
+ 
+   60% {
+     width: 60%;
+   }
+ 
    100% {
-      -webkit-transform: scale(0.5);
-      transform: scale(0.5);
-      opacity: 0.5;
+     width: 95%;
    }
-}
+ }
 
 /* night mode secMain */
 
