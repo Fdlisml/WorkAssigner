@@ -24,7 +24,7 @@
                         <td>{{ $t['deskripsi'] }}</td>
                         <td>{{ $t['tgl_mulai'] }}</td>
                         <td>{{ $t['tgl_selesai'] }}</td>
-                        <td><a id="myBtn" class="btn">Laporan</a></td>
+                        <td><a id="myBtn" class="btn" data-id="{{ $t['id'] }}">Laporan</a></td>
                     </tbody>
                     @endforeach
                     {{-- <tr>
@@ -95,9 +95,8 @@
                                     </div>
                                 </div>
                                 <div class="btn-form">
-                                    <input type="hidden" name="tgl_laporan"
-                                        value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
-                                    {{-- <input type="hidden" name="id_tugas" value="{{ $tugas['id'] }}"> --}}
+                                    <input type="hidden" name="tgl_laporan" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                    <input type="hidden" name="id_tugas" value="">
                                     <input type="hidden" name="id_user" value="{{ session('id') }}">
                                     <button class="learn-more" type="submit">
                                         <span class="circle" aria-hidden="true">
