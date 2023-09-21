@@ -157,7 +157,7 @@
                 </div>
 
                 <!-- The Modal -->
-                <div id="myModal" class="modal">
+                <div id="myModal" class="modal" >
 
                     <!-- Modal content -->
                     <div class="modal-content">

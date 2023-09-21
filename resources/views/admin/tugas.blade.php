@@ -113,7 +113,7 @@
 
                 <!-- ================ Order Details List ================= -->
                 <div class="details">
-                    <div id="myModal" class="modal" @if(Request::is('admin/tugas/create/*')) style='display: block' @endif>
+                    <div id="myModal" class="modal" @if(Request::is('admin/tugas/create/*') || Request::is('admin/tugas/edit/*')) style='display: block' @endif>
 
                         <!-- Modal content -->
                         <div class="modal-content">
