@@ -8,6 +8,7 @@
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{ url('css/admin/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -113,7 +114,7 @@
 
                 <!-- ================ Order Details List ================= -->
                 <div class="details">
-                    <div id="myModal" class="modal" @if(Request::is('admin/tugas/create/*') || Request::is('admin/tugas/edit/*')) style='display: block' @endif>
+                    <div id="myModal" class="modal" @if (Request::is('admin/tugas/create/*') || Request::is('admin/tugas/edit/*')) style='display: block' @endif>
 
                         <!-- Modal content -->
                         <div class="modal-content">
@@ -231,39 +232,39 @@
                             <a id="myBtn" class="btn">Form Tugas</a>
                         </div>
 
-                        <table>
+                        <table id="table">
                             <thead>
                                 <tr>
                                     <th>NAMA TUGAS</th>
+                                    <th>NAMA PROJECT</th>
+                                    <th>NAMA DEVELOPER</th>
                                     <th>DESKRIPSI</th>
                                     <th>TANGGAL MULAI</th>
                                     <th>TANGGAL SELESAI</th>
-                                    <th>NAMA PROJECT</th>
-                                    <th>NAMA DEVELOPER</th>
                                     <th>ACTION</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 @foreach ($tugasData as $t)
                                     <div class="wadah-table">
                                         <tr>
                                             <td>{{ $t['tugas']['nama_tugas'] }}</td>
+                                            <td>{{ $t['project']['nama_project'] }}</td>
+                                            <td>{{ $t['user']['name'] }}</td>
                                             <td>{{ $t['tugas']['deskripsi'] }}</td>
                                             <td>{{ $t['tugas']['tgl_mulai'] }}</td>
                                             <td>{{ $t['tugas']['tgl_selesai'] }}</td>
-                                            <td>{{ $t['project']['nama_project'] }}</td>
-                                            <td>{{ $t['user']['name'] }}</td>
                                             <td>
                                                 <div class="flex-btn">
-                                                    <a
-                                                        href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                                    <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
                                                     |
-                                                    <a
-                                                        href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                                    <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
                                                 </div>
                                             </td>
                                         </tr>
                                     </div>
                                 @endforeach
-                            </thead>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -290,8 +291,19 @@
         <script src="{{ url('js/script.js') }}"></script>
 
         <!-- ====== ionicons ======= -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script type="module" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#table').DataTable({
+                    "paging": true,
+                    "pageLength": 5
+                });
+            });
+        </script>
 </body>
 
 </html>

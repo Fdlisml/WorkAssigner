@@ -8,6 +8,7 @@
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{ url('css/admin/style.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -157,7 +158,7 @@
                 </div>
 
                 <!-- The Modal -->
-                <div id="myModal" class="modal" >
+                <div id="myModal" class="modal" @if(Request::is('admin/user/edit/*')) style='display: block' @endif>
 
                     <!-- Modal content -->
                     <div class="modal-content">
@@ -254,6 +255,7 @@
         <script src="{{ url('js/script.js') }}"></script>
 
         <!-- ====== ionicons ======= -->
+        <script type="module" src="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

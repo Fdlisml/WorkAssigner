@@ -113,7 +113,7 @@
 
                 <!-- ================ Order Details List ================= -->
                 <div class="details">
-                    <div id="myModal" class="modal">
+                    <div id="myModal" class="modal" @if(Request::is('admin/user/edit/*')) style='display: block' @endif>
 
                         <!-- Modal content -->
                         <div class="modal-content">
