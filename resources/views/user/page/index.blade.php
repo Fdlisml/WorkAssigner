@@ -12,19 +12,21 @@
             <div class="wadah-table">
                 <table> 
                     <thead>
+                        <th>Name Project</th>
                         <th>Name Task</th>
                         <th>Description</th>
                         <th>Start Date</th>
                         <th>Date of completion</th>
                         <th>Action</th>
                     </thead>
-                    @foreach ($tugas as $t)
+                    @foreach ($projectData as $pd)
                     <tbody>
-                        <td>{{ $t['nama_tugas'] }}</td>
-                        <td>{{ $t['deskripsi'] }}</td>
-                        <td>{{ $t['tgl_mulai'] }}</td>
-                        <td>{{ $t['tgl_selesai'] }}</td>
-                        <td><a id="myBtn" class="btn" data-id="{{ $t['id'] }}">Laporan</a></td>
+                        <td>{{ $pd['project']['nama_project'] }}</td>
+                        <td>{{ $pd['tugas']['nama_tugas'] }}</td>
+                        <td>{{ $pd['tugas']['deskripsi'] }}</td>
+                        <td>{{ $pd['tugas']['tgl_mulai'] }}</td>
+                        <td>{{ $pd['tugas']['tgl_selesai'] }}</td>
+                        <td><a id="myBtn" class="btn" data-id="{{ $pd['tugas']['id'] }}">Laporan</a></td>
                     </tbody>
                     @endforeach
                     {{-- <tr>

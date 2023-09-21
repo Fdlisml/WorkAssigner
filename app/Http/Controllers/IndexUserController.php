@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TugasApi;
 use App\Models\LaporanApi;
+use App\Models\ProjectApi;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,7 @@ class IndexUserController extends Controller
       session_start();
       $token = session('token');
       $tugas = TugasApi::getDataFromAPI($token);
+      $project = ProjectApi::getDataFromAPI($token);
       $id_user = session('id');
 
       $tugas_user = [];
@@ -24,10 +26,22 @@ class IndexUserController extends Controller
          if ($t['id_user'] === $id_user) {
             $tugas_user[] = $t;
          }
+
+         $projectData = [];
+         foreach ($project as $p) {
+            if ($p['id'] === $t ['id_project']) {
+               $projectData[0] = $p;
+            }
+         }
+         $combinedData[] = [
+            'tugas' => $t,
+            'project' =>$projectData[0]
+         ];
       }
 
       return view('user.page.index', [
          'tugas' => $tugas_user,
+         'projectData' => $combinedData,
          'slug' => 'index'
       ]);
    }
