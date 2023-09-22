@@ -23,8 +23,17 @@
 
    <div class="card2">
        <div class="container2">
+         <h1>45 <span>Works</span></h1>
+
+         <div class="line">.</div>
+
+         <div class="status">
+            <div class="work-status">10</div>
+            <div class="work-status">5</div>
+            <div class="work-status">1</div>
+         </div>
            <!-- day -->
-           <div class="day" id="day">
+           {{-- <div class="day" id="day">
                <div class="container-day">
                    <div class="cloud front">
                        <span class="left-front"></span>
@@ -37,11 +46,11 @@
                        <span class="right-back"></span>
                    </div>
                </div>
-           </div>
+           </div> --}}
            <!-- end day -->
 
            <!-- night -->
-           <div class="night" id="night">
+           {{-- <div class="night" id="night">
                <div class="content">
                    <div class="planet">
                        <div class="ring"></div>
@@ -57,7 +66,7 @@
                        </div>
                    </div>
                </div>
-           </div>
+           </div> --}}
        </div>
    </div>
 </div>
