@@ -22,7 +22,7 @@ class ProjectAdminController extends Controller
          return $a['prioritas'] - $b['prioritas'];
       });
 
-      return view('admin.index', [
+      return view('page.admin.project', [
          'project' => $projects,
          "slug" => "style"
       ]);
@@ -77,7 +77,7 @@ class ProjectAdminController extends Controller
 
       ProjectApi::postDataToAPI($data_project, $token);
 
-      return redirect('/admin/index')->with('success', 'Data project Berhasil di Tambah');
+      return redirect('page/admin/index')->with('success', 'Data project Berhasil di Tambah');
    }
 
    /**
@@ -102,7 +102,7 @@ class ProjectAdminController extends Controller
          return $a['prioritas'] - $b['prioritas'];
       });
 
-      return view('admin.index', [
+      return view('page.admin.index', [
          'project' => $projects,
          'projectEdit' => ProjectApi::getDataByIdFromAPI($id, $token),
       ]);
@@ -125,7 +125,7 @@ class ProjectAdminController extends Controller
 
       ProjectApi::updateDataInAPI($id, $data_project, $token);
 
-      return redirect('admin/index')->with('success', 'Data Project Berhasil di Update');
+      return redirect('page/admin/index')->with('success', 'Data Project Berhasil di Update');
    }
 
    /**
@@ -150,6 +150,6 @@ class ProjectAdminController extends Controller
       }
 
       ProjectApi::deleteDataInAPI($id, $token);
-      return redirect('/admin/index')->with('success', 'Data Project Berhasil di Hapus');
+      return redirect('page/admin/index')->with('success', 'Data Project Berhasil di Hapus');
    }
 }

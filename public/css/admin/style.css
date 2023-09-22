@@ -667,7 +667,7 @@ table tr td a:nth-child(3) {
     z-index: 9999999;
 }
 
-.loader {
+.progres-loader {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -853,7 +853,7 @@ table tr td a:nth-child(3) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .modal-content{
+    .modal-content {
         width: 40%;
     }
 }
@@ -879,7 +879,7 @@ table tr td a:nth-child(3) {
         white-space: nowrap;
     }
 
-    .modal-content{
+    .modal-content {
         width: 40%;
     }
 }
@@ -922,13 +922,13 @@ table tr td a:nth-child(3) {
         overflow-x: auto;
     }
 
-    .modal-content{
+    .modal-content {
         width: 70%;
     }
 }
 
-@media (max-width: 480px){
-    .modal{
+@media (max-width: 480px) {
+    .modal {
         overflow-y: auto;
     }
 }

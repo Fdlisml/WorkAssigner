@@ -39,7 +39,7 @@ class IndexUserController extends Controller
          ];
       }
 
-      return view('user.page.index', [
+      return view('page.user.index', [
          'tugas' => $tugas_user,
          'projectData' => $combinedData,
          'slug' => 'index'

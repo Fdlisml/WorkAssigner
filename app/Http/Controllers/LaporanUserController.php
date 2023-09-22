@@ -24,7 +24,7 @@ class LaporanUserController extends Controller
          }
       }
 
-      return view('user.page.hasil', [
+      return view('page.user.hasil', [
          'laporan' => $laporanData,
          'slug' => 'laporan'
       ]);
@@ -57,7 +57,7 @@ class LaporanUserController extends Controller
 
       LaporanApi::postDataToAPI($data_laporan, $token);
 
-      return redirect('/user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
+      return redirect('page/user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
    }
 
    /**
@@ -89,7 +89,7 @@ class LaporanUserController extends Controller
 
       LaporanApi::updateDataInAPI($id, $data_laporan, $token);
 
-      return redirect('/user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
+      return redirect('page/user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
    }
 
    /**

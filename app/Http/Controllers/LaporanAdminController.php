@@ -58,7 +58,7 @@ class LaporanAdminController extends Controller
          ];
       }
 
-      return view('admin.laporan', [
+      return view('page.admin.laporan', [
          'laporanData' => $combinedData,
       ]);
    }
@@ -166,6 +166,6 @@ class LaporanAdminController extends Controller
       session_start();
       $token = session('token');
       LaporanApi::deleteDataInAPI($id, $token);
-      return redirect('/admin/laporan')->with('success', 'Data Laporan Berhasil di Hapus');
+      return redirect('page/admin/laporan')->with('success', 'Data Laporan Berhasil di Hapus');
    }
 }

@@ -1,15 +1,3 @@
-
-// range
-const rangeInputs = document.querySelectorAll(".range");
-
-rangeInputs.forEach(rangeInput => {
-    const rangeValue = rangeInput.parentElement.nextElementSibling.querySelector(".rangeValue");
-    rangeInput.addEventListener('input', () => {
-        rangeValue.textContent = rangeInput.value + "%";
-    });
-});
-
-
 //  night mode
 const toggleBtn = document.getElementById('dn');
 const toggleHandler = document.querySelector('.toggle__handler');
@@ -21,10 +9,11 @@ const card2 = document.querySelector('.card2');
 const recentOrders = document.querySelector('.recentOrders');
 const table = document.querySelector('table');
 const tds = document.querySelectorAll('.details table td');
-// const recentCustomers = document.querySelector('.recentCustomers');
-// const circle = document.querySelector('.circle');
-// const input = document.querySelector('input[type="text"]');
-// const textAreas = document.querySelectorAll('textarea');
+const ths = document.querySelectorAll('.details table th');
+const recentCustomers = document.querySelector('.recentCustomers');
+const circle = document.querySelector('.circle');
+const input = document.querySelector('input[type="text"]');
+const textAreas = document.querySelectorAll('textarea');
 const card2Element = document.querySelector(".container2");
 const dayElement = card2Element.querySelector("#day");
 const nightElement = card2Element.querySelector("#night");
@@ -40,18 +29,21 @@ toggleBtn.addEventListener('change', function () {
         recentOrders.classList.add('night-mode-card');
         table.style.borderTop = '2px solid var(--white)';
         tds.forEach(function (td) {
-            td.style.borderBottom = '2px solid var(--white)';
+            td.style.borderColor = 'var(--white)';
         });
-        // recentCustomers.classList.add('night-mode-card');
-        // circle.style.backgroundColor = 'var(--black1)';
-        // input.style.outline = '2px solid var(--white)';
-        // input.style.backgroundColor = 'var(--black1)';
-        // input.style.color = 'var(--white)';
-        // textAreas.forEach(function (textArea) {
-        //    textArea.style.border = '2px solid var(--white)';
-        //    textArea.style.backgroundColor = 'var(--black1)';
-        //    textArea.style.color = 'var(--white)';
-        // });
+        ths.forEach(function (th) {
+            th.style.borderColor = 'var(--white)';
+        });
+        recentCustomers.classList.add('night-mode-card');
+        circle.style.backgroundColor = 'var(--black1)';
+        input.style.outline = '2px solid var(--white)';
+        input.style.backgroundColor = 'var(--black1)';
+        input.style.color = 'var(--white)';
+        textAreas.forEach(function (textArea) {
+            textArea.style.border = '2px solid var(--white)';
+            textArea.style.backgroundColor = 'var(--black1)';
+            textArea.style.color = 'var(--white)';
+        });
         dayElement.style.display = "none";
         nightElement.style.display = "block";
     } else {
@@ -64,20 +56,22 @@ toggleBtn.addEventListener('change', function () {
         recentOrders.classList.remove('night-mode-card');
         table.style.borderTop = '2px solid var(--black1)';
         tds.forEach(function (td) {
-            td.style.borderBottom = '2px solid var(--black1)';
+            td.style.borderColor = 'var(--black1)';
         });
-        // recentCustomers.classList.remove('night-mode-card');
-        // circle.style.backgroundColor = 'var(--white)';
-        // input.style.outline = '2px solid var(--black3)';
-        // input.style.backgroundColor = 'var(--white)';
-        // input.style.color = 'var(--black1)';
-        // textAreas.forEach(function (textArea) {
-        //    textArea.style.outline = '2px solid var(--black3)';
-        //    textArea.style.backgroundColor = 'var(--white)';
-        //    textArea.style.color = 'var(--black1)';
-        // });
+        ths.forEach(function (th) {
+            th.style.borderColor = 'var(--black1)';
+        });
+        recentCustomers.classList.remove('night-mode-card');
+        circle.style.backgroundColor = 'var(--white)';
+        input.style.outline = '2px solid var(--black3)';
+        input.style.backgroundColor = 'var(--white)';
+        input.style.color = 'var(--black1)';
+        textAreas.forEach(function (textArea) {
+            textArea.style.outline = '2px solid var(--black3)';
+            textArea.style.backgroundColor = 'var(--white)';
+            textArea.style.color = 'var(--black1)';
+        });
         dayElement.style.display = "block";
         nightElement.style.display = "none";
     }
 });
-

@@ -15,7 +15,7 @@ class UserAdminController extends Controller
     {
         session_start();
         $token = session('token');
-        return view('admin.user', [
+        return view('page.admin.user', [
             'user' => UserApi::getDataFromAPI($token)
         ]);
     }
@@ -31,7 +31,7 @@ class UserAdminController extends Controller
          return strpos(strtolower($user['name']), strtolower($keyword)) !== false;
       });
 
-      return view('admin.user', [
+      return view('page.admin.user', [
          'user' => $filteredUser,
       ]);
    }
@@ -78,7 +78,7 @@ class UserAdminController extends Controller
     {
       session_start();
       $token = session('token');
-      return view('admin.user', [
+      return view('page.admin.user', [
          'user' => UserApi::getDataFromAPI($token),
          'userEdit' => UserApi::getDataByIdFromAPI($id, $token),
       ]);
@@ -100,7 +100,7 @@ class UserAdminController extends Controller
 
         UserApi::updateDataInAPI($id, $data_user, $token);
 
-        return redirect('admin/user')->with('success', 'Data User Berhasil di Update');
+        return redirect('page/admin/user')->with('success', 'Data User Berhasil di Update');
     }
 
     /**
@@ -125,6 +125,6 @@ class UserAdminController extends Controller
         }
 
         UserApi::deleteDataInAPI($id, $token);
-        return redirect('/admin/user')->with('success', 'Data User Berhasil di Hapus');
+        return redirect('page/admin/user')->with('success', 'Data User Berhasil di Hapus');
     }
 }

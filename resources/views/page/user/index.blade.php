@@ -1,4 +1,4 @@
-@extends('user.main')
+@extends('main')
 
 @section('content')
     <!-- ================ Order Details List ================= -->
@@ -6,11 +6,11 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Jobs Today</h2>
-                
+
             </div>
 
             <div class="wadah-table">
-                <table> 
+                <table>
                     <thead>
                         <th>Name Project</th>
                         <th>Name Task</th>
@@ -20,14 +20,14 @@
                         <th>Action</th>
                     </thead>
                     @foreach ($projectData as $pd)
-                    <tbody>
-                        <td>{{ $pd['project']['nama_project'] }}</td>
-                        <td>{{ $pd['tugas']['nama_tugas'] }}</td>
-                        <td>{{ $pd['tugas']['deskripsi'] }}</td>
-                        <td>{{ $pd['tugas']['tgl_mulai'] }}</td>
-                        <td>{{ $pd['tugas']['tgl_selesai'] }}</td>
-                        <td><a id="myBtn" class="btn" data-id="{{ $pd['tugas']['id'] }}">Laporan</a></td>
-                    </tbody>
+                        <tbody>
+                            <td>{{ $pd['project']['nama_project'] }}</td>
+                            <td>{{ $pd['tugas']['nama_tugas'] }}</td>
+                            <td>{{ $pd['tugas']['deskripsi'] }}</td>
+                            <td>{{ $pd['tugas']['tgl_mulai'] }}</td>
+                            <td>{{ $pd['tugas']['tgl_selesai'] }}</td>
+                            <td><a id="myBtn" class="btn" data-id="{{ $pd['tugas']['id'] }}">Laporan</a></td>
+                        </tbody>
                     @endforeach
                     {{-- <tr>
                             <td>Name Task</td>
@@ -97,7 +97,8 @@
                                     </div>
                                 </div>
                                 <div class="btn-form">
-                                    <input type="hidden" name="tgl_laporan" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                    <input type="hidden" name="tgl_laporan"
+                                        value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
                                     <input type="hidden" name="id_tugas" value="">
                                     <input type="hidden" name="id_user" value="{{ session('id') }}">
                                     <button class="learn-more" type="submit">

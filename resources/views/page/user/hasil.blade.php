@@ -1,4 +1,4 @@
-@extends('user.main')
+@extends('main')
 @section('content')
     <div class="details">
         <div class="recentOrders">

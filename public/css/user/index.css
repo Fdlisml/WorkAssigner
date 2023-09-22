@@ -1258,17 +1258,24 @@ button:hover .button-text {
     max-height: 100vh;
 }
 
+.loader-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 
 .progress-loader {
     display: flex;
     align-items: center;
     width: 150px;
     background: rgba(236, 236, 238, 0.253);
-    height: 3px;
+    height: 6px;
     border-radius: 7px;
-  }
-  
-  .progress {
+}
+
+.progress {
     content: '';
     width: 2px;
     height: 6px;
@@ -1276,29 +1283,29 @@ button:hover .button-text {
     background: rgb(255, 255, 255);
     transition: 0.5s;
     animation: loading1274 2s 1 forwards;
-  }
-  
-  @keyframes loading1274 {
+}
+
+@keyframes loading1274 {
     0% {
-      width: 0%;
+        width: 0%;
     }
-  
+
     10% {
-      width: 10%;
+        width: 10%;
     }
-  
+
     50% {
-      width: 40%;
+        width: 40%;
     }
-  
+
     60% {
-      width: 60%;
+        width: 60%;
     }
-  
+
     100% {
-      width: 95%;
+        width: 95%;
     }
-  }
+}
 
 /* The Modal (background) */
 .modal {
