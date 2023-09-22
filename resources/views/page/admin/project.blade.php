@@ -14,7 +14,6 @@
                     <tr>
                         <th>NAMA PROJECT</th>
                         <th>DESKRIPSI</th>
-                        <th>PRIORITAS</th>
                         <th>TANGGAL MULAI</th>
                         <th>TANGGAL SELESAI</th>
                         <th>ACTION</th>
@@ -24,7 +23,6 @@
                             <tr>
                                 <td>{{ $p['nama_project'] }}</td>
                                 <td>{{ $p['deskripsi'] }}</td>
-                                {{-- <td>{{ $p['prioritas'] }}</td> --}}
                                 <td>{{ $p['tgl_mulai'] }}</td>
                                 <td>{{ $p['tgl_selesai'] }}</td>
                                 <td>

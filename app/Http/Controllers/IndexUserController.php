@@ -41,8 +41,7 @@ class IndexUserController extends Controller
 
       return view('page.user.index', [
          'tugas' => $tugas_user,
-         'projectData' => $combinedData,
-         'slug' => 'index'
+         'projectData' => $combinedData
       ]);
    }
 

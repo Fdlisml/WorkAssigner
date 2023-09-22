@@ -25,8 +25,7 @@ class LaporanUserController extends Controller
       }
 
       return view('page.user.hasil', [
-         'laporan' => $laporanData,
-         'slug' => 'laporan'
+         'laporan' => $laporanData
       ]);
    }
 

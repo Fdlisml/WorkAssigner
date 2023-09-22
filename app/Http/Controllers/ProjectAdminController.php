@@ -21,8 +21,7 @@ class ProjectAdminController extends Controller
 
 
       return view('page.admin.project', [
-         'project' => $projects,
-         "slug" => "style"
+         'project' => $projects
       ]);
    }
    

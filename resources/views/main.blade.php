@@ -7,22 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    {{-- <link rel="stylesheet" href="{{ asset('css/user/' . $slug . '.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('css/admin/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/' . session('role') . '/style.css') }}">
 </head>
 
 <body>
+    @php
+        $page = '';
+        if (Str::startsWith(Request::path(), 'user/')) {
+            $page = 'User';
+        } elseif (Str::startsWith(Request::path(), 'admin/')) {
+            $page = 'Admin';
+        }
+    @endphp
     <div class="container">
-        @include('partials.navigationAdmin')
+        @include('partials.navigation' . $page)
         <div class="main">
             <div class="secMain">
                 @include('partials.topbar')
-                {{-- @include('partials.cardBox') --}}
+                @if (Str::startsWith(Request::path(), 'user/'))
+                    @include('partials.cardBox')
+                @endif
                 @yield('content')
             </div>
         </div>
         @include('partials.loader')
 </body>
-@include('partials.scriptAdmin')
+@include('partials.script' . $page)
 
 </html>
