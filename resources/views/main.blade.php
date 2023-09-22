@@ -8,21 +8,21 @@
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
     {{-- <link rel="stylesheet" href="{{ asset('css/user/' . $slug . '.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('css/user/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/style.css') }}">
 </head>
 
 <body>
     <div class="container">
-        @include('partials.navigationUser')
+        @include('partials.navigationAdmin')
         <div class="main">
             <div class="secMain">
                 @include('partials.topbar')
-                @include('partials.cardBox')
+                {{-- @include('partials.cardBox') --}}
                 @yield('content')
             </div>
         </div>
         @include('partials.loader')
 </body>
-@include('partials.scriptUser')
+@include('partials.scriptAdmin')
 
 </html>

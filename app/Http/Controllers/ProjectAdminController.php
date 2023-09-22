@@ -18,9 +18,7 @@ class ProjectAdminController extends Controller
       session_start();
       $token = session('token');
       $projects = ProjectApi::getDataFromAPI($token);
-      usort($projects, function ($a, $b) {
-         return $a['prioritas'] - $b['prioritas'];
-      });
+
 
       return view('page.admin.project', [
          'project' => $projects,
@@ -33,9 +31,7 @@ class ProjectAdminController extends Controller
       session_start();
       $token = session('token');
       $projects = ProjectApi::getDataFromAPI($token);
-      usort($projects, function ($a, $b) {
-         return $a['prioritas'] - $b['prioritas'];
-      });
+
 
       $keyword = request('keyword');
       $filteredProjects = array_filter($projects, function ($project) use ($keyword) {
@@ -70,7 +66,6 @@ class ProjectAdminController extends Controller
       $data_project = $request->validate([
          'nama_project' => ['required'],
          'deskripsi' => ['required'],
-         'prioritas' => ['required'],
          'tgl_mulai' => ['required'],
          'tgl_selesai' => ['required']
       ]);
@@ -118,7 +113,6 @@ class ProjectAdminController extends Controller
       $data_project = $request->validate([
          'nama_project' => ['required'],
          'deskripsi' => ['required'],
-         'prioritas' => ['required'],
          'tgl_mulai' => ['required'],
          'tgl_selesai' => ['required']
       ]);

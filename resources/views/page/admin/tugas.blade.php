@@ -17,6 +17,7 @@
                                 'url' => 'admin/tugas/update/' . $tugasDataF['id'],
                                 'nama_tugas' => $tugasDataF['nama_tugas'],
                                 'deskripsi' => $tugasDataF['deskripsi'],
+                                'prioritas' => $tugasDataF['prioritas'],
                                 'tgl_mulai' => $tugasDataF['tgl_mulai'],
                                 'tgl_selesai' => $tugasDataF['tgl_selesai'],
                                 'id_project' => $tugasDataF['id_project'],
@@ -29,6 +30,7 @@
                                 'url' => 'admin/tugas/store',
                                 'nama_tugas' => '',
                                 'deskripsi' => '',
+                                'prioritas' => '',
                                 'tgl_mulai' => '',
                                 'tgl_selesai' => '',
                                 'id_project' => $tugasDataF['id'],
@@ -41,6 +43,7 @@
                                 'url' => 'admin/tugas/store',
                                 'nama_tugas' => '',
                                 'deskripsi' => '',
+                                'prioritas' => '',
                                 'tgl_mulai' => '',
                                 'tgl_selesai' => '',
                                 'id_project' => '',
@@ -93,6 +96,10 @@
                                 <textarea name="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
                             </label>
                             <label>
+                                Prioritas <input type="number" max="3" min="1" name="prioritas" class="prioritas"
+                                    value="{{ $data['prioritas'] }}">
+                            </label>
+                            <label>
                                 Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai"
                                     value="{{ $data['tgl_mulai'] }}">
                             </label>
@@ -127,6 +134,7 @@
                         <th>NAMA PROJECT</th>
                         <th>NAMA DEVELOPER</th>
                         <th>DESKRIPSI</th>
+                        <th>PRIORITAS</th>
                         <th>TANGGAL MULAI</th>
                         <th>TANGGAL SELESAI</th>
                         <th>ACTION</th>
@@ -140,6 +148,7 @@
                                 <td>{{ $t['project']['nama_project'] }}</td>
                                 <td>{{ $t['user']['name'] }}</td>
                                 <td>{{ $t['tugas']['deskripsi'] }}</td>
+                                <td>{{ $t['tugas']['prioritas'] }}</td>
                                 <td>{{ $t['tugas']['tgl_mulai'] }}</td>
                                 <td>{{ $t['tugas']['tgl_selesai'] }}</td>
                                 <td>

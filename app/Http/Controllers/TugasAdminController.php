@@ -46,6 +46,10 @@ class TugasAdminController extends Controller
             'project' => $projectData[0],
             'user' => $userData[0],
          ];
+
+         usort($tugas, function ($a, $b) {
+            return $a['prioritas'] - $b['prioritas'];
+         });
       }
 
       return view('page.admin.tugas', [
@@ -62,6 +66,10 @@ class TugasAdminController extends Controller
       $tugas = TugasApi::getDataFromAPI($token);
       $project = ProjectApi::getDataFromAPI($token);
       $user = UserApi::getDataFromAPI($token);
+
+      usort($tugas, function ($a, $b) {
+         return $a['prioritas'] - $b['prioritas'];
+      });
 
       $tugasData = [];
       foreach ($tugas as $t) {
@@ -118,6 +126,7 @@ class TugasAdminController extends Controller
       $data_tugas = $request->validate([
          'nama_tugas' => ['required'],
          'deskripsi' => ['required'],
+         'prioritas' => ['required'],
          'tgl_mulai' => ['required'],
          'tgl_selesai' => ['required'],
          'id_project' => ['required'],
@@ -171,6 +180,10 @@ class TugasAdminController extends Controller
          ];
       }
 
+      usort($tugas, function ($a, $b) {
+         return $a['prioritas'] - $b['prioritas'];
+      });
+
       return view('page.admin.tugas', [
          'tugasData' => $combinedData,
          'projectData' => $projects,
@@ -189,6 +202,10 @@ class TugasAdminController extends Controller
       $tugas = TugasApi::getDataFromAPI($token);
       $projects = ProjectApi::getDataFromAPI($token);
       $users = UserApi::getDataFromAPI($token);
+
+      usort($tugas, function ($a, $b) {
+         return $a['prioritas'] - $b['prioritas'];
+      });
 
       $combinedData = [];
       foreach ($tugas as $t) {
@@ -234,6 +251,7 @@ class TugasAdminController extends Controller
       $data_tugas = $request->validate([
          'nama_tugas' => ['required'],
          'deskripsi' => ['required'],
+         'prioritas' => ['required'],
          'tgl_mulai' => ['required'],
          'tgl_selesai' => ['required'],
          'id_project' => ['required'],
