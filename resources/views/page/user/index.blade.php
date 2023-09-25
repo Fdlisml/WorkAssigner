@@ -6,18 +6,20 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Jobs Today</h2>
-                <div class="search">
-                    <form action="{{ url('user/index/search') }}" method="GET">
-                        <input type="text" name="keyword" id="searchInput" placeholder="Cari tugas...">
-                    </form>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <ul id="itemList">
-                            @foreach ($project as $p)
-                                <li>{{ $p['nama_project'] }}</li>
-                            @endforeach
-                        </ul>
+                <div class="wadah search">
+                    <div class="search">
+                        <form action="{{ url('user/index/search') }}" method="GET">
+                            <input type="text" name="keyword" id="searchInput" placeholder="Cari tugas...">
+                        </form>
+                    </div>
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <ul id="itemList">
+                                @foreach ($project as $p)
+                                    <li>{{ $p['nama_project'] }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,7 +62,8 @@
                                 <td>{{ $jt['tugas']['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="tooltip">
-                                        <button id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}" @if ($jt['laporan'] == !null) disabled @endif>Laporan</button>
+                                        <button id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}"
+                                            @if ($jt['laporan'] == !null) disabled @endif>Laporan</button>
                                         <span class="tooltiptext">Laporan sudah dibuat</span>
                                     </div>
                                 </td>

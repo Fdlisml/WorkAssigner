@@ -12,8 +12,9 @@ const tds = document.querySelectorAll('.details table td');
 const ths = document.querySelectorAll('.details table th');
 const recentCustomers = document.querySelector('.recentCustomers');
 const circle = document.querySelector('.circle');
-const input = document.querySelector('input[type="text"]');
+const inputs = document.querySelectorAll('input[type="text"]');
 const textAreas = document.querySelectorAll('textarea');
+const dropdown = document.querySelector('.dropdown');
 const card2Element = document.querySelector(".container2");
 const dayElement = card2Element.querySelector("#day");
 const nightElement = card2Element.querySelector("#night");
@@ -36,9 +37,12 @@ toggleBtn.addEventListener('change', function () {
         });
         recentCustomers.classList.add('night-mode-card');
         circle.style.backgroundColor = 'var(--black1)';
-        input.style.outline = '2px solid var(--white)';
-        input.style.backgroundColor = 'var(--black1)';
-        input.style.color = 'var(--white)';
+        dropdown.style.color = 'var(--black1)';
+        inputs.forEach((input) => {
+            input.style.outline = '2px solid var(--white)';
+            input.style.backgroundColor = 'var(--black1)';
+            input.style.color = 'var(--white)';
+        });
         textAreas.forEach(function (textArea) {
             textArea.style.border = '2px solid var(--white)';
             textArea.style.backgroundColor = 'var(--black1)';
@@ -63,9 +67,12 @@ toggleBtn.addEventListener('change', function () {
         });
         recentCustomers.classList.remove('night-mode-card');
         circle.style.backgroundColor = 'var(--white)';
-        input.style.outline = '2px solid var(--black3)';
-        input.style.backgroundColor = 'var(--white)';
-        input.style.color = 'var(--black1)';
+        dropdown.style.color = 'var(--black1)';
+        inputs.forEach((input) => {
+            input.style.outline = '2px solid var(--black3)';
+            input.style.backgroundColor = 'var(--white)';
+            input.style.color = 'var(--black1)';
+        });
         textAreas.forEach(function (textArea) {
             textArea.style.outline = '2px solid var(--black3)';
             textArea.style.backgroundColor = 'var(--white)';
