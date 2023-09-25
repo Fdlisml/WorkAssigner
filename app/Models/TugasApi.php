@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 class TugasApi extends Model
 {
    use HasFactory;
-   const API_ENDPOINT = 'http://localhost:8000/api/tugas';
+   const API_ENDPOINT = 'https://WorkAssigner-Server/api/tugas';
    public static function getDataFromAPI($token)
    {
       $client = new Client();
