@@ -17,20 +17,20 @@
        </div>
 
        <div class="imgBx">
-           <img src="../image/Telecommuting-pana-removebg-preview.png">
+           <img src="{{ asset('image/Telecommuting-pana-removebg-preview.png') }}">
        </div>
    </div>
 
    <div class="card2">
        <div class="container2">
-         <h1>45 <span>Works</span></h1>
+         <h1>{{ $totalJobs }}<span>WORKS</span></h1>
 
-         <div class="line">.</div>
+         <div class="line"></div>
 
          <div class="status">
-            <div class="work-status">10</div>
-            <div class="work-status">5</div>
-            <div class="work-status">1</div>
+            <div class="work-status">{{ $totalJobsPrioritas['1'] }}</div>
+            <div class="work-status">{{ $totalJobsPrioritas['2'] }}</div>
+            <div class="work-status">{{ $totalJobsPrioritas['3'] }}</div>
          </div>
            <!-- day -->
            {{-- <div class="day" id="day">

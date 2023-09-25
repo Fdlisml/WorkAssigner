@@ -1,7 +1,9 @@
-// range
-const rangeInput = document.querySelector(".range");
-const rangeValue = document.querySelector(".rangeValue");
+const rangeInputs = document.querySelectorAll('.range');
 
-rangeInput.addEventListener('input', () => {
-    rangeValue.textContent = rangeInput.value + '%';
+const rangeValues = document.querySelectorAll('.rangeValue');
+
+rangeInputs.forEach(function (input, index) {
+   input.addEventListener('input', function () {
+      rangeValues[index].textContent = `${this.value}%`;
+   });
 });

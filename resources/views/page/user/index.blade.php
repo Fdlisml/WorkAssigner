@@ -6,50 +6,67 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Jobs Today</h2>
-
+                <div class="search">
+                    <form action="{{ url('user/index/search') }}" method="GET">
+                        <input type="text" name="keyword" id="searchInput" placeholder="Cari tugas...">
+                    </form>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-content">
+                        <ul id="itemList">
+                            @foreach ($project as $p)
+                                <li>{{ $p['nama_project'] }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="wadah-table">
+                <form action="{{ url('user/index/filter') }}" method="GET">
+                    <select name="keyword">
+                        <option value="tgl_mulai">Tanggal Mulai</option>
+                        <option value="tgl_selesai">Tanggal Deadline</option>
+                    </select>
+                    <input type="submit" value="FILTER">
+                </form>
+                <br>
                 <table>
                     <thead>
-                        <th>Name Project</th>
-                        <th>Name Task</th>
-                        <th>Description</th>
-                        <th>Start Date</th>
-                        <th>Date of completion</th>
-                        <th>Action</th>
+                        <tr>
+                            <th>Name Task</th>
+                            <th>Name Project</th>
+                            <th>Description</th>
+                            <th>Prioritas</th>
+                            <th>Start Date</th>
+                            <th>Date of completion</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
-                    @foreach ($projectData as $pd)
-                        <tbody>
-                            <td>{{ $pd['project']['nama_project'] }}</td>
-                            <td>{{ $pd['tugas']['nama_tugas'] }}</td>
-                            <td>{{ $pd['tugas']['deskripsi'] }}</td>
-                            <td>{{ $pd['tugas']['tgl_mulai'] }}</td>
-                            <td>{{ $pd['tugas']['tgl_selesai'] }}</td>
-                            <td><a id="myBtn" class="btn" data-id="{{ $pd['tugas']['id'] }}">Laporan</a></td>
-                        </tbody>
-                    @endforeach
-                    {{-- <tr>
-                            <td>Name Task</td>
-                            <td>{{ $tugas['nama_tugas'] }}</td>
-                        </tr>
-                    </tbody>
-
                     <tbody>
-                        <tr>
-                            <td>Description</td>
-                            <td>{{ $tugas['deskripsi'] }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Start Date</td>
-                            <td>{{ $tugas['tgl_mulai'] }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Date of completion</td>
-                            <td>{{ $tugas['tgl_selesai'] }}</td>
-                        </tr> --}}
+                        @foreach ($jobsToday as $jt)
+                            <tr>
+                                <td>{{ $jt['tugas']['nama_tugas'] }}</td>
+                                <td>{{ $jt['project']['nama_project'] }}</td>
+                                <td>{{ $jt['tugas']['deskripsi'] }}</td>
+                                <td>
+                                    <div class="status">
+                                        <div class="work-status" id="status-div">
+                                            {{ $jt['tugas']['prioritas'] }}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ $jt['tugas']['tgl_mulai'] }}</td>
+                                <td>{{ $jt['tugas']['tgl_selesai'] }}</td>
+                                <td>
+                                    <div class="tooltip">
+                                        <button id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}" @if ($jt['laporan'] == !null) disabled @endif>Laporan</button>
+                                        <span class="tooltiptext">Laporan sudah dibuat</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

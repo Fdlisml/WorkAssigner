@@ -6,8 +6,7 @@
                 <div class="logo-flex">
                     <span class="icon">
                         <div class="logo-bg">
-                            <img src="../image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png"
-                                alt="">
+                            <img src="{{ asset('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                         </div>
                     </span>
                     <span class="title">WorkAssigner</span>

@@ -102,7 +102,7 @@ class TugasAdminController extends Controller
          return strpos(strtolower($t['tugas']['nama_tugas']), strtolower($keyword)) !== false;
       });
 
-      return view('admin.tugas', [
+      return view('page.admin.tugas', [
          'tugasData' => $filteredTugas,
          'projectData' => $project,
          'userData' => $user
@@ -132,10 +132,11 @@ class TugasAdminController extends Controller
          'id_project' => ['required'],
          'id_user' => ['required']
       ]);
+      $data_tugas['status'] = false;
 
       TugasApi::postDataToAPI($data_tugas, $token);
 
-      return redirect('page/admin/tugas')->with('success', 'Data tugas Berhasil di Tambah');
+      return redirect('admin/tugas')->with('success', 'Data tugas Berhasil di Tambah');
    }
 
    /**
@@ -260,7 +261,7 @@ class TugasAdminController extends Controller
 
       TugasApi::updateDataInAPI($id, $data_tugas, $token);
 
-      return redirect('page/admin/tugas')->with('success', 'Data Tugas Berhasil di Update');
+      return redirect('admin/tugas')->with('success', 'Data Tugas Berhasil di Update');
    }
 
    /**
@@ -284,6 +285,6 @@ class TugasAdminController extends Controller
       }
 
       TugasApi::deleteDataInAPI($id, $token);
-      return redirect('page/admin/tugas')->with('success', 'Data Tugas Berhasil di Hapus');
+      return redirect('admin/tugas')->with('success', 'Data Tugas Berhasil di Hapus');
    }
 }

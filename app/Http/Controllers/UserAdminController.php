@@ -100,7 +100,7 @@ class UserAdminController extends Controller
 
         UserApi::updateDataInAPI($id, $data_user, $token);
 
-        return redirect('page/admin/user')->with('success', 'Data User Berhasil di Update');
+        return redirect('admin/user')->with('success', 'Data User Berhasil di Update');
     }
 
     /**
@@ -125,6 +125,6 @@ class UserAdminController extends Controller
         }
 
         UserApi::deleteDataInAPI($id, $token);
-        return redirect('page/admin/user')->with('success', 'Data User Berhasil di Hapus');
+        return redirect('admin/user')->with('success', 'Data User Berhasil di Hapus');
     }
 }

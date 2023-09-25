@@ -33,6 +33,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::middleware(['check.login', 'role:user'])->group(function () {
    Route::prefix('user')->group(function () {
        Route::get('/index', [IndexUserController::class, 'index']);
+       Route::get('/index/search', [IndexUserController::class, 'search']);
        Route::get('/laporan', [LaporanUserController::class, 'index']);
        Route::post('/laporan/store', [LaporanUserController::class, 'store']);
        Route::post('/laporan/update/{id}', [LaporanUserController::class, 'update']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TugasApi;
 use App\Models\LaporanApi;
 use Illuminate\Http\Request;
 
@@ -10,11 +11,23 @@ class LaporanUserController extends Controller
    /**
     * Display a listing of the resource.
     */
+   public function tugasPrioritas($prioritas, $tugas)
+   {
+      $tugasPrioritas = [];
+      foreach ($tugas as $t) {
+         if ($t['prioritas'] === $prioritas) {
+            $tugasPrioritas[] = $t;
+         }
+      }
+      return count($tugasPrioritas);
+   }
+
    public function index()
    {
       session_start();
       $token = session('token');
       $laporan = LaporanApi::getDataFromAPI($token);
+      $tugas = TugasApi::getDataFromAPI($token);
       $id_user = session('id');
 
       $laporanData = [];
@@ -24,8 +37,24 @@ class LaporanUserController extends Controller
          }
       }
 
+      $tugas_user = [];
+      foreach ($tugas as $t) {
+         if ($t['id_user'] === $id_user && $t['status'] == false) {
+            $tugas_user[] = $t;
+         }
+      }
+
+      $totalJobs = count($tugas_user);
+      $totalJobsWithPrioritas = [
+         '1' => $this->tugasPrioritas('1', $tugas_user),
+         '2' => $this->tugasPrioritas('2', $tugas_user),
+         '3' => $this->tugasPrioritas('3', $tugas_user)
+      ];
+
       return view('page.user.hasil', [
-         'laporan' => $laporanData
+         'laporan' => $laporanData,
+         'totalJobs' => $totalJobs,
+         'totalJobsPrioritas' => $totalJobsWithPrioritas
       ]);
    }
 
@@ -56,7 +85,7 @@ class LaporanUserController extends Controller
 
       LaporanApi::postDataToAPI($data_laporan, $token);
 
-      return redirect('page/user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
+      return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
    }
 
    /**
@@ -86,9 +115,14 @@ class LaporanUserController extends Controller
          'progres' => ['required']
       ]);
 
+      if ($data_laporan['progres'] === "100") {
+         $data_tugas['status'] = true;
+
+         TugasApi::updateDataInAPI($id, $data_tugas, $token);
+      }
       LaporanApi::updateDataInAPI($id, $data_laporan, $token);
 
-      return redirect('page/user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
+      return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
    }
 
    /**

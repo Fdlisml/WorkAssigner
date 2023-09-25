@@ -6,6 +6,11 @@
         <div class="recentCustomers">
             <div class="cardHeader">
                 <h2>Data Project</h2>
+                <div class="search">
+                    <form action="{{ url('/admin/project/search') }}" method="GET">
+                        <input type="text" name="keyword" placeholder="Cari proyek...">
+                    </form>
+                </div>
                 <a id="myBtn" class="btn">Form Project</a>
             </div>
 

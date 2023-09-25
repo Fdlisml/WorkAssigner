@@ -6,7 +6,31 @@
     </script>
 @endif
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var statusDivs = document.querySelectorAll('.status #status-div');
+
+        statusDivs.forEach(function(statusDiv) {
+            var statusValue = parseInt(statusDiv.innerText);
+            statusDiv.innerText = '';
+            switch (statusValue) {
+                case 1:
+                    statusDiv.style.backgroundColor = '#ff0019';
+                    break;
+                case 2:
+                    statusDiv.style.backgroundColor = '#fcbd00';
+                    break;
+                case 3:
+                    statusDiv.style.backgroundColor = '#11d87b';
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+</script>
 <script src="{{ asset('js/navigation.js') }}"></script>
+<script src="{{ asset('js/dropdown.js') }}"></script>
 <script src="{{ asset('js/nightModeUser.js') }}"></script>
 <script src="{{ asset('js/modalBoxUser.js') }}"></script>
 <script src="{{ asset('js/range.js') }}"></script>
