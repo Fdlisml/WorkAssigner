@@ -71,7 +71,6 @@ class IndexUserController extends Controller
 
       return [
          'jobsToday' => $combinedData,
-         'project' => $project,
          'totalJobs' => $totalJobs,
          'totalJobsPrioritas' => $totalJobsWithPrioritas
       ];
@@ -96,7 +95,6 @@ class IndexUserController extends Controller
    
        return view('page.user.index', [
            'jobsToday' => $filteredTugas,
-           'project' => $tugasData['project'],
            'totalJobs' => $tugasData['totalJobs'],
            'totalJobsPrioritas' => $tugasData['totalJobsPrioritas']
        ]);

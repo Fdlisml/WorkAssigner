@@ -15,8 +15,8 @@
                     <div class="dropdown">
                         <div class="dropdown-content">
                             <ul id="itemList">
-                                @foreach ($project as $p)
-                                    <li>{{ $p['nama_project'] }}</li>
+                                @foreach ($jobsToday as $jt)
+                                    <li>{{ $jt['project']['nama_project'] }}</li>
                                 @endforeach
                             </ul>
                         </div>
