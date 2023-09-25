@@ -6,27 +6,25 @@
                 <h2>Working Result</h2>
                 <a href="index" class="btn">Work</a>
             </div>
-            @foreach ($laporan as $l)
-                <div class="wadah-table">
-                    <div class="table-flex">
-                        <table>
-                            <tbody>
+            <div class="wadah-table">
+                <div class="table-flex">
+                    <table id="table">
+                        <thead>
+                            <th>Report Name</th>
+                            <th>Description</th>
+                            <th>Complaint</th>
+                            <th>progress</th>
+                            <th>Date Report</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($laporan as $l)
                                 <tr>
-                                    <td>Report Name</td>
                                     <td>{{ $l['nama_laporan'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
                                     <td>{{ $l['deskripsi'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Complaint</td>
                                     <td>{{ $l['keluhan'] }}</td>
-                                </tr>
-                                <form action="{{ url('/user/laporan/update/' . $l['id']) }}" method="POST">
-                                    @csrf
-                                    <tr>
-                                        <td>Progress</td>
+                                    <form action="{{ url('/user/laporan/update/' . $l['id']) }}" method="POST">
+                                        @csrf
                                         <td>
                                             <div class="field">
                                                 <div class="range-active">
@@ -38,21 +36,21 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Date Report</td>
                                         <td>{{ $l['tgl_laporan'] }}</td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="btn-update">
-                        <input type="hidden" name="id_laporan" value="{{ $l['id'] }}">
-                        <input type="submit" class="btn" id="myBtn" value="Change"></input>
+                                        <td>
+                                            <div class="btn-update">
+                                                <input type="hidden" name="id_laporan" value="{{ $l['id'] }}">
+                                                <input type="submit" class="btn" id="myBtn" value="Change"></input>
+                                            </div>
+                                        </td>
+                                </tr>
+                        </tbody>
+                        @endforeach
                         </form>
-                    </div>
+                    </table>
                 </div>
-            @endforeach
+            </div>
         </div>
+    </div>
     </div>
 @endsection
