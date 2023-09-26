@@ -19,66 +19,73 @@ const card2Element = document.querySelector(".container2");
 const dayElement = card2Element.querySelector("#day");
 const nightElement = card2Element.querySelector("#night");
 
+const nightModeEnabled = parseInt(localStorage.getItem('toggle'));
+
+function toggleNightMode(enabled) {
+   if (enabled) {
+      toggleHandler.classList.add('night-mode');
+      stars.forEach(star => star.classList.add('night-mode'));
+      craters.forEach(crater => crater.classList.add('night-mode'));
+      secMain.classList.add('night-mode');
+      card1.classList.add('night-mode-card');
+      card2.classList.add('night-mode-card');
+      recentOrders.classList.add('night-mode-card');
+      table.style.borderTop = '2px solid var(--white)';
+      tds.forEach(function (td) {
+         td.style.borderColor = 'var(--white)';
+      });
+      ths.forEach(function (th) {
+         th.style.borderColor = 'var(--white)';
+      });
+      recentCustomers.classList.add('night-mode-card');
+      circle.style.backgroundColor = 'var(--black1)';
+      dropdown.style.color = 'var(--black1)';
+      inputs.forEach((input) => {
+         input.style.outline = '2px solid var(--white)';
+         input.style.backgroundColor = 'var(--black1)';
+         input.style.color = 'var(--white)';
+      });
+      textAreas.forEach(function (textArea) {
+         textArea.style.border = '2px solid var(--white)';
+         textArea.style.backgroundColor = 'var(--black1)';
+         textArea.style.color = 'var(--white)';
+      });
+   } else {
+      toggleHandler.classList.remove('night-mode');
+      stars.forEach(star => star.classList.remove('night-mode'));
+      craters.forEach(crater => crater.classList.remove('night-mode'));
+      secMain.classList.remove('night-mode');
+      card1.classList.remove('night-mode-card');
+      card2.classList.remove('night-mode-card');
+      recentOrders.classList.remove('night-mode-card');
+      table.style.borderTop = '2px solid var(--black1)';
+      tds.forEach(function (td) {
+         td.style.borderColor = 'var(--black1)';
+      });
+      ths.forEach(function (th) {
+         th.style.borderColor = 'var(--black1)';
+      });
+      recentCustomers.classList.remove('night-mode-card');
+      circle.style.backgroundColor = 'var(--white)';
+      dropdown.style.color = 'var(--black1)';
+      inputs.forEach((input) => {
+         input.style.outline = '2px solid var(--black3)';
+         input.style.backgroundColor = 'var(--white)';
+         input.style.color = 'var(--black1)';
+      });
+      textAreas.forEach(function (textArea) {
+         textArea.style.outline = '2px solid var(--black3)';
+         textArea.style.backgroundColor = 'var(--white)';
+         textArea.style.color = 'var(--black1)';
+      });
+   }
+}
+// Setel tata letak awal berdasarkan nilai kunci 'toggle'
+toggleNightMode(nightModeEnabled);
+
 toggleBtn.addEventListener('change', function () {
-    if (this.checked) {
-        toggleHandler.classList.add('night-mode');
-        stars.forEach(star => star.classList.add('night-mode'));
-        craters.forEach(crater => crater.classList.add('night-mode'));
-        secMain.classList.add('night-mode');
-        card1.classList.add('night-mode-card');
-        card2.classList.add('night-mode-card');
-        recentOrders.classList.add('night-mode-card');
-        table.style.borderTop = '2px solid var(--white)';
-        tds.forEach(function (td) {
-            td.style.borderColor = 'var(--white)';
-        });
-        ths.forEach(function (th) {
-            th.style.borderColor = 'var(--white)';
-        });
-        recentCustomers.classList.add('night-mode-card');
-        circle.style.backgroundColor = 'var(--black1)';
-        dropdown.style.color = 'var(--black1)';
-        inputs.forEach((input) => {
-            input.style.outline = '2px solid var(--white)';
-            input.style.backgroundColor = 'var(--black1)';
-            input.style.color = 'var(--white)';
-        });
-        textAreas.forEach(function (textArea) {
-            textArea.style.border = '2px solid var(--white)';
-            textArea.style.backgroundColor = 'var(--black1)';
-            textArea.style.color = 'var(--white)';
-        });
-        dayElement.style.display = "none";
-        nightElement.style.display = "block";
-    } else {
-        toggleHandler.classList.remove('night-mode');
-        stars.forEach(star => star.classList.remove('night-mode'));
-        craters.forEach(crater => crater.classList.remove('night-mode'));
-        secMain.classList.remove('night-mode');
-        card1.classList.remove('night-mode-card');
-        card2.classList.remove('night-mode-card');
-        recentOrders.classList.remove('night-mode-card');
-        table.style.borderTop = '2px solid var(--black1)';
-        tds.forEach(function (td) {
-            td.style.borderColor = 'var(--black1)';
-        });
-        ths.forEach(function (th) {
-            th.style.borderColor = 'var(--black1)';
-        });
-        recentCustomers.classList.remove('night-mode-card');
-        circle.style.backgroundColor = 'var(--white)';
-        dropdown.style.color = 'var(--black1)';
-        inputs.forEach((input) => {
-            input.style.outline = '2px solid var(--black3)';
-            input.style.backgroundColor = 'var(--white)';
-            input.style.color = 'var(--black1)';
-        });
-        textAreas.forEach(function (textArea) {
-            textArea.style.outline = '2px solid var(--black3)';
-            textArea.style.backgroundColor = 'var(--white)';
-            textArea.style.color = 'var(--black1)';
-        });
-        dayElement.style.display = "block";
-        nightElement.style.display = "none";
-    }
+   const isEnabled = this.checked;
+   localStorage.setItem('toggle', isEnabled ? '1' : '0');
+   toggleNightMode(isEnabled);
 });
+

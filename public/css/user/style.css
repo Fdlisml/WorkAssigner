@@ -986,8 +986,8 @@ input:checked+.toggleBtn .star--6 {
     cursor: pointer;
 }
 
-button:disabled,
-button[disabled] {
+a:disabled,
+a[disabled] {
     background-color: #61A1FE;
     color: #ffff;
 }

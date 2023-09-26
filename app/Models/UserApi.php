@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 class UserApi extends Model
 {
    use HasFactory;
-   const API_ENDPOINT = 'http://localhost:8000/api/users';
+   const API_ENDPOINT = 'https://klikyuk.com/WorkAssigner-Server/api/users';
    public static function getDataFromAPI($token)
    {
       $client = new Client();

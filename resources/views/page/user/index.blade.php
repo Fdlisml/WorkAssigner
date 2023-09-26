@@ -15,8 +15,8 @@
                     <div class="dropdown">
                         <div class="dropdown-content">
                             <ul id="itemList">
-                                @foreach ($jobsToday as $jt)
-                                    <li>{{ $jt['project']['nama_project'] }}</li>
+                                @foreach ($project as $p)
+                                    <li>{{ $p['nama_project'] }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -27,8 +27,10 @@
             <div class="wadah-table">
                 <form action="{{ url('user/index/filter') }}" method="GET">
                     <select name="keyword">
-                        <option value="tgl_mulai">Tanggal Mulai</option>
-                        <option value="tgl_selesai">Tanggal Deadline</option>
+                        <option value=""></option>
+                        <option value="Prioritas">Prioritas</option>
+                        <option value="Deadline">Tanggal Deadline</option>
+                        {{-- <option value="tgl_mulai">Tanggal Mulai</option> --}}
                     </select>
                     <input type="submit" value="FILTER">
                 </form>
@@ -40,8 +42,8 @@
                             <th>Name Project</th>
                             <th>Description</th>
                             <th>Prioritas</th>
-                            <th>Start Date</th>
-                            <th>Date of completion</th>
+                            {{-- <th>Start Date</th> --}}
+                            <th>Deadline</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -58,12 +60,13 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $jt['tugas']['tgl_mulai'] }}</td>
+                                {{-- <td>{{ $jt['tugas']['tgl_mulai'] }}</td> --}}
                                 <td>{{ $jt['tugas']['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="tooltip">
-                                        <button id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}"
-                                            @if ($jt['laporan'] == !null) disabled @endif>Laporan</button>
+                                        <a id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}"
+                                            href="/user/laporan"
+                                            @if ($jt['laporan'] == !null) disabled @endif>Laporan</a>
                                         <span class="tooltiptext">Laporan sudah dibuat</span>
                                     </div>
                                 </td>

@@ -47,8 +47,8 @@ class TugasAdminController extends Controller
             'user' => $userData[0],
          ];
 
-         usort($tugas, function ($a, $b) {
-            return $a['prioritas'] - $b['prioritas'];
+         usort($combinedData, function ($a, $b) {
+            return $a['tugas']['prioritas'] - $b['tugas']['prioritas'];
          });
       }
 

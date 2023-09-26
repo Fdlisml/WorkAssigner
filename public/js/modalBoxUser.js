@@ -14,8 +14,9 @@ var span = document.getElementsByClassName("close")[0];
 btns.forEach(function (btn, index) {
    // Memeriksa apakah tombol dinonaktifkan
    if (!btn.hasAttribute("disabled")) {
-   tooltips[index].style.display = "none";
-   btn.onclick = function (e) {
+      tooltips[index].style.display = "none";
+      btn.removeAttribute("href");
+      btn.onclick = function (e) {
          modal.style.display = "block";
          var idTugas = e.target.dataset.id;
          inputIdTugas.value = idTugas;
