@@ -13,7 +13,8 @@ class LaporanAdminController extends Controller
    /**
     * Display a listing of the resource.
     */
-   public function index()
+
+    public function getLaporanData()
    {
       session_start();
       $token = session('token');
@@ -58,58 +59,23 @@ class LaporanAdminController extends Controller
          ];
       }
 
-      return view('page.admin.laporan', [
+      return [
          'laporanData' => $combinedData,
-      ]);
+      ];
+   }
+
+   public function index()
+   {
+      $laporanData = $this->getLaporanData();
+      return view('page.admin.laporan', $laporanData);
    }
      
    public function search()
    {
-      session_start();
-      $token = session('token');
-      $laporans = LaporanApi::getDataFromAPI($token);
-      $tugas = TugasApi::getDataFromAPI($token);
-      $users = UserApi::getDataFromAPI($token);
-      $projects = ProjectApi::getDataFromAPI($token);
-
-      $laporanData = [];
-      foreach ($laporans as $l) {
-         $id_tugas = $l['id_tugas'];
-         $id_users = $l['id_user'];
-
-         $tugasData = [];
-         foreach ($tugas as $t) {
-            if ($t['id'] === $id_tugas) {
-               $id_project = $t['id_project'];
-
-               $projectData = [];
-               foreach ($projects as $p){
-                  if ($p['id'] === $id_project) {
-                     $projectData[0] = $p;
-                  }
-               }
-
-               $tugasData[0] = $t;
-            }
-         }
-
-         $userData = [];
-         foreach ($users as $u) {
-            if ($u['id'] === $id_users) {
-               $userData[0] = $u;
-            }
-         }
-
-         $laporanData[] = [
-            'laporan' => $l,
-            'tugas' => $tugasData[0],
-            'project' => $projectData[0],
-            'user' => $userData[0]
-         ];
-      }
+      $laporanData = $this->getLaporanData();
 
       $keyword = request('keyword');
-      $filteredLaporans = array_filter($laporanData, function ($laporan) use ($keyword) {
+      $filteredLaporans = array_filter($laporanData['laporanData'], function ($laporan) use ($keyword) {
          return strpos(strtolower($laporan['laporan']['nama_laporan']), strtolower($keyword)) !== false;
       });
 

@@ -19,7 +19,6 @@ class ProjectAdminController extends Controller
       $token = session('token');
       $projects = ProjectApi::getDataFromAPI($token);
 
-
       return view('page.admin.project', [
          'project' => $projects
       ]);
@@ -30,7 +29,6 @@ class ProjectAdminController extends Controller
       session_start();
       $token = session('token');
       $projects = ProjectApi::getDataFromAPI($token);
-
 
       $keyword = request('keyword');
       $filteredProjects = array_filter($projects, function ($project) use ($keyword) {
@@ -88,12 +86,7 @@ class ProjectAdminController extends Controller
    {
       session_start();
       $token = session('token');
-
       $projects = ProjectApi::getDataFromAPI($token);
-
-      usort($projects, function ($a, $b) {
-         return $a['prioritas'] - $b['prioritas'];
-      });
 
       return view('page.admin.project', [
          'project' => $projects,

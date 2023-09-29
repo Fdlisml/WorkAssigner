@@ -31,7 +31,7 @@
 </script>
 <script src="{{ asset('js/navigation.js') }}"></script>
 <script src="{{ asset('js/dropdown.js') }}"></script>
-<script src="{{ asset('js/nightModeUser.js') }}"></script>
+<script src="{{ asset('js/nightMode.js') }}"></script>
 <script src="{{ asset('js/modalBoxUser.js') }}"></script>
 <script src="{{ asset('js/range.js') }}"></script>
 <script src="{{ asset('js/say.js') }}"></script>
@@ -48,6 +48,8 @@
 
 <script>
     $(document).ready(function() {
-        $('#table').dataTable();
+        $('#table').dataTable({
+         "pageLength": 5
+        });
     });
 </script>

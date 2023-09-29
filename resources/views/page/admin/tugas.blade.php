@@ -55,64 +55,50 @@
                     <div class="form">
                         <form action="{{ url($data['url']) }}" method="POST">
                             @csrf
-                            <label>
+                            <label for="id_project">
                                 Nama Project
-                                <select name="id_project">
-                                    <option></option>
-                                    @foreach ($projectData as $p)
-                                        @if ($p['id'] == $data['id_project'])
-                                            <option value="{{ $p['id'] }}" selected>
-                                                {{ $p['nama_project'] }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $p['id'] }}">{{ $p['nama_project'] }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>
                             </label>
-                            <label>
+                            <select id="id_project" name="id_project">
+                                <option></option>
+                                @foreach ($projectData as $p)
+                                    @if ($p['id'] == $data['id_project'])
+                                        <option value="{{ $p['id'] }}" selected>
+                                            {{ $p['nama_project'] }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $p['id'] }}">{{ $p['nama_project'] }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <label for="id_user">
                                 Nama Developer
-                                <select name="id_user">
-                                    <option></option>
-                                    @foreach ($userData as $u)
-                                        @if ($u['id'] == $data['id_user'])
-                                            <option value="{{ $u['id'] }}" selected>
-                                                {{ $u['name'] }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $u['id'] }}">{{ $u['name'] }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>
                             </label>
-                            <label>
-                                Tugas <input type="text" name="nama_tugas" class="tugas"
-                                    value="{{ $data['nama_tugas'] }}">
-                            </label>
-                            <label>
-                                Deskripsi
-                                <textarea name="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
-                            </label>
-                            <label>
-                                Prioritas <input type="number" max="3" min="1" name="prioritas" class="prioritas"
-                                    value="{{ $data['prioritas'] }}">
-                            </label>
-                            <label>
-                                Tanggal Mulai <input type="date" name="tgl_mulai" class="tgl_mulai"
-                                    value="{{ $data['tgl_mulai'] }}">
-                            </label>
-                            <label>
-                                Tanggal Selesai <input type="date" name="tgl_selesai" class="tgl_selesai"
-                                    value="{{ $data['tgl_selesai'] }}">
-                            </label>
+                            <select id="id_user" name="id_user">
+                                <option></option>
+                                @foreach ($userData as $u)
+                                    @if ($u['id'] == $data['id_user'])
+                                        <option value="{{ $u['id'] }}" selected>
+                                            {{ $u['name'] }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $u['id'] }}">{{ $u['name'] }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <label for="nama_tugas">Tugas</label>
+                            <input type="text" id="nama_tugas" name="nama_tugas" class="tugas" value="{{ $data['nama_tugas'] }}">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea id="deskripsi" name="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
+                            <label for="prioritas">Prioritas</label>
+                            <input type="number" id="prioritas" name="prioritas" max="3" min="1" class="prioritas" value="{{ $data['prioritas'] }}">
+                            <label for="tgl_mulai">Tanggal Mulai</label>
+                            <input type="date" id="tgl_mulai" name="tgl_mulai" class="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
+                            <label for="tgl_selesai">Tanggal Selesai</label>
+                            <input type="date" id="tgl_selesai" name="tgl_selesai" class="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
                             <button type="submit" class="cta">
                                 <span>Send Work !</span>
-                                <svg viewBox="0 0 13 10" height="10px" width="15px">
-                                    <path d="M1,5 L11,5"></path>
-                                    <polyline points="8 1 12 5 8 9"></polyline>
-                                </svg>
                             </button>
                         </form>
                     </div>

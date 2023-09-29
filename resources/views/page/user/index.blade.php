@@ -30,7 +30,6 @@
                         <option value=""></option>
                         <option value="Prioritas">Prioritas</option>
                         <option value="Deadline">Tanggal Deadline</option>
-                        {{-- <option value="tgl_mulai">Tanggal Mulai</option> --}}
                     </select>
                     <input type="submit" value="FILTER">
                 </form>
@@ -60,13 +59,10 @@
                                         </div>
                                     </div>
                                 </td>
-                                {{-- <td>{{ $jt['tugas']['tgl_mulai'] }}</td> --}}
                                 <td>{{ $jt['tugas']['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="tooltip">
-                                        <a id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}"
-                                            href="/user/laporan"
-                                            @if ($jt['laporan'] == !null) disabled @endif>Laporan</a>
+                                        <a id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}" href="/user/laporan" @if ($jt['laporan'] == !null) disabled @endif>Laporan</a>
                                         <span class="tooltiptext">Laporan sudah dibuat</span>
                                     </div>
                                 </td>
@@ -95,23 +91,22 @@
                             <form action="{{ url('user/laporan/store') }}" method="POST">
                                 @csrf
                                 <div class="center-form">
-                                    <label>Report Name</label><br>
-                                    <input type="text" name="nama_laporan" placeholder="Masukan Nama Laporan" required>
+                                    <label for="nama_laporan">Report Name</label><br>
+                                    <input type="text" id="nama_laporan" name="nama_laporan" placeholder="Masukan Nama Laporan" required>
                                     <br>
                                     <br>
-                                    <label>Report Description</label><br>
-                                    <textarea name="deskripsi" cols="30" rows="5" placeholder="Masukan Laporan" required></textarea>
+                                    <label for="nama_laporan">Report Description</label><br>
+                                    <textarea id="deskripsi" name="deskripsi" cols="30" rows="5" placeholder="Masukan Laporan" required></textarea>
                                     <br>
                                     <br>
-                                    <label>Complaint</label><br>
-                                    <textarea name="keluhan" cols="30" rows="5" placeholder="Masukan Keluhan" required></textarea>
+                                    <label for="keluhan">Complaint</label><br>
+                                    <textarea id="keluhan" name="keluhan" cols="30" rows="5" placeholder="Masukan Keluhan" required></textarea>
                                     <br>
                                     <br>
-                                    <label>Progress</label><br>
+                                    <label for="progres">Progress</label><br>
                                     <div class="field">
                                         <div class="range-active">
-                                            <input class="range" type="range" name="progres" min="0"
-                                                max="100" value="0" steps="1">
+                                            <input class="range" type="range" id="progres" name="progres" min="0" max="100" value="0" steps="1">
                                         </div>
 
                                         <div class="value">

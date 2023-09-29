@@ -36,25 +36,14 @@
                     <div class="form">
                         <form action="{{ url($data['url']) }}" method="post">
                             @csrf
-                            <label>
-                                Name
-                            </label>
-                            <input type="text" name="name" value="{{ $data['name'] }}">
-
-                            <label>
-                                Username
-                            </label>
-                            <input type="text" name="username" value="{{ $data['username'] }}">
-
-                            <label>
-                                Password
-                            </label>
-                            <input type="password" name="password" value="{{ $data['password'] }}">
-
-                            <label>
-                                Role
-                            </label>
-                            <select name="role">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" value="{{ $data['name'] }}">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" value="{{ $data['username'] }}">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" value="{{ $data['password'] }}">
+                            <label for="role">Role</label>
+                            <select id="role" name="role">
                                 @if ($data['role'] === 'user')
                                     <option value="user" selected>User</option>
                                     <option value="admin">Admin</option>
@@ -83,7 +72,7 @@
                 <a id="myBtn" class="btn">Form User</a>
             </div>
 
-            <table>
+            <table id="table">
                 <thead>
                     <tr>
                         <th>NAME</th>
@@ -92,6 +81,8 @@
                         <th>ROLE</th>
                         <th>ACTION</th>
                     </tr>
+                </thead>
+                <tbody>
                     @foreach ($user as $u)
                         <tr>
                             <td>{{ $u['name'] }}</td>
@@ -107,7 +98,7 @@
                             </td>
                         </tr>
                     @endforeach
-                </thead>
+                </tbody>
             </table>
         </div>
     </div>

@@ -22,7 +22,7 @@ class LaporanUserController extends Controller
       return count($tugasPrioritas);
    }
 
-   public function index()
+   public function getLaporanData()
    {
       session_start();
       $token = session('token');
@@ -51,11 +51,17 @@ class LaporanUserController extends Controller
          '3' => $this->tugasPrioritas('3', $tugas_user)
       ];
 
-      return view('page.user.hasil', [
+      return [
          'laporan' => $laporanData,
          'totalJobs' => $totalJobs,
          'totalJobsPrioritas' => $totalJobsWithPrioritas
-      ]);
+      ];
+   }
+
+   public function index()
+   {
+      $laporanData = $this->getLaporanData();
+      return view('page.user.hasil', $laporanData);
    }
 
    /**
@@ -82,6 +88,12 @@ class LaporanUserController extends Controller
          'id_tugas' => ['required'],
          'id_user' => ['required']
       ]);
+
+      if ($data_laporan['progres'] === "100") {
+         $data_tugas['status'] = true;
+
+         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
+      }
 
       LaporanApi::postDataToAPI($data_laporan, $token);
 
@@ -118,7 +130,7 @@ class LaporanUserController extends Controller
       if ($data_laporan['progres'] === "100") {
          $data_tugas['status'] = true;
 
-         TugasApi::updateDataInAPI($id, $data_tugas, $token);
+         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
       }
       LaporanApi::updateDataInAPI($id, $data_laporan, $token);
 

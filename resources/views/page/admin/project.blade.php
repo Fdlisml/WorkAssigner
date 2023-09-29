@@ -6,15 +6,10 @@
         <div class="recentCustomers">
             <div class="cardHeader">
                 <h2>Data Project</h2>
-                <div class="search">
-                    <form action="{{ url('/admin/project/search') }}" method="GET">
-                        <input type="text" name="keyword" placeholder="Cari proyek...">
-                    </form>
-                </div>
                 <a id="myBtn" class="btn">Form Project</a>
             </div>
 
-            <table>
+            <table id="table">
                 <thead>
                     <tr>
                         <th>NAMA PROJECT</th>
@@ -23,6 +18,8 @@
                         <th>TANGGAL SELESAI</th>
                         <th>ACTION</th>
                     </tr>
+                </thead>
+                <tbody>
                     @foreach ($project as $p)
                         <div class="wadah-table">
                             <tr>
@@ -43,7 +40,7 @@
                             </tr>
                         </div>
                     @endforeach
-                </thead>
+                </tbody>
             </table>
         </div>
     </div>
@@ -85,32 +82,14 @@
                 <div class="form">
                     <form action="{{ url($data['url']) }}" method="post">
                         @csrf
-                        <label>
-                            Nama Project
-                        </label>
-                        <input type="text" name="nama_project" value="{{ $data['nama_project'] }}">
-
-                        <label>
-                            Deskripsi
-                        </label>
-                        <textarea name="deskripsi" id="" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
-
-                        <label>
-                            Prioritas
-                        </label>
-                        <input type="number" name="prioritas" max="10" min="1"
-                            value="{{ $data['prioritas'] }}">
-
-                        <label><br>
-                            Tanggal Mulai
-                        </label>
-                        <input type="date" name="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
-
-                        <label>
-                            Tanggal Selesai
-                        </label>
-                        <input type="date" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
-
+                        <label for="nama_project">Nama Project</label>
+                        <input type="text" id="nama_project" name="nama_project" value="{{ $data['nama_project'] }}">
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
+                        <label for="tgl_mulai"><br>Tanggal Mulai</label>
+                        <input type="date" id="tgl_mulai" name="tgl_mulai" value="{{ $data['tgl_mulai'] }}">
+                        <label for="tgl_selesai">Tanggal Selesai</label>
+                        <input type="date" id="tgl_selesai" name="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
                         <button type="submit" class="cta">
                             <span>Send Work !</span>
                         </button>

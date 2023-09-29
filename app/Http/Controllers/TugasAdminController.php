@@ -14,7 +14,8 @@ class TugasAdminController extends Controller
    /**
     * Display a listing of the resource.
     */
-   public function index()
+
+    public function getTugasData()
    {
       session_start();
       $token = session('token');
@@ -52,60 +53,31 @@ class TugasAdminController extends Controller
          });
       }
 
-      return view('page.admin.tugas', [
+      return [
          'tugasData' => $combinedData,
          'projectData' => $project,
          'userData' => $user
-      ]);
+      ];
+   }
+   public function index()
+   {
+      $tugasData = $this->getTugasData();
+      return view('page.admin.tugas', $tugasData);
    }
 
    public function search()
    {
-      session_start();
-      $token = session('token');
-      $tugas = TugasApi::getDataFromAPI($token);
-      $project = ProjectApi::getDataFromAPI($token);
-      $user = UserApi::getDataFromAPI($token);
-
-      usort($tugas, function ($a, $b) {
-         return $a['prioritas'] - $b['prioritas'];
-      });
-
-      $tugasData = [];
-      foreach ($tugas as $t) {
-         $id_project = $t['id_project'];
-         $id_user = $t['id_user'];
-
-         $projectData = [];
-         foreach ($project as $p) {
-            if ($p['id'] === $id_project) {
-               $projectData[0] = $p;
-            }
-         }
-
-         $userData = [];
-         foreach ($user as $u) {
-            if ($u['id'] === $id_user) {
-               $userData[0] = $u;
-            }
-         }
-
-         $tugasData[] = [
-            'tugas' => $t,
-            'project' => $projectData[0],
-            'user' => $userData[0],
-         ];
-      }
+      $tugasData = $this->getTugasData();
 
       $keyword = request('keyword');
-      $filteredTugas = array_filter($tugasData, function ($t) use ($keyword) {
+      $filteredTugas = array_filter($tugasData['tugasData'], function ($t) use ($keyword) {
          return strpos(strtolower($t['tugas']['nama_tugas']), strtolower($keyword)) !== false;
       });
 
       return view('page.admin.tugas', [
          'tugasData' => $filteredTugas,
-         'projectData' => $project,
-         'userData' => $user
+         'projectData' => $tugasData['projectData'],
+         'userData' => $tugasData['userData']
       ]);
    }
 
@@ -149,46 +121,13 @@ class TugasAdminController extends Controller
 
    public function create_project_selected(int $id_project)
    {
-      session_start();
       $token = session('token');
-      $tugas = TugasApi::getDataFromAPI($token);
-      $projects = ProjectApi::getDataFromAPI($token);
-      $users = UserApi::getDataFromAPI($token);
-
-      $combinedData = [];
-      foreach ($tugas as $t) {
-         $id_projects = $t['id_project'];
-         $id_users = $t['id_user'];
-
-         $projectData = [];
-         foreach ($projects as $p) {
-            if ($p['id'] === $id_projects) {
-               $projectData[0] = $p;
-            }
-         }
-
-         $userData = [];
-         foreach ($users as $u) {
-            if ($u['id'] === $id_users) {
-               $userData[0] = $u;
-            }
-         }
-
-         $combinedData[] = [
-            'tugas' => $t,
-            'project' => $projectData[0],
-            'user' => $userData[0],
-         ];
-      }
-
-      usort($tugas, function ($a, $b) {
-         return $a['prioritas'] - $b['prioritas'];
-      });
+      $tugasData = $this->getTugasData();
 
       return view('page.admin.tugas', [
-         'tugasData' => $combinedData,
-         'projectData' => $projects,
-         'userData' => $users,
+         'tugasData' => $tugasData['tugasData'],
+         'projectData' => $tugasData['projectData'],
+         'userData' => $tugasData['userData'],
          'tugasDataF' => ProjectApi::getDataByIdFromAPI($id_project, $token)
       ]);
    }
@@ -200,44 +139,12 @@ class TugasAdminController extends Controller
    {
       session_start();
       $token = session('token');
-      $tugas = TugasApi::getDataFromAPI($token);
-      $projects = ProjectApi::getDataFromAPI($token);
-      $users = UserApi::getDataFromAPI($token);
-
-      usort($tugas, function ($a, $b) {
-         return $a['prioritas'] - $b['prioritas'];
-      });
-
-      $combinedData = [];
-      foreach ($tugas as $t) {
-         $id_projects = $t['id_project'];
-         $id_users = $t['id_user'];
-
-         $projectData = [];
-         foreach ($projects as $p) {
-            if ($p['id'] === $id_projects) {
-               $projectData[0] = $p;
-            }
-         }
-
-         $userData = [];
-         foreach ($users as $u) {
-            if ($u['id'] === $id_users) {
-               $userData[0] = $u;
-            }
-         }
-
-         $combinedData[] = [
-            'tugas' => $t,
-            'project' => $projectData[0],
-            'user' => $userData[0],
-         ];
-      }
+      $tugasData = $this->getTugasData();
 
       return view('page.admin.tugas', [
-         'tugasData' => $combinedData,
-         'projectData' => $projects,
-         'userData' => $users,
+         'tugasData' => $tugasData['combinedData'],
+         'projectData' => $tugasData['projectData'],
+         'userData' => $tugasData['userData'],
          'tugasDataF' => TugasApi::getDataByIdFromAPI($id, $token)
       ]);
    }

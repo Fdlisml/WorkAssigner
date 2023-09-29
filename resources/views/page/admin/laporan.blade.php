@@ -5,9 +5,14 @@
         <div class="recentCustomers">
             <div class="cardHeader">
                 <h2>Data Laporan</h2>
+                {{-- <div class="search">
+                    <form action="{{ url('admin/laporan/search') }}" method="GET">
+                        <input type="text" name="keyword" id="searchInput" placeholder="Cari laporan...">
+                    </form>
+                </div> --}}
             </div>
 
-            <table>
+            <table id="table">
                 <thead>
                     <tr>
                         <th>NAMA LAPORAN</th>

@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
     <div class="details">
-        <div class="recentOrders">
+        <div class="recentCustomers">
             <div class="cardHeader">
                 <h2>Working Result</h2>
                 <a href="index" class="btn">Work</a>
@@ -10,12 +10,14 @@
                 <div class="table-flex">
                     <table id="table">
                         <thead>
-                            <th>Report Name</th>
-                            <th>Description</th>
-                            <th>Complaint</th>
-                            <th>progress</th>
-                            <th>Date Report</th>
-                            <th>Action</th>
+                            <tr>
+                                <th>Report Name</th>
+                                <th>Description</th>
+                                <th>Complaint</th>
+                                <th>progress</th>
+                                <th>Date Report</th>
+                                <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($laporan as $l)
@@ -28,8 +30,7 @@
                                         <td>
                                             <div class="field">
                                                 <div class="range-active">
-                                                    <input class="range" type="range" name="progres" min="0"
-                                                        max="100" value="{{ $l['progres'] }}" steps="1">
+                                                    <input class="range" type="range" name="progres" min="0" max="100" value="{{ $l['progres'] }}" steps="1" @if ($l['progres'] === 100) disabled @endif>
                                                 </div>
                                                 <div>
                                                     <span class="rangeValue">{{ $l['progres'] }}%</span>
@@ -39,18 +40,21 @@
                                         <td>{{ $l['tgl_laporan'] }}</td>
                                         <td>
                                             <div class="btn-update">
+                                                <input type="hidden" name="id_tugas" value="{{ $l['id_tugas'] }}">
                                                 <input type="hidden" name="id_laporan" value="{{ $l['id'] }}">
-                                                <input type="submit" class="btn" id="myBtn" value="Change"></input>
+                                                <div class="tooltip">
+                                                    <button type="submit" id="myBtn" class="btn" @if ($l['progres'] === 100) disabled @endif>Change</button>
+                                                    <span class="tooltiptext">Progres sudah 100%</span>
+                                                </div>
                                             </div>
                                         </td>
+                                    </form>
                                 </tr>
+                            @endforeach
                         </tbody>
-                        @endforeach
-                        </form>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
