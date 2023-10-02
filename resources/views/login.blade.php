@@ -33,14 +33,14 @@
                 </div>
                 <form method="post" action="/login_check">
                     @csrf
-                    <label for="">Username</label><br>
+                    <label for="username">Username</label><br>
                     <div class="boxx">
-                        <input class="user" type="text" name="username" placeholder="Enter Username" required>
+                        <input class="user" type="text" name="username" id="username" placeholder="Enter Username" required>
                     </div>
                     <br>
-                    <label for="">Password</label><br>
+                    <label for="password">Password</label><br>
                     <div class="box">
-                        <input class="pw" type="password" id="fakePassword" name="password"
+                        <input class="pw" type="password" id="password" name="password"
                             placeholder="Enter Password" required>
                         <ion-icon name="eye-outline" id="toggler"></ion-icon>
                     </div>

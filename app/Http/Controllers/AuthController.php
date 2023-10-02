@@ -43,7 +43,6 @@ class AuthController extends Controller
       } else {
          echo "Error: " . $message;
       }
-
    }
    public function login(Request $request)
    {
@@ -77,12 +76,21 @@ class AuthController extends Controller
       } else {
          return redirect()->route('login')->with('error', $message);
       }
-
    }
 
    public function logout(Request $request)
    {
-      $request->session()->invalidate();
-      return redirect('/login');
+      session_start();
+      $token = session('token');
+      $user = AuthApi::logout($token);
+      $response_data = json_decode($user, true);
+      $success = $response_data['success'];
+      $message = $response_data['message'];
+      if ($success) {
+         $request->session()->invalidate();
+         return redirect('/login');
+      }else{
+         return redirect()->back()->with('error', $message);
+      }
    }
 }

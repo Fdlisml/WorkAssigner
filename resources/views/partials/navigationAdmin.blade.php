@@ -6,8 +6,7 @@
                 <div class="logo-flex">
                     <span class="icon">
                         <div class="logo-bg">
-                            <img
-                                src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
+                            <img src="{{ url('image/building-logo-icon-design-template-vector_67715-555-transformed-removebg-preview.png') }}">
                         </div>
                     </span>
                     <span class="title">WorkAssigner</span>
@@ -59,6 +58,8 @@
                 <span class="title">Sign Out</span>
             </a>
         </li>
+        <li class="copyright">
+            ©2023 by Fadli Ismail
+        </li>
     </ul>
 </div>
-{{-- <script src="{{ asset('js/navigation.js') }}"></script> --}}

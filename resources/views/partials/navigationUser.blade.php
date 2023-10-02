@@ -2,7 +2,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="{{ url("user/page/index") }}">
+            <a href="{{ url('user/page/index') }}">
                 <div class="logo-flex">
                     <span class="icon">
                         <div class="logo-bg">
@@ -15,7 +15,7 @@
         </li>
 
         <li>
-            <a href="{{ url("user/index") }}">
+            <a href="{{ url('user/index') }}">
                 <span class="icon">
                     <ion-icon name="reader-outline"></ion-icon>
                 </span>
@@ -24,7 +24,7 @@
         </li>
 
         <li>
-            <a href="{{ url("user/laporan") }}">
+            <a href="{{ url('user/laporan') }}">
                 <span class="icon">
                     <ion-icon name="checkmark-done-outline"></ion-icon>
                 </span>
@@ -33,12 +33,15 @@
         </li>
 
         <li>
-            <a href="{{ url("/logout") }}">
+            <a href="{{ url('/logout') }}">
                 <span class="icon">
                     <ion-icon name="log-out-outline"></ion-icon>
                 </span>
                 <span class="title">Sign Out</span>
             </a>
+        </li>
+        <li class="copyright">
+            ©2023 by Fadli Ismail
         </li>
     </ul>
 </div>

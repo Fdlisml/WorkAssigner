@@ -48,6 +48,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
 }
 
 .navigation ul li {
@@ -66,6 +67,16 @@ body {
 .navigation ul li:nth-child(1) {
     margin-bottom: 40px;
     pointer-events: none;
+}
+
+.navigation ul li:nth-child(7) {
+   position: absolute;
+   bottom: 0;
+   color: var(--white);
+   font-size: 12px;
+   text-align: center;
+   pointer-events: none;
+   margin-bottom: 10px;
 }
 
 .navigation ul li a {
@@ -779,13 +790,20 @@ table tr td a:nth-child(3) {
     cursor: pointer;
 }
 
+/* data table */
+/* #table_info {
+    color: white;
+}
+
+option{
+    color: black;
+} */
+
 /* nightmode */
 .night-mode {
     transition: 0.3s ease-in;
     background-color: #313131;
     color: #ffffff;
-    z-index: 999;
-    /* Add more styles for night mode here */
 }
 
 /* night mode card */
@@ -794,7 +812,6 @@ table tr td a:nth-child(3) {
     box-shadow: 0px 0px 15px #535353;
     transition: 0.3s ease;
     background-color: #222222;
-    z-index: 999;
 }
 
 .night-mode-card-table {
@@ -832,7 +849,8 @@ table tr td a:nth-child(3) {
 
 @media (max-width: 768px) {
     .secMain {
-        margin-right: 0;
+      margin: 1.25vh;
+      height: 97.5vh;
     }
 
     .main.active {
