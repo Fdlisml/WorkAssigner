@@ -41,7 +41,6 @@
                             <th>Name Project</th>
                             <th>Description</th>
                             <th>Prioritas</th>
-                            {{-- <th>Start Date</th> --}}
                             <th>Deadline</th>
                             <th>Action</th>
                         </tr>

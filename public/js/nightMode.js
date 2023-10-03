@@ -15,12 +15,17 @@ const circle = document.querySelector('.circle');
 const inputs = document.querySelectorAll('input[type="text"]');
 const textAreas = document.querySelectorAll('textarea');
 const card2Element = document.querySelector(".container2");
+const labels = document.getElementsByTagName('label');
+const labelsArray = Array.from(labels);
 
 const nightModeEnabled = parseInt(localStorage.getItem('toggle'));
 
 function toggleNightMode(enabled) {
    if (enabled) {
       toggleBtn.checked = true;
+      for (let i = 0; i < labels.length; i++) {
+         labels[i].style.color = 'var(--white)';
+      }
       const elementsToCheck = [recentOrders, recentCustomers, card1, card2];
       elementsToCheck.forEach(element => {
          if (element) {
@@ -47,6 +52,9 @@ function toggleNightMode(enabled) {
       });
    } else {
       toggleBtn.checked = false;
+      for (let i = 0; i < labels.length; i++) {
+         labels[i].style.color = 'var(--black1)';
+      }
       const elementsToCheck = [recentOrders, recentCustomers, toggleHandler, card1, card2];
       elementsToCheck.forEach(element => {
          if (element) {
