@@ -38,6 +38,7 @@ Route::middleware(['check.login', 'role:user'])->group(function () {
        Route::get('/laporan', [LaporanUserController::class, 'index']);
        Route::post('/laporan/store', [LaporanUserController::class, 'store']);
        Route::post('/laporan/update/{id}', [LaporanUserController::class, 'update']);
+    //    Route::get('/index/filter', [IndexUserController::class, 'filter']); 
    });
 });
 

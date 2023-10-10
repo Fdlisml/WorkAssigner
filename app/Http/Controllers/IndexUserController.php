@@ -108,37 +108,12 @@ class IndexUserController extends Controller
    public function filter()
    {
       $tugasData = $this->getTugasData();
-
-      // Mendapatkan keyword dari request
-      $keyword = request('keyword');
-
-      if ($keyword === "Deadline") {
-         usort($tugasData['jobsToday'], function ($a, $b) {
-            return strcmp($b['tugas']['tgl_selesai'], $a['tugas']['tgl_selesai']);
-         });
-      } elseif ($keyword === "Prioritas") {
-         usort($tugasData['jobsToday'], function ($a, $b) {
-            return $a['tugas']['prioritas'] - $b['tugas']['prioritas'];
-         });
-      }
-
-      $searchKeyword = session('search_keyword');
-
-      if (!empty($searchKeyword)) {
-         $filteredTugas = array_filter($tugasData['jobsToday'], function ($tugas) use ($searchKeyword) {
-            return strtolower($tugas['project']['nama_project']) === $searchKeyword || strpos(strtolower($tugas['tugas']['nama_tugas']), $searchKeyword) !== false;
-         });
-
-         return view('page.user.index', [
-            'jobsToday' => $filteredTugas,
-            'project' => $tugasData['project'],
-            'totalJobs' => $tugasData['totalJobs'],
-            'totalJobsPrioritas' => $tugasData['totalJobsPrioritas']
-         ]);
-      }
-
-      return view('page.user.index', [
-         'jobsToday' => $tugasData['jobsToday'],
+      $filter = request('prioritas');
+      $filteredData = array_filter($tugasData['jobsToday'], function ($item) use ($filter) {
+         return $item['tugas']['prioritas'] == $filter;
+      });
+      return view('page.user.index',[
+         'jobsToday' => $filteredData,
          'project' => $tugasData['project'],
          'totalJobs' => $tugasData['totalJobs'],
          'totalJobsPrioritas' => $tugasData['totalJobsPrioritas']
