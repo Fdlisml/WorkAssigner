@@ -23,7 +23,7 @@
 
     <div class="card2">
         <div class="container2">
-            <h1>{{ $totalJobs }}<span>WORKS</span></h1>
+            <h1><a href="{{ url('user/index/') }}">{{ $totalJobs }}</a><span>WORKS</span></h1>
 
             <div class="line"></div>
 
