@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IndexUserController;
 use App\Http\Controllers\TugasAdminController;
 use App\Http\Controllers\LaporanUserController;
@@ -9,9 +8,6 @@ use App\Http\Controllers\LaporanAdminController;
 use App\Http\Controllers\ProjectAdminController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\AuthController;
-use App\Http\Middleware\CheckLogin;
-use App\Http\Middleware\CheckRole;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +34,6 @@ Route::middleware(['check.login', 'role:user'])->group(function () {
        Route::get('/laporan', [LaporanUserController::class, 'index']);
        Route::post('/laporan/store', [LaporanUserController::class, 'store']);
        Route::post('/laporan/update/{id}', [LaporanUserController::class, 'update']);
-    //    Route::get('/index/filter', [IndexUserController::class, 'filter']); 
    });
 });
 
