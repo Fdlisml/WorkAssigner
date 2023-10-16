@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\TugasApi;
-use App\Models\LaporanApi;
 use App\Models\ProjectApi;
 use Illuminate\Http\Request;
 
 class IndexUserController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    */
    public function tugasPrioritas($prioritas, $tugas)
    {
       $tugasPrioritas = [];
@@ -29,12 +25,11 @@ class IndexUserController extends Controller
       $token = session('token');
       $tugas = TugasApi::getDataFromAPI($token);
       $project = ProjectApi::getDataFromAPI($token);
-      $laporan = LaporanApi::getDataFromAPI($token);
-      $id_user = session('id');
+      $name = session('name');
 
       $tugas_user = [];
       foreach ($tugas as $t) {
-         if ($t['id_user'] === $id_user && $t['status'] == false) {
+         if ($t['name'] === $name && $t['status'] == false) {
             $tugas_user[] = $t;
          }
       }
@@ -46,31 +41,8 @@ class IndexUserController extends Controller
          '3' => $this->tugasPrioritas('3', $tugas_user)
       ];
 
-      $combinedData = [];
-      foreach ($tugas_user as $t) {
-         $projectData = [];
-         foreach ($project as $p) {
-            if ($p['id'] === $t['id_project']) {
-               $projectData[] = $p;
-            }
-         }
-         $laporanData = [];
-         foreach ($laporan as $l) {
-            if ($l['id'] === $t['id']) {
-               $laporanData[] = $l;
-            }
-         }
-         $projectData = !empty($projectData) ? $projectData[0] : null;
-         $laporanData = !empty($laporanData) ? $laporanData[0] : null;
-         $combinedData[] = [
-            'tugas' => $t,
-            'project' => $projectData,
-            'laporan' => $laporanData
-         ];
-      }
-
       return [
-         'jobsToday' => $combinedData,
+         'jobsToday' => $tugas_user,
          'project' => $project,
          'totalJobs' => $totalJobs,
          'totalJobsPrioritas' => $totalJobsWithPrioritas
@@ -118,55 +90,5 @@ class IndexUserController extends Controller
          'totalJobs' => $tugasData['totalJobs'],
          'totalJobsPrioritas' => $tugasData['totalJobsPrioritas']
       ]);
-   }
-
-
-
-   /**
-    * Show the form for creating a new resource.
-    */
-   public function create()
-   {
-      //
-   }
-
-   /**
-    * Store a newly created resource in storage.
-    */
-   public function store(Request $request)
-   {
-      //
-   }
-
-   /**
-    * Display the specified resource.
-    */
-   public function show(string $id)
-   {
-      //
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(string $id)
-   {
-      //
-   }
-
-   /**
-    * Update the specified resource in storage.
-    */
-   public function update(Request $request, string $id)
-   {
-      //
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    */
-   public function destroy(string $id)
-   {
-      //
    }
 }

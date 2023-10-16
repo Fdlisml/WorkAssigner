@@ -48,20 +48,20 @@
                     <tbody>
                         @foreach ($jobsToday as $jt)
                             <tr>
-                                <td>{{ $jt['tugas']['nama_tugas'] }}</td>
-                                <td>{{ $jt['project']['nama_project'] }}</td>
-                                <td>{{ $jt['tugas']['deskripsi'] }}</td>
+                                <td>{{ $jt['nama_tugas'] }}</td>
+                                <td>{{ $jt['nama_project'] }}</td>
+                                <td>{{ $jt['deskripsi'] }}</td>
                                 <td>
                                     <div class="status">
                                         <div class="work-status" id="status-div">
-                                            {{ $jt['tugas']['prioritas'] }}
+                                            {{ $jt['prioritas'] }}
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $jt['tugas']['tgl_selesai'] }}</td>
+                                <td>{{ $jt['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="tooltip">
-                                        <a id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}" href="/user/laporan" @if ($jt['laporan'] == !null) disabled @endif>Laporan</a>
+                                        <a id="myBtn" class="btn" data-id="{{ $jt['id'] }}" href="/user/laporan">Laporan</a>
                                         <span class="tooltiptext">Laporan sudah dibuat</span>
                                     </div>
                                 </td>

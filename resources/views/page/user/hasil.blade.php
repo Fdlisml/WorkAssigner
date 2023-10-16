@@ -11,6 +11,7 @@
                     <thead>
                         <tr>
                             <th>Report Name</th>
+                            <th>Task Name</th>
                             <th>Description</th>
                             <th>Complaint</th>
                             <th>progress</th>
@@ -22,6 +23,7 @@
                         @foreach ($laporan as $l)
                             <tr>
                                 <td>{{ $l['nama_laporan'] }}</td>
+                                <td>{{ $l['nama_tugas'] }}</td>
                                 <td>{{ $l['deskripsi'] }}</td>
                                 <td>{{ $l['keluhan'] }}</td>
                                 <form action="{{ url('/user/laporan/update/' . $l['id']) }}" method="POST">
@@ -41,7 +43,7 @@
                                     <td>{{ $l['tgl_laporan'] }}</td>
                                     <td>
                                         <div class="btn-update">
-                                            <input type="hidden" name="id_tugas" value="{{ $l['id_tugas'] }}">
+                                            <input type="hidden" name="nama_tugas" value="{{ $l['nama_tugas'] }}">
                                             <input type="hidden" name="id_laporan" value="{{ $l['id'] }}">
                                             <div class="tooltip">
                                                 <button type="submit" id="myBtn" class="btn"

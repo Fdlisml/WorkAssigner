@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class LaporanUserController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    */
    public function tugasPrioritas($prioritas, $tugas)
    {
       $tugasPrioritas = [];
@@ -28,18 +25,18 @@ class LaporanUserController extends Controller
       $token = session('token');
       $laporan = LaporanApi::getDataFromAPI($token);
       $tugas = TugasApi::getDataFromAPI($token);
-      $id_user = session('id');
+      $name = session('name');
 
       $laporanData = [];
       foreach ($laporan as $l) {
-         if ($l['id_user'] === $id_user) {
+         if ($l['name'] === $name) {
             $laporanData[] = $l;
          }
       }
 
       $tugas_user = [];
       foreach ($tugas as $t) {
-         if ($t['id_user'] === $id_user && $t['status'] == false) {
+         if ($t['name'] === $name && $t['status'] == false) {
             $tugas_user[] = $t;
          }
       }
@@ -64,17 +61,6 @@ class LaporanUserController extends Controller
       return view('page.user.hasil', $laporanData);
    }
 
-   /**
-    * Show the form for creating a new resource.
-    */
-   public function create()
-   {
-      //
-   }
-
-   /**
-    * Store a newly created resource in storage.
-    */
    public function store(Request $request)
    {
       session_start();
@@ -89,36 +75,13 @@ class LaporanUserController extends Controller
          'id_user' => ['required']
       ]);
 
-      if ($data_laporan['progres'] === "100") {
-         $data_tugas['status'] = true;
-
-         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
-      }
-
+      $data_tugas['status'] = true;
+      TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
       LaporanApi::postDataToAPI($data_laporan, $token);
 
       return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
    }
 
-   /**
-    * Display the specified resource.
-    */
-   public function show(string $id)
-   {
-      //
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(string $id)
-   {
-      //
-   }
-
-   /**
-    * Update the specified resource in storage.
-    */
    public function update(Request $request, int $id)
    {
       session_start();
@@ -126,22 +89,9 @@ class LaporanUserController extends Controller
       $data_laporan = $request->validate([
          'progres' => ['required']
       ]);
-
-      if ($data_laporan['progres'] === "100") {
-         $data_tugas['status'] = true;
-
-         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
-      }
+      
       LaporanApi::updateDataInAPI($id, $data_laporan, $token);
 
       return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    */
-   public function destroy(string $id)
-   {
-      //
    }
 }
