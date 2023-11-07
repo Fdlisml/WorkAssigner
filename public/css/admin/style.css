@@ -633,6 +633,7 @@ td .btn-action {
 table tr td .flex-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -791,6 +792,10 @@ table tr td a:nth-child(3) {
 }
 
 /* data table */
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+   margin: 10px auto;
+}
+
 /* #table_info {
     color: white;
 }

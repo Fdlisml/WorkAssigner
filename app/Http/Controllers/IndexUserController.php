@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 
 class IndexUserController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    */
    public function tugasPrioritas($prioritas, $tugas)
    {
       $tugasPrioritas = [];
@@ -56,7 +53,7 @@ class IndexUserController extends Controller
          }
          $laporanData = [];
          foreach ($laporan as $l) {
-            if ($l['id'] === $t['id']) {
+            if ($l['id_tugas'] === $t['id']) {
                $laporanData[] = $l;
             }
          }
@@ -104,7 +101,6 @@ class IndexUserController extends Controller
       ]);
    }
 
-
    public function filter()
    {
       $tugasData = $this->getTugasData();
@@ -112,7 +108,7 @@ class IndexUserController extends Controller
       $filteredData = array_filter($tugasData['jobsToday'], function ($item) use ($filter) {
          return $item['tugas']['prioritas'] == $filter;
       });
-      return view('page.user.index',[
+      return view('page.user.index', [
          'jobsToday' => $filteredData,
          'project' => $tugasData['project'],
          'totalJobs' => $tugasData['totalJobs'],
@@ -120,53 +116,28 @@ class IndexUserController extends Controller
       ]);
    }
 
-
-
-   /**
-    * Show the form for creating a new resource.
-    */
-   public function create()
+   public function data()
    {
-      //
-   }
+      $tugasData = $this->getTugasData();
+      $jobsToday = $tugasData['jobsToday'];
+      $tugas = $jobsToday['tugas'];
+      $project = $jobsToday['project'];
+      $data = [];
 
-   /**
-    * Store a newly created resource in storage.
-    */
-   public function store(Request $request)
-   {
-      //
-   }
-
-   /**
-    * Display the specified resource.
-    */
-   public function show(string $id)
-   {
-      //
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(string $id)
-   {
-      //
-   }
-
-   /**
-    * Update the specified resource in storage.
-    */
-   public function update(Request $request, string $id)
-   {
-      //
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    */
-   public function destroy(string $id)
-   {
-      //
+      foreach ($tugas as $tugas) {
+         $data[] = [
+            "nama_tugas" => $tugas['nama_tugas'],
+            // "nama_project" => $project['nama_project'],
+            "deskripsi" => $tugas['deskripsi'],
+            "prioritas" => $tugas['prioritas'],
+            "tgl_selesai" => $tugas['tgl_selesai']
+         ];
+      }
+      return [
+         "draw" => 1,
+         "recordsTotal" => 57,
+         "recordsFiltered" => 57,
+         "data" => $data
+      ];
    }
 }

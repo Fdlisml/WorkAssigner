@@ -1,40 +1,14 @@
 @extends('main')
-
 @section('content')
     <!-- ================ Order Details List ================= -->
     <div class="details">
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Jobs Today</h2>
-                <div class="wadah search">
-                    <div class="search">
-                        <form action="{{ url('user/index/search') }}" method="GET">
-                            <input type="text" name="keyword" id="searchInput" placeholder="Cari tugas...">
-                        </form>
-                    </div>
-                    <div class="dropdown">
-                        <div class="dropdown-content">
-                            <ul id="itemList">
-                                @foreach ($project as $p)
-                                    <li>{{ $p['nama_project'] }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="wadah-table">
-                <form action="{{ url('user/index/filter') }}" method="GET">
-                    <select name="keyword">
-                        <option value=""></option>
-                        <option value="Prioritas">Prioritas</option>
-                        <option value="Deadline">Tanggal Deadline</option>
-                    </select>
-                    <input type="submit" value="FILTER">
-                </form>
-                <br>
-                <table>
+                <table id="table">
                     <thead>
                         <tr>
                             <th>Name Task</th>
@@ -132,4 +106,5 @@
             </div>
         </div>
     </div>
+    {{-- @include('partials.dataTable') --}}
 @endsection

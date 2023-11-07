@@ -40,8 +40,8 @@
                 <span class="title">Sign Out</span>
             </a>
         </li>
-        <li class="copyright">
+        {{-- <li class="copyright">
             ©2023 by Fadli Ismail
-        </li>
+        </li> --}}
     </ul>
 </div>

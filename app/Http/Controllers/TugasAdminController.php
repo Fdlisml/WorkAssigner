@@ -137,12 +137,11 @@ class TugasAdminController extends Controller
     */
    public function edit(int $id)
    {
-      session_start();
       $token = session('token');
       $tugasData = $this->getTugasData();
 
       return view('page.admin.tugas', [
-         'tugasData' => $tugasData['combinedData'],
+         'tugasData' => $tugasData['tugasData'],
          'projectData' => $tugasData['projectData'],
          'userData' => $tugasData['userData'],
          'tugasDataF' => TugasApi::getDataByIdFromAPI($id, $token)

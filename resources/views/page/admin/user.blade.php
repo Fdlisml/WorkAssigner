@@ -57,7 +57,7 @@
                                 @endif
                             </select>
                             <button type="submit" class="cta">
-                                <span>Send Work !</span>
+                                <span>Send!</span>
                             </button>
                         </form>
                     </div>

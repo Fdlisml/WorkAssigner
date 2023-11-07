@@ -54,7 +54,8 @@ class LaporanUserController extends Controller
       return [
          'laporan' => $laporanData,
          'totalJobs' => $totalJobs,
-         'totalJobsPrioritas' => $totalJobsWithPrioritas
+         'totalJobsPrioritas' => $totalJobsWithPrioritas,
+         'routeDT' => 'dataLaporan'
       ];
    }
 
@@ -62,6 +63,17 @@ class LaporanUserController extends Controller
    {
       $laporanData = $this->getLaporanData();
       return view('page.user.hasil', $laporanData);
+   }
+
+   public function data()
+   {
+      $laporanData = $this->getLaporanData();
+      return [
+         "draw" => 1,
+         "recordsTotal" => 20,
+         "recordsFiltered" => 20,
+         "data" => $laporanData['laporan']
+      ];
    }
 
    /**

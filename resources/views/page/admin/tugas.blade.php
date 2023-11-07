@@ -98,7 +98,7 @@
                             <label for="tgl_selesai">Tanggal Selesai</label>
                             <input type="date" id="tgl_selesai" name="tgl_selesai" class="tgl_selesai" value="{{ $data['tgl_selesai'] }}">
                             <button type="submit" class="cta">
-                                <span>Send Work !</span>
+                                <span>Send!</span>
                             </button>
                         </form>
                     </div>
