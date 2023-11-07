@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LaporanApi;
 use App\Models\TugasApi;
 use App\Models\ProjectApi;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class IndexUserController extends Controller
    {
       $tugasPrioritas = [];
       foreach ($tugas as $t) {
-         if ($t['prioritas'] === $prioritas) {
+         if ($t['tugas']['prioritas'] === $prioritas) {
             $tugasPrioritas[] = $t;
          }
       }
@@ -23,14 +24,26 @@ class IndexUserController extends Controller
    {
       session_start();
       $token = session('token');
-      $tugas = TugasApi::getDataFromAPI($token);
       $project = ProjectApi::getDataFromAPI($token);
+      $tugas = TugasApi::getDataFromAPI($token);
+      $laporan = LaporanApi::getDataFromAPI($token);
       $name = session('name');
 
       $tugas_user = [];
       foreach ($tugas as $t) {
          if ($t['name'] === $name && $t['status'] == false) {
-            $tugas_user[] = $t;
+            $laporanData = [];
+            foreach ($laporan as $l){
+               if($l['nama_tugas'] === $t['nama_tugas']){
+                  $laporanData[] = $l;
+               }
+            }
+            $laporanData = !empty($laporanData) ? $laporanData[0] : null;
+
+            $tugas_user[] = [
+               'tugas' => $t,
+               'laporan' => $laporanData
+            ];
          }
       }
 

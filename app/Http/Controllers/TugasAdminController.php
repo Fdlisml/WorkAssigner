@@ -15,7 +15,7 @@ class TugasAdminController extends Controller
     * Display a listing of the resource.
     */
 
-    public function getTugasData()
+   public function getTugasData()
    {
       session_start();
       $token = session('token');
@@ -23,38 +23,41 @@ class TugasAdminController extends Controller
       $project = ProjectApi::getDataFromAPI($token);
       $user = UserApi::getDataFromAPI($token);
 
-      $combinedData = [];
-      foreach ($tugas as $t) {
-         $id_project = $t['id_project'];
-         $id_user = $t['id_user'];
+      // $combinedData = [];
+      // foreach ($tugas as $t) {
+      //    $id_project = $t['id_project'];
+      //    $id_user = $t['id_user'];
 
-         $projectData = [];
-         foreach ($project as $p) {
-            if ($p['id'] === $id_project) {
-               $projectData[0] = $p;
-            }
-         }
+      //    $projectData = [];
+      //    foreach ($project as $p) {
+      //       if ($p['id'] === $id_project) {
+      //          $projectData[0] = $p;
+      //       }
+      //    }
 
-         $userData = [];
-         foreach ($user as $u) {
-            if ($u['id'] === $id_user) {
-               $userData[0] = $u;
-            }
-         }
+      //    $userData = [];
+      //    foreach ($user as $u) {
+      //       if ($u['id'] === $id_user) {
+      //          $userData[0] = $u;
+      //       }
+      //    }
 
-         $combinedData[] = [
-            'tugas' => $t,
-            'project' => $projectData[0],
-            'user' => $userData[0],
-         ];
+      //    $combinedData[] = [
+      //       'tugas' => $t,
+      //       'project' => $projectData[0],
+      //       'user' => $userData[0],
+      //    ];
 
-         usort($combinedData, function ($a, $b) {
-            return $a['tugas']['prioritas'] - $b['tugas']['prioritas'];
-         });
-      }
+      //    usort($combinedData, function ($a, $b) {
+      //       return $a['tugas']['prioritas'] - $b['tugas']['prioritas'];
+      //    });
+      // }
+      usort($tugas, function ($a, $b) {
+         return $a['prioritas'] - $b['prioritas'];
+      });
 
       return [
-         'tugasData' => $combinedData,
+         'tugasData' => $tugas,
          'projectData' => $project,
          'userData' => $user
       ];

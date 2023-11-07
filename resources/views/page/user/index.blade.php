@@ -6,7 +6,7 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Jobs Today</h2>
-                <div class="wadah search">
+                {{-- <div class="wadah search">
                     <div class="search">
                         <form action="{{ url('user/index/search') }}" method="GET">
                             <input type="text" name="keyword" id="searchInput" placeholder="Cari tugas...">
@@ -21,20 +21,20 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="wadah-table">
-                <form action="{{ url('user/index/filter') }}" method="GET">
+                {{-- <form action="{{ url('user/index/filter') }}" method="GET">
                     <select name="keyword">
                         <option value=""></option>
                         <option value="Prioritas">Prioritas</option>
                         <option value="Deadline">Tanggal Deadline</option>
                     </select>
                     <input type="submit" value="FILTER">
-                </form>
+                </form> --}}
                 <br>
-                <table>
+                <table id="table">
                     <thead>
                         <tr>
                             <th>Name Task</th>
@@ -48,20 +48,20 @@
                     <tbody>
                         @foreach ($jobsToday as $jt)
                             <tr>
-                                <td>{{ $jt['nama_tugas'] }}</td>
-                                <td>{{ $jt['nama_project'] }}</td>
-                                <td>{{ $jt['deskripsi'] }}</td>
+                                <td>{{ $jt['tugas']['nama_tugas'] }}</td>
+                                <td>{{ $jt['tugas']['nama_project'] }}</td>
+                                <td>{{ $jt['tugas']['deskripsi'] }}</td>
                                 <td>
                                     <div class="status">
                                         <div class="work-status" id="status-div">
-                                            {{ $jt['prioritas'] }}
+                                            {{ $jt['tugas']['prioritas'] }}
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $jt['tgl_selesai'] }}</td>
+                                <td>{{ $jt['tugas']['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="tooltip">
-                                        <a id="myBtn" class="btn" data-id="{{ $jt['id'] }}" href="/user/laporan">Laporan</a>
+                                        <a id="myBtn" class="btn" data-id="{{ $jt['tugas']['id'] }}" href="/user/laporan" @if ($jt['laporan'] == !null) disabled @endif>Laporan</a>
                                         <span class="tooltiptext">Laporan sudah dibuat</span>
                                     </div>
                                 </td>
@@ -114,8 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-form">
-                                    <input type="hidden" name="tgl_laporan"
-                                        value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                    {{-- <input type="hidden" name="tgl_laporan" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"> --}}
                                     <input type="hidden" name="id_tugas" value="">
                                     <input type="hidden" name="id_user" value="{{ session('id') }}">
                                     <button class="learn-more" type="submit">

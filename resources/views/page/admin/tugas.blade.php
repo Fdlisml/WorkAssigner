@@ -130,18 +130,18 @@
                     @foreach ($tugasData as $t)
                         <div class="wadah-table">
                             <tr>
-                                <td>{{ $t['tugas']['nama_tugas'] }}</td>
-                                <td>{{ $t['project']['nama_project'] }}</td>
-                                <td>{{ $t['user']['name'] }}</td>
-                                <td>{{ $t['tugas']['deskripsi'] }}</td>
-                                <td>{{ $t['tugas']['prioritas'] }}</td>
-                                <td>{{ $t['tugas']['tgl_mulai'] }}</td>
-                                <td>{{ $t['tugas']['tgl_selesai'] }}</td>
+                                <td>{{ $t['nama_tugas'] }}</td>
+                                <td>{{ $t['nama_project'] }}</td>
+                                <td>{{ $t['name'] }}</td>
+                                <td>{{ $t['deskripsi'] }}</td>
+                                <td>{{ $t['prioritas'] }}</td>
+                                <td>{{ $t['tgl_mulai'] }}</td>
+                                <td>{{ $t['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="flex-btn">
-                                        <a href="{{ url('admin/tugas/destroy/' . $t['tugas']['id']) }}">HAPUS</a>
+                                        <a href="{{ url('admin/tugas/destroy/' . $t['id']) }}">HAPUS</a>
                                         |
-                                        <a href="{{ url('admin/tugas/edit/' . $t['tugas']['id']) }}">Edit</a>
+                                        <a href="{{ url('admin/tugas/edit/' . $t['id']) }}">Edit</a>
                                     </div>
                                 </td>
                             </tr>

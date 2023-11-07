@@ -46,7 +46,7 @@
     </div>
 
     <!-- The Modal -->
-    <div id="myModal" class="modal" @if (Request::is('admin/user/edit/*')) style='display: block' @endif>
+    <div id="myModal" class="modal" @if (Request::is('admin/project/edit/*')) style='display: block' @endif>
 
         <!-- Modal content -->
         <div class="modal-content">
@@ -62,7 +62,6 @@
                             'url' => 'admin/project/update/' . $projectEdit['id'],
                             'nama_project' => $projectEdit['nama_project'],
                             'deskripsi' => $projectEdit['deskripsi'],
-                            'prioritas' => $projectEdit['prioritas'],
                             'tgl_mulai' => $projectEdit['tgl_mulai'],
                             'tgl_selesai' => $projectEdit['tgl_selesai'],
                         ];
@@ -73,7 +72,6 @@
                             'url' => 'admin/project/store',
                             'nama_project' => '',
                             'deskripsi' => '',
-                            'prioritas' => '',
                             'tgl_mulai' => '',
                             'tgl_selesai' => '',
                         ];

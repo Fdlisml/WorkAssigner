@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TugasApi;
 use App\Models\LaporanApi;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class LaporanUserController extends Controller
 {
@@ -70,13 +71,18 @@ class LaporanUserController extends Controller
          'deskripsi' => ['required'],
          'keluhan' => ['required'],
          'progres' => ['required'],
-         'tgl_laporan' => ['required'],
          'id_tugas' => ['required'],
          'id_user' => ['required']
       ]);
 
-      $data_tugas['status'] = true;
-      TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
+      $data_laporan['tgl_laporan'] = Carbon::now()->format('Y-m-d');
+
+      if ($data_laporan['progres'] === "100") {
+         $data_tugas['status'] = true;
+
+         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
+      }
+
       LaporanApi::postDataToAPI($data_laporan, $token);
 
       return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
@@ -86,10 +92,26 @@ class LaporanUserController extends Controller
    {
       session_start();
       $token = session('token');
+      $tugas = TugasApi::getDataFromAPI($token);
+
       $data_laporan = $request->validate([
          'progres' => ['required']
       ]);
-      
+
+      if ($data_laporan['progres'] === "100") {
+
+         $nama_tugas = $request->nama_tugas;
+
+         $tugasData = array_filter($tugas, function($t) use ($nama_tugas) {
+             return $t['nama_tugas'] === $nama_tugas;
+         });
+         
+         $tugasData = reset($tugasData);
+         $data_tugas['status'] = true;
+         $id_tugas = $tugasData['id'];
+         TugasApi::updateDataInAPI($id_tugas, $data_tugas, $token);
+      }
+
       LaporanApi::updateDataInAPI($id, $data_laporan, $token);
 
       return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
