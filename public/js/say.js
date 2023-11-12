@@ -5,11 +5,11 @@ function getGreeting() {
     const currentTime = new Date().getHours();
 
     if (currentTime >= 0 && currentTime < 12) {
-        return "Good Morning";
+        return "Selamat Pagi";
     } else if (currentTime >= 12 && currentTime < 18) {
-        return "Good Afternoon";
+        return "Selamat Sore";
     } else {
-        return "Good Evening";
+        return "Selamat Malam";
     }
 }
 

@@ -14,7 +14,7 @@
 <body>
     @php
         $page = '';
-        if (Str::startsWith(Request::path(), 'user/')) {
+        if (Str::startsWith(Request::path(), 'karyawan/')) {
             $page = 'User';
         } elseif (Str::startsWith(Request::path(), 'admin/')) {
             $page = 'Admin';
@@ -25,7 +25,7 @@
         <div class="main">
             <div class="secMain">
                 @include('partials.topbar')
-                @if (Str::startsWith(Request::path(), 'user/'))
+                @if (Str::startsWith(Request::path(), 'karyawan/'))
                     @include('partials.cardBox')
                 @endif
                 @yield('content')

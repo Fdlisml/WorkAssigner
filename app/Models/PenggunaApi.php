@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use GuzzleHttp\Client;
 
-class ProjectApi extends Model
+class PenggunaApi extends Model
 {
    use HasFactory;
-   const API_ENDPOINT = 'https://klikyuk.com/WorkAssigner-Server/api/projects';
+   const API_ENDPOINT = 'http://workassigner-server.test/api/users';
    public static function getDataFromAPI($token)
    {
       $client = new Client();
@@ -20,7 +20,7 @@ class ProjectApi extends Model
       ]);
       $data = json_decode($response->getBody(), true);
 
-      return $data['data_project'];
+      return $data['data_user'];
    }
 
    public static function getDataByIdFromAPI($id, $token)
@@ -33,20 +33,7 @@ class ProjectApi extends Model
       ]);
       $data = json_decode($response->getBody(), true);
 
-      return $data['data_project'];
-   }
-
-   public static function postDataToAPI($postData, $token)
-   {
-      $client = new Client();
-      $response = $client->post(self::API_ENDPOINT, [
-         'headers' => [
-            'Authorization' => 'Bearer ' . $token,
-         ],
-         'json' => $postData
-      ]);
-
-      return $response->getStatusCode(); // Returns the HTTP status code
+      return $data['data_user'];
    }
 
    public static function updateDataInAPI($id, $updatedData, $token)

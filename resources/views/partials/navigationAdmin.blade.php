@@ -20,7 +20,7 @@
                 <span class="icon">
                     <ion-icon name="document-text-outline"></ion-icon>
                 </span>
-                <span class="title">Project</span>
+                <span class="title">Proyek</span>
             </a>
         </li>
 
@@ -29,16 +29,16 @@
                 <span class="icon">
                     <ion-icon name="person-outline"></ion-icon>
                 </span>
-                <span class="title">User</span>
+                <span class="title">Pengguna</span>
             </a>
         </li>
 
         <li>
-            <a href="{{ url('/admin/tugas') }}">
+            <a href="{{ url('/admin/pekerjaan') }}">
                 <span class="icon">
                     <ion-icon name="reader-outline"></ion-icon>
                 </span>
-                <span class="title">Work</span>
+                <span class="title">Pekerjaan</span>
             </a>
         </li>
         
@@ -47,7 +47,7 @@
                 <span class="icon">
                     <ion-icon name="folder-open-outline"></ion-icon>
                 </span>
-                <span class="title">Report</span>
+                <span class="title">Laporan</span>
             </a>
         </li>
 
@@ -56,7 +56,7 @@
                 <span class="icon">
                     <ion-icon name="log-out-outline"></ion-icon>
                 </span>
-                <span class="title">Sign Out</span>
+                <span class="title">Keluar</span>
             </a>
         </li>
         {{-- <li class="copyright">

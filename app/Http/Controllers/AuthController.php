@@ -71,7 +71,7 @@ class AuthController extends Controller
             'username' => $username,
             'role' => $role
          ]);
-         $page = ($role === "user") ? "/user/index" : "/admin/index";
+         $page = ($role === "karyawan") ? "/karyawan/index" : "/admin/index";
          return redirect($page);
       } else {
          return redirect()->route('login')->with('error', $message);

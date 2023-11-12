@@ -16,11 +16,7 @@ class CheckRole
     */
    public function handle(Request $request, Closure $next, string $role)
    {
-      if ($role == 'user' && session('role') == 'user') {
-         return $next($request);
-      }
-      
-      if ($role == 'admin' && session('role') == 'admin') {
+      if ($role == 'karyawan' || $role == 'admin') {
          return $next($request);
       }
 

@@ -10,11 +10,11 @@
                 <table id="table">
                     <thead>
                         <tr>
-                            <th>Report Name</th>
-                            <th>Description</th>
-                            <th>Complaint</th>
-                            <th>progress</th>
-                            <th>Date Report</th>
+                            <th>Nama Laporan</th>
+                            <th>Deskripsi</th>
+                            <th>Keluhan</th>
+                            <th>Progres</th>
+                            <th>Tanggal Laporan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,7 +41,7 @@
                                     <td>{{ $l['tgl_laporan'] }}</td>
                                     <td>
                                         <div class="btn-update">
-                                            <input type="hidden" name="id_tugas" value="{{ $l['id_tugas'] }}">
+                                            <input type="hidden" name="id_pekerjaan" value="{{ $l['id_pekerjaan'] }}">
                                             <input type="hidden" name="id_laporan" value="{{ $l['id'] }}">
                                             <div class="tooltip">
                                                 <button type="submit" id="myBtn" class="btn"

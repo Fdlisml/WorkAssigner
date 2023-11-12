@@ -2,7 +2,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="{{ url('user/page/index') }}">
+            <a href="{{ url('karyawan/page/index') }}">
                 <div class="logo-flex">
                     <span class="icon">
                         <div class="logo-bg">
@@ -15,20 +15,20 @@
         </li>
 
         <li>
-            <a href="{{ url('user/index') }}">
+            <a href="{{ url('karyawan/index') }}">
                 <span class="icon">
                     <ion-icon name="reader-outline"></ion-icon>
                 </span>
-                <span class="title">Work</span>
+                <span class="title">Pekerjaan</span>
             </a>
         </li>
 
         <li>
-            <a href="{{ url('user/laporan') }}">
+            <a href="{{ url('karyawan/laporan') }}">
                 <span class="icon">
                     <ion-icon name="checkmark-done-outline"></ion-icon>
                 </span>
-                <span class="title">Working Result</span>
+                <span class="title">Hasil Pekerjaan</span>
             </a>
         </li>
 
@@ -37,7 +37,7 @@
                 <span class="icon">
                     <ion-icon name="log-out-outline"></ion-icon>
                 </span>
-                <span class="title">Sign Out</span>
+                <span class="title">Keluar</span>
             </a>
         </li>
         {{-- <li class="copyright">

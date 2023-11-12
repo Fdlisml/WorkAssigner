@@ -5,24 +5,19 @@
         <div class="recentCustomers">
             <div class="cardHeader">
                 <h2>Data Laporan</h2>
-                {{-- <div class="search">
-                    <form action="{{ url('admin/laporan/search') }}" method="GET">
-                        <input type="text" name="keyword" id="searchInput" placeholder="Cari laporan...">
-                    </form>
-                </div> --}}
             </div>
 
             <table id="table">
                 <thead>
                     <tr>
                         <th>NAMA LAPORAN</th>
+                        <th>NAMA PEKERJAAN</th>
+                        <th>NAMA KARYAWAN</th>
                         <th>DESKRIPSI</th>
                         <th>KELUHAN</th>
                         <th>PROGRES</th>
                         <th>TANGGAL LAPORAN</th>
-                        <th>NAMA PROJECT</th>
-                        <th>NAMA TUGAS</th>
-                        <th>NAMA DEVELOPER</th>
+                        <th>NAMA PROYEK</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
@@ -32,12 +27,12 @@
                         <div class="wadah-table">
                             <tr>
                                 <td>{{ $l['laporan']['nama_laporan'] }}</td>
+                                <td>{{ $l['proyek']['nama_proyek'] }}</td>
+                                <td>{{ $l['pekerjaan']['nama_pekerjaan'] }}</td>
                                 <td>{{ $l['laporan']['deskripsi'] }}</td>
                                 <td>{{ $l['laporan']['keluhan'] }}</td>
                                 <td>{{ $l['laporan']['progres'] }}</td>
                                 <td>{{ $l['laporan']['tgl_laporan'] }}</td>
-                                <td>{{ $l['project']['nama_project'] }}</td>
-                                <td>{{ $l['tugas']['nama_tugas'] }}</td>
                                 <td>{{ $l['user']['name'] }}</td>
                                 <td>
                                     <div class="flex-btn">

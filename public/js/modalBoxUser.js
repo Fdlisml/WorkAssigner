@@ -5,7 +5,7 @@ var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var btns = document.querySelectorAll("#myBtn");
 var tooltips = document.querySelectorAll(".tooltip .tooltiptext");
-var inputIdTugas = document.querySelector('input[name="id_tugas"]')
+var inputIdPekerjaan = document.querySelector('input[name="id_pekerjaan"]')
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -18,8 +18,8 @@ btns.forEach(function (btn, index) {
       btn.removeAttribute("href");
       btn.onclick = function (e) {
          modal.style.display = "block";
-         var idTugas = e.target.dataset.id;
-         inputIdTugas.value = idTugas;
+         var idPekerjaan = e.target.dataset.id;
+         inputIdPekerjaan.value = idPekerjaan;
       }
    }
 });

@@ -4,7 +4,7 @@
         <div class="card-left">
             <div class="container-text">
                 <div class="say"><span id="say"></span>, {{ session('name') }}</div>
-                <div class="desc">Good luck with your work. Spirit!</div>
+                <div class="desc">Sukses untuk Pekerjaanmu, Semangat!</div>
                 <div id="txt"></div>
                 <div class="left2">
                     <p id="day"></p>

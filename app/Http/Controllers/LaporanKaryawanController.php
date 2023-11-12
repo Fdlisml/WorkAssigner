@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TugasApi;
+use App\Models\PekerjaanApi;
 use App\Models\LaporanApi;
 use Illuminate\Http\Request;
 
-class LaporanUserController extends Controller
+class LaporanKaryawanController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    */
-   public function tugasPrioritas($prioritas, $tugas)
+   public function pekerjaanPrioritas($prioritas, $pekerjaan)
    {
-      $tugasPrioritas = [];
-      foreach ($tugas as $t) {
+      $pekerjaanPrioritas = [];
+      foreach ($pekerjaan as $t) {
          if ($t['prioritas'] === $prioritas) {
-            $tugasPrioritas[] = $t;
+            $pekerjaanPrioritas[] = $t;
          }
       }
-      return count($tugasPrioritas);
+      return count($pekerjaanPrioritas);
    }
 
    public function getLaporanData()
@@ -27,7 +24,7 @@ class LaporanUserController extends Controller
       session_start();
       $token = session('token');
       $laporan = LaporanApi::getDataFromAPI($token);
-      $tugas = TugasApi::getDataFromAPI($token);
+      $pekerjaan = PekerjaanApi::getDataFromAPI($token);
       $id_user = session('id');
 
       $laporanData = [];
@@ -37,18 +34,18 @@ class LaporanUserController extends Controller
          }
       }
 
-      $tugas_user = [];
-      foreach ($tugas as $t) {
+      $pekerjaan_user = [];
+      foreach ($pekerjaan as $t) {
          if ($t['id_user'] === $id_user && $t['status'] == false) {
-            $tugas_user[] = $t;
+            $pekerjaan_user[] = $t;
          }
       }
 
-      $totalJobs = count($tugas_user);
+      $totalJobs = count($pekerjaan_user);
       $totalJobsWithPrioritas = [
-         '1' => $this->tugasPrioritas('1', $tugas_user),
-         '2' => $this->tugasPrioritas('2', $tugas_user),
-         '3' => $this->tugasPrioritas('3', $tugas_user)
+         '1' => $this->pekerjaanPrioritas('1', $pekerjaan_user),
+         '2' => $this->pekerjaanPrioritas('2', $pekerjaan_user),
+         '3' => $this->pekerjaanPrioritas('3', $pekerjaan_user)
       ];
 
       return [
@@ -62,7 +59,7 @@ class LaporanUserController extends Controller
    public function index()
    {
       $laporanData = $this->getLaporanData();
-      return view('page.user.hasil', $laporanData);
+      return view('page.karyawan.hasil', $laporanData);
    }
 
    public function data()
@@ -76,17 +73,6 @@ class LaporanUserController extends Controller
       ];
    }
 
-   /**
-    * Show the form for creating a new resource.
-    */
-   public function create()
-   {
-      //
-   }
-
-   /**
-    * Store a newly created resource in storage.
-    */
    public function store(Request $request)
    {
       session_start();
@@ -97,40 +83,21 @@ class LaporanUserController extends Controller
          'keluhan' => ['required'],
          'progres' => ['required'],
          'tgl_laporan' => ['required'],
-         'id_tugas' => ['required'],
+         'id_pekerjaan' => ['required'],
          'id_user' => ['required']
       ]);
 
       if ($data_laporan['progres'] === "100") {
-         $data_tugas['status'] = true;
+         $data_pekerjaan['status'] = true;
 
-         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
+         PekerjaanApi::updateDataInAPI($request->id_pekerjaan, $data_pekerjaan, $token);
       }
 
       LaporanApi::postDataToAPI($data_laporan, $token);
 
-      return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
+      return redirect('karyawan/laporan')->with('success', 'Data Laporan Berhasil di Tambah');
    }
-
-   /**
-    * Display the specified resource.
-    */
-   public function show(string $id)
-   {
-      //
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(string $id)
-   {
-      //
-   }
-
-   /**
-    * Update the specified resource in storage.
-    */
+   
    public function update(Request $request, int $id)
    {
       session_start();
@@ -140,20 +107,12 @@ class LaporanUserController extends Controller
       ]);
 
       if ($data_laporan['progres'] === "100") {
-         $data_tugas['status'] = true;
+         $data_pekerjaan['status'] = true;
 
-         TugasApi::updateDataInAPI($request->id_tugas, $data_tugas, $token);
+         PekerjaanApi::updateDataInAPI($request->id_pekerjaan, $data_pekerjaan, $token);
       }
       LaporanApi::updateDataInAPI($id, $data_laporan, $token);
 
-      return redirect('user/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    */
-   public function destroy(string $id)
-   {
-      //
+      return redirect('karyawan/laporan')->with('success', 'Data Laporan Berhasil di Ubah');
    }
 }

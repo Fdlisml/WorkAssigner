@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TugasApi;
-use App\Models\UserApi;
+use App\Models\PekerjaanApi;
+use App\Models\PenggunaApi;
 use Illuminate\Http\Request;
 
-class UserAdminController extends Controller
+class PenggunaAdminController extends Controller
 {
    public function getUserData($id = null)
    {
       session_start();
       $token = session('token');
       return [
-         'user' => UserApi::getDataFromAPI($token),
-         'userEdit' => UserApi::getDataByIdFromAPI($id, $token)
+         'user' => PenggunaApi::getDataFromAPI($token),
+         'userEdit' => PenggunaApi::getDataByIdFromAPI($id, $token)
       ];
    }
 
@@ -58,7 +58,7 @@ class UserAdminController extends Controller
          'role' => ['required']
       ]);
 
-      UserApi::updateDataInAPI($id, $data_user, $token);
+      PenggunaApi::updateDataInAPI($id, $data_user, $token);
 
       return redirect('admin/user')->with('success', 'Data User Berhasil di Update');
    }
@@ -68,20 +68,20 @@ class UserAdminController extends Controller
       session_start();
       $token = session('token');
 
-      $tugas = TugasApi::getDataFromAPI($token);
+      $pekerjaan = PekerjaanApi::getDataFromAPI($token);
 
-      $tugasData = [];
-      foreach ($tugas as $t) {
+      $pekerjaanData = [];
+      foreach ($pekerjaan as $t) {
          if ($t['id_user'] === $id) {
-            $tugasData[] = $t;
+            $pekerjaanData[] = $t;
          }
       }
 
-      if ($tugasData) {
-         return back()->with('error', "User masih digunakan di menu Tugas");
+      if ($pekerjaanData) {
+         return back()->with('error', "User masih digunakan di menu Pekerjaan");
       }
 
-      UserApi::deleteDataInAPI($id, $token);
+      PenggunaApi::deleteDataInAPI($id, $token);
       return redirect('admin/user')->with('success', 'Data User Berhasil di Hapus');
    }
 }

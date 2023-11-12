@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use GuzzleHttp\Client;
 
-class TugasApi extends Model
+class PekerjaanApi extends Model
 {
    use HasFactory;
-   const API_ENDPOINT = 'https://klikyuk.com/WorkAssigner-Server/api/tugas';
+   const API_ENDPOINT = 'http://workassigner-server.test/api/pekerjaans';
    public static function getDataFromAPI($token)
    {
       $client = new Client();
@@ -20,7 +20,7 @@ class TugasApi extends Model
       ]);
       $data = json_decode($response->getBody(), true);
 
-      return $data['data_tugas'];
+      return $data['data_pekerjaan'];
    }
 
    public static function getDataByIdFromAPI($id, $token)
@@ -33,7 +33,7 @@ class TugasApi extends Model
          ]);
       $data = json_decode($response->getBody(), true);
 
-      return $data['data_tugas'];
+      return $data['data_pekerjaan'];
    }
 
    public static function postDataToAPI($postData, $token)

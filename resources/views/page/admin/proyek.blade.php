@@ -5,14 +5,14 @@
         <!-- ================= New Customers ================ -->
         <div class="recentCustomers">
             <div class="cardHeader">
-                <h2>Data Project</h2>
-                <a id="myBtn" class="btn">Form Project</a>
+                <h2>Data Proyek</h2>
+                <a id="myBtn" class="btn">Form Proyek</a>
             </div>
 
             <table id="table">
                 <thead>
                     <tr>
-                        <th>NAMA PROJECT</th>
+                        <th>NAMA PROYEK</th>
                         <th>DESKRIPSI</th>
                         <th>TANGGAL MULAI</th>
                         <th>TANGGAL SELESAI</th>
@@ -20,21 +20,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($project as $p)
+                    @foreach ($proyek as $p)
                         <div class="wadah-table">
                             <tr>
-                                <td>{{ $p['nama_project'] }}</td>
+                                <td>{{ $p['nama_proyek'] }}</td>
                                 <td>{{ $p['deskripsi'] }}</td>
                                 <td>{{ $p['tgl_mulai'] }}</td>
                                 <td>{{ $p['tgl_selesai'] }}</td>
                                 <td>
                                     <div class="flex-btn">
-                                        <a href="{{ url('admin/project/destroy/' . $p['id']) }}">HAPUS</a>
+                                        <a href="{{ url('admin/proyek/destroy/' . $p['id']) }}">HAPUS</a>
                                         |
-                                        <a href="{{ url('admin/project/edit/' . $p['id']) }}">Edit</a>
+                                        <a href="{{ url('admin/proyek/edit/' . $p['id']) }}">Edit</a>
                                         |
-                                        <a href="{{ url('admin/tugas/create/' . $p['id']) }}">Tambah
-                                            Tugas</a>
+                                        <a href="{{ url('admin/pekerjaan/create/' . $p['id']) }}">Tambah Pekerjaan</a>
                                     </div>
                                 </td>
                             </tr>
@@ -46,31 +45,31 @@
     </div>
 
     <!-- The Modal -->
-    <div id="myModal" class="modal" @if (Request::is('admin/project/edit/*')) style='display: block' @endif>
+    <div id="myModal" class="modal" @if (Request::is('admin/proyek/edit/*')) style='display: block' @endif>
 
         <!-- Modal content -->
         <div class="modal-content">
             <div class="recentOrders">
                 <div class="cardHeader">
                     <span class="close">&times;</span>
-                    <h2>Form Project</h2>
+                    <h2>Form Proyek</h2>
                 </div>
 
-                @if (Request::is('admin/project/edit/*'))
+                @if (Request::is('admin/proyek/edit/*'))
                     @php
                         $data = [
-                            'url' => 'admin/project/update/' . $projectEdit['id'],
-                            'nama_project' => $projectEdit['nama_project'],
-                            'deskripsi' => $projectEdit['deskripsi'],
-                            'tgl_mulai' => $projectEdit['tgl_mulai'],
-                            'tgl_selesai' => $projectEdit['tgl_selesai'],
+                            'url' => 'admin/proyek/update/' . $proyekEdit['id'],
+                            'nama_proyek' => $proyekEdit['nama_proyek'],
+                            'deskripsi' => $proyekEdit['deskripsi'],
+                            'tgl_mulai' => $proyekEdit['tgl_mulai'],
+                            'tgl_selesai' => $proyekEdit['tgl_selesai'],
                         ];
                     @endphp
                 @else
                     @php
                         $data = [
-                            'url' => 'admin/project/store',
-                            'nama_project' => '',
+                            'url' => 'admin/proyek/store',
+                            'nama_proyek' => '',
                             'deskripsi' => '',
                             'tgl_mulai' => '',
                             'tgl_selesai' => '',
@@ -80,8 +79,8 @@
                 <div class="form">
                     <form action="{{ url($data['url']) }}" method="post">
                         @csrf
-                        <label for="nama_project">Nama Project</label>
-                        <input type="text" id="nama_project" name="nama_project" value="{{ $data['nama_project'] }}">
+                        <label for="nama_proyek">Nama Proyek</label>
+                        <input type="text" id="nama_proyek" name="nama_proyek" value="{{ $data['nama_proyek'] }}">
                         <label for="deskripsi">Deskripsi</label>
                         <textarea name="deskripsi" id="deskripsi" cols="10" rows="10">{{ $data['deskripsi'] }}</textarea>
                         <label for="tgl_mulai"><br>Tanggal Mulai</label>

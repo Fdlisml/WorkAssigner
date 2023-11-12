@@ -8,7 +8,7 @@
             <div class="modal-content">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Form User</h2>
+                        <h2>Form Pengguna</h2>
                         <span class="close">&times;</span>
                     </div>
 
@@ -68,8 +68,8 @@
         <!-- ================= New Customers ================ -->
         <div class="recentCustomers">
             <div class="cardHeader">
-                <h2>Data User</h2>
-                <a id="myBtn" class="btn">Form User</a>
+                <h2>Data Pengguna</h2>
+                <a id="myBtn" class="btn">Form Pengguna</a>
             </div>
 
             <table id="table">
