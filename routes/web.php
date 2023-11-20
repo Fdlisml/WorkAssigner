@@ -53,7 +53,7 @@ Route::middleware(['check.login', 'role:admin'])->group(function () {
        Route::get('/laporan/destroy/{id}', [LaporanAdminController::class, 'destroy']);
        Route::get('/laporan/search', [LaporanAdminController::class, 'search']);
        Route::get('/user', [PenggunaAdminController::class, 'index']);
-       Route::post('/user/store', [AuthController::class, 'store']);
+       Route::post('/user/store', [AuthController::class, 'register']);
        Route::get('/user/edit/{id}', [PenggunaAdminController::class, 'edit']);
        Route::post('/user/update/{id}', [PenggunaAdminController::class, 'update']);
        Route::get('/user/destroy/{id}', [PenggunaAdminController::class, 'destroy']);

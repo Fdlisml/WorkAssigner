@@ -1,4 +1,4 @@
-var password = document.getElementById('fakePassword');
+var password = document.getElementById('password');
 var toggler = document.getElementById('toggler');
 
 showHidePassword = () => {

@@ -25,7 +25,7 @@
                     @else
                         @php
                             $data = [
-                                'url' => 'admin/user/register',
+                                'url' => 'admin/user/store',
                                 'name' => '',
                                 'username' => '',
                                 'password' => '',
@@ -45,14 +45,14 @@
                             <label for="role">Role</label>
                             <select id="role" name="role">
                                 @if ($data['role'] === 'user')
-                                    <option value="user" selected>User</option>
+                                    <option value="karyawan" selected>Karyawan</option>
                                     <option value="admin">Admin</option>
                                 @elseif($data['role'] === 'admin')
                                     <option value="user">User</option>
                                     <option value="admin" selected>Admin</option>
                                 @else
                                     <option></option>
-                                    <option value="user">User</option>
+                                    <option value="karyawan">Karyawan</option>
                                     <option value="admin">Admin</option>
                                 @endif
                             </select>

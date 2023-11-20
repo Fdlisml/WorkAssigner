@@ -467,7 +467,7 @@ input:checked+.toggleBtn .star--6 {
     position: relative;
     background: var(--white);
     padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 1.0);
     border-radius: 20px;
 }
 
@@ -749,7 +749,7 @@ table tr td a:nth-child(3) {
 
 /* Modal Content */
 .modal-content {
-    position: relative;
+    /* position: relative; */
     /* background-color: #fefefe; */
     margin: auto;
     padding: 0;
@@ -760,6 +760,10 @@ table tr td a:nth-child(3) {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.7s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Add Animation */

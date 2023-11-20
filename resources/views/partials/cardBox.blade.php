@@ -23,14 +23,14 @@
 
     <div class="card2">
         <div class="container2">
-            <h1><a href="{{ url('user/index/') }}">{{ $totalJobs }}</a><span>WORKS</span></h1>
+            <h1><a href="{{ url('karyawan/index/') }}">{{ $totalJobs }}</a><span>WORKS</span></h1>
 
             <div class="line"></div>
 
             <div class="status">
-                <div class="work-status"><a href="{{ url('user/index/filter?prioritas=1') }}">{{ $totalJobsPrioritas['1'] }}</a></div>
-                <div class="work-status"><a href="{{ url('user/index/filter?prioritas=2') }}">{{ $totalJobsPrioritas['2'] }}</a></div>
-                <div class="work-status"><a href="{{ url('user/index/filter?prioritas=3') }}">{{ $totalJobsPrioritas['3'] }}</a></div>
+                <div class="work-status"><a href="{{ url('karyawan/index/filter?prioritas=1') }}">{{ $totalJobsPrioritas['1'] }}</a></div>
+                <div class="work-status"><a href="{{ url('karyawan/index/filter?prioritas=2') }}">{{ $totalJobsPrioritas['2'] }}</a></div>
+                <div class="work-status"><a href="{{ url('karyawan/index/filter?prioritas=3') }}">{{ $totalJobsPrioritas['3'] }}</a></div>
             </div>
             <!-- day -->
             {{-- <div class="day" id="day">

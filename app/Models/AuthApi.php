@@ -10,7 +10,7 @@ class AuthApi extends Model
 {
    use HasFactory;
 
-   const API_ENDPOINT = 'https://klikyuk.com/WorkAssigner-Server/api';
+   const API_ENDPOINT = 'http://workassigner-server.test/api';
 
    public static function register($postData)
    {
