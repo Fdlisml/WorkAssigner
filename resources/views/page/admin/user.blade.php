@@ -44,11 +44,11 @@
                             <input type="password" id="password" name="password" value="{{ $data['password'] }}">
                             <label for="role">Role</label>
                             <select id="role" name="role">
-                                @if ($data['role'] === 'user')
+                                @if ($data['role'] === 'karyawan')
                                     <option value="karyawan" selected>Karyawan</option>
                                     <option value="admin">Admin</option>
                                 @elseif($data['role'] === 'admin')
-                                    <option value="user">User</option>
+                                    <option value="karyawan">Karyawan</option>
                                     <option value="admin" selected>Admin</option>
                                 @else
                                     <option></option>
