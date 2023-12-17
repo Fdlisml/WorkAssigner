@@ -42,6 +42,7 @@ class LaporanKaryawanController extends Controller
       }
 
       $totalJobs = count($pekerjaan_user);
+      
       $totalJobsWithPrioritas = [
          '1' => $this->pekerjaanPrioritas('1', $pekerjaan_user),
          '2' => $this->pekerjaanPrioritas('2', $pekerjaan_user),

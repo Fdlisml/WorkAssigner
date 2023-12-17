@@ -24,7 +24,7 @@
                                 <td>{{ $l['nama_laporan'] }}</td>
                                 <td>{{ $l['deskripsi'] }}</td>
                                 <td>{{ $l['keluhan'] }}</td>
-                                <form action="{{ url('/user/laporan/update/' . $l['id']) }}" method="POST">
+                                <form action="{{ url('/karyawan/laporan/update/' . $l['id']) }}" method="POST">
                                     @csrf
                                     <td>
                                         <div class="field">

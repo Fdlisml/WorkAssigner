@@ -16,10 +16,12 @@ class CheckRole
     */
    public function handle(Request $request, Closure $next, string $role)
    {
-      if ($role == 'karyawan' || $role == 'admin') {
+      if ($role == 'karyawan' && session('role') == 'karyawan') {
          return $next($request);
+      }elseif($role == 'admin' && session('role') == 'admin'){
+         return $next($request);
+      }else{
+         return redirect()->back()->with("error", "Anda tidak memiliki akses untuk memasuki halaman ini");
       }
-
-      return redirect()->back()->with("error", "Anda tidak memiliki akses untuk memasuki halaman ini");
    }
 }

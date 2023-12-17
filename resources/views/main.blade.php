@@ -15,7 +15,7 @@
     @php
         $page = '';
         if (Str::startsWith(Request::path(), 'karyawan/')) {
-            $page = 'User';
+            $page = 'Karyawan';
         } elseif (Str::startsWith(Request::path(), 'admin/')) {
             $page = 'Admin';
         }
