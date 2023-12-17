@@ -10,7 +10,7 @@ class AuthApi extends Model
 {
    use HasFactory;
 
-   const API_ENDPOINT = 'http://workassigner-server.test/api';
+   const API_ENDPOINT = 'http://localhost:8000/api';
 
    public static function register($postData)
    {
