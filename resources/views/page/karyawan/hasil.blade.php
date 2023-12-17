@@ -32,6 +32,9 @@
                                                 <input class="range" type="range" name="progres" min="0"
                                                     max="100" value="{{ $l['progres'] }}" steps="1"
                                                     @if ($l['progres'] === 100) disabled @endif>
+                                                <input type="hidden" name="nama_laporan" value="ubah nama laporan">
+                                                <input type="hidden" name="deskripsi" value="ubah deskripsi laporan">
+                                                <input type="hidden" name="keluhan" value="ubah keluhan laporan">
                                             </div>
                                             <div>
                                                 <span class="rangeValue">{{ $l['progres'] }}%</span>

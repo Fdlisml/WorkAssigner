@@ -20,6 +20,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+Route::get('/', function () {
+   return redirect('/login');
+});
+
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login_check', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
