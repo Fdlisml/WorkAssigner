@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 class ProyekApi extends Model
 {
    use HasFactory;
-   const API_ENDPOINT = 'http://workassigner-server.test/api/proyeks';
+   const API_ENDPOINT = 'http://localhost:8000/api/proyeks';
    public static function getDataFromAPI($token)
    {
       $client = new Client();
