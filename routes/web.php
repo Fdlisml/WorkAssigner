@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexKaryawanController;
-use App\Http\Controllers\pekerjaanAdminController;
+use App\Http\Controllers\PekerjaanAdminController;
 use App\Http\Controllers\LaporanKaryawanController;
 use App\Http\Controllers\LaporanAdminController;
 use App\Http\Controllers\ProyekAdminController;
