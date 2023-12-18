@@ -33,12 +33,6 @@ class AuthController extends Controller
       $message = $response_data['message'];
 
       if ($success) {
-         $token = $response_data['data']['token'];
-         $name = $response_data['data']['name'];
-         session([
-            'token' => $token,
-            'name' => $name
-         ]);
          return redirect('/admin/user');
       } else {
          echo "Error: " . $message;
